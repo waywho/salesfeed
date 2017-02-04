@@ -1,0 +1,8 @@
+<h1>Add new deal</h1>
+
+<%= simple_form_for @deal do |f| %>
+	<%= f.input :title %>
+	<%= f.input :message %>
+	<%= f.input :deeplink %>
+	<%= f.submit "Post" %>
+<% end %>
