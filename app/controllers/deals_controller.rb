@@ -1,5 +1,5 @@
 class DealsController < ApplicationController
-	# before_action :authenticate_user!, :only => [:new, :create]
+	before_action :authenticate_user!, :only => [:new, :create]
 
 	def index
 	end
@@ -9,7 +9,7 @@ class DealsController < ApplicationController
 	end
 
 	def create
-		@deal = Deal.create(deal_params)
+		@deal = current_user.deals.create(deal_params)
 		if @deal.valid?
 			redirect_to root_path
 		else
