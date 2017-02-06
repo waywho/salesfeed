@@ -15,11 +15,7 @@ RSpec.describe DealsController, type: :controller do
 		end
 
 		it "should successfully show new form" do
-			user = User.create(
-				email: 'fakeuser@gmail.com',
-				password: 'secretPassword',
-				password_confirmation: 'secretPassword'
-				)
+			user = FactoryGirl.create(:user)
 			sign_in user
 
 			get :new
@@ -33,11 +29,7 @@ RSpec.describe DealsController, type: :controller do
 			expect(response).to redirect_to new_user_session_path
 		end
 		it "should successfully create new deal in the database" do
-			user = User.create(
-				email: 'fakeuser@gmail.com',
-				password: 'secretPassword',
-				password_confirmation: 'secretPassword'
-				)
+			user = FactoryGirl.create(:user)
 			sign_in user
 			
 			post :create, deal: { title: "first test", message: "Hello!", deeplink: "https://this.is.atest.com" }
@@ -50,11 +42,7 @@ RSpec.describe DealsController, type: :controller do
 			expect(deal.user).to eq(user)
 		end
 		it "should properly deal with validation errors" do
-			user = User.create(
-				email: 'fakeuser@gmail.com',
-				password: 'secretPassword',
-				password_confirmation: 'secretPassword'
-				)
+			user = FactoryGirl.create(:user)
 			sign_in user
 			
 			deal_count = Deal.count
