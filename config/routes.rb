@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   root "deals#index"
 
-  resources :deals, :only => [:new, :create]
+  resources :deals, :only => [:new, :create, :show]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -4,6 +4,13 @@ class DealsController < ApplicationController
 	def index
 	end
 
+	def show
+		@deal = Deal.friendly.find_by_id(params[:id])
+		if @deal.blank?
+			render text: 'Not Found', status: :not_found
+		end
+	end
+
 	def new
 		@deal = Deal.new
 	end
