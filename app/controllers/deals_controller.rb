@@ -40,6 +40,14 @@ class DealsController < ApplicationController
 		end 
 	end
 
+	def destroy
+		@deal = Deal.friendly.find_by_id(params[:id])
+		return render_not_found if @deal.blank?
+
+		@deal.destroy
+		redirect_to root_path
+	end
+
 	private
 
 	def deal_params

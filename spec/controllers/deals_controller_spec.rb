@@ -1,6 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe DealsController, type: :controller do
+	describe "deal#destroy action" do
+		it "should allow a user to destroy deals" do
+			deal = FactoryGirl.create(:deal)
+			delete :destroy, id: deal.id
+			expect(response).to redirect_to root_path
+			deal = Deal.find_by_id(deal.id)
+			expect(deal).to eq nil
+		end
+		it "should return a 404 message if we cannot find a deal with the id that is specified" do
+			delete :destroy, id: "SPACEDUCK"
+			expect(response).to have_http_status(:not_found)
+		end
+	end
+
 	describe "deal#update action" do
 		it "should allow users to successfully update deal" do
 			deal = FactoryGirl.create(:deal, message: "Initial Value")
