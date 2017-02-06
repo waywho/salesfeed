@@ -1,7 +1,41 @@
 require 'rails_helper'
 
 RSpec.describe DealsController, type: :controller do
-	
+	describe "deal#update action" do
+		it "should allow users to successfully update deal" do
+			deal = FactoryGirl.create(:deal, message: "Initial Value")
+			patch :update, id: deal.id, deal: {message: "Changed"}
+			expect(response).to redirect_to root_path
+			deal.reload
+			expect(deal.message).to eq "Changed"
+		end
+
+		it "should have http 404 error if the deal cannot be found" do
+			patch :update, id: "YOLOSWAG", deal: {message: "Changed"}
+			expect(response).to have_http_status(:not_found)
+		end
+
+		it "should render the edit form with an http status of unprocessable_entity" do
+			deal = FactoryGirl.create(:deal, message: "Initial Value")
+			patch :update, id: deal.id, deal: {message: ''}
+			expect(response).to have_http_status(:unprocessable_entity)
+			deal.reload
+			expect(deal.message).to eq "Initial Value"
+		end
+	end
+	describe "deal#edit action" do
+		it "should successfully show the edit form if the deal is found" do
+			deal = FactoryGirl.create(:deal)
+			get :edit, id: deal.id
+			expect(response).to have_http_status(:success)
+		end
+
+		it "should return a 404 error message if the deal is not found" do
+			get :edit, id: "TACOCAT"
+			expect(response).to have_http_status(:not_found)
+		end
+	end
+
 	describe "deal#show action" do
 		it "should successfully show the page if the deal is found" do
 			deal = FactoryGirl.create(:deal)
@@ -12,7 +46,8 @@ RSpec.describe DealsController, type: :controller do
 			get :show, id: "TACOCAT"
 			expect(response).to have_http_status(:not_found)
 		end
-	end 
+	end
+
 	describe "deal#index action" do
 		it "should successfully show the page" do
 			get :index
