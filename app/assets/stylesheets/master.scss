@@ -1,0 +1,41 @@
+
+body {
+	background-color: #F0F0F0;
+}
+
+img {
+	display: block;
+}
+
+#grad {
+  background: #F69D9A; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left, #052F6D, #F69D9A); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right, #052F6D, #F69D9A); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right, #052F6D, #F69D9A); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right, #052F6D, #F69D9A); /* Standard syntax */
+}
+
+.title {
+	background-color: white;
+	height: 50px;
+	padding: 10px;
+	border-radius: 5px 5px 0px 0px;
+}
+
+.deal {
+	display: block;
+	position: relative;
+	margin: 30px auto;
+	width: 100%;
+	max-width: 400px;
+}
+
+.image-body {
+	margin: 0px;
+}
+
+.message {
+	min-height: 100px;
+	background-color: white;
+	padding: 10px;
+}

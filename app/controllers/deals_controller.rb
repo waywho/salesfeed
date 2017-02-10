@@ -2,6 +2,7 @@ class DealsController < ApplicationController
 	before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
 
 	def index
+		@deals = Deal.all
 	end
 
 	def show
@@ -54,10 +55,6 @@ class DealsController < ApplicationController
 	private
 
 	def deal_params
-		params.require(:deal).permit(:title, :message, :deeplink)
-	end
-
-	def render_not_found(status=:not_found)
-		render text: "#{status.to_s.titleize}", status: status
+		params.require(:deal).permit(:title, :message, :deeplink, :picture)
 	end
 end

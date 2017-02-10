@@ -1,1 +1,22 @@
 <h1>Fashion Deals</h1>
+
+<% @deals.each do |deal| %>
+	<div class="row">
+		<div class="deal">
+			<%= link_to deal.deeplink.html_safe, :target => "_blank" do %>
+				<div class="title">
+					<%= deal.title %>
+				</div>
+				<div class="image-body">
+					<%= image_tag deal.picture_url, :class=> 'u-max-full-width' %>
+				</div>
+				<div class="message">
+					<%= deal.message %><br />
+					<% deal.comments.each do |comment| %>
+						<%= comment %><br />
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+<% end %>

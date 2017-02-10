@@ -142,7 +142,10 @@ RSpec.describe DealsController, type: :controller do
 			user = FactoryGirl.create(:user)
 			sign_in user
 			
-			post :create, deal: { title: "first test", message: "Hello!", deeplink: "https://this.is.atest.com" }
+			post :create, deal: { title: "first test", 
+				message: "Hello!", 
+				picture: fixture_file_upload("/picture.jpg", 'image/png'),
+				deeplink: "https://this.is.atest.com" }
 			expect(response).to redirect_to root_path
 
 			deal = Deal.last
