@@ -34,7 +34,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'skeleton-rails', :git => 'https://github.com/helios-technologies/skeleton-rails'
+# gem 'skeleton-rails', :git => 'https://github.com/helios-technologies/skeleton-rails'
+
+gem 'bourbon'
+
+gem 'neat'
+
+gem 'bitters'
 
 gem 'simple_form'
 

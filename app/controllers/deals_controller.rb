@@ -3,6 +3,11 @@ class DealsController < ApplicationController
 
 	def index
 		@deals = Deal.all
+		respond_to do |format|
+        	format.html
+        	format.csv { send_data @deals.to_csv, filename: "deals-#{Date.today}.csv"}
+        	format.xlsx
+      	end
 	end
 
 	def show
@@ -13,6 +18,12 @@ class DealsController < ApplicationController
 	def new
 		@deal = Deal.new
 	end
+
+	def import
+      Deal.import(params[:file])
+      flash[:notice] = 'File has been imported'
+      redirect_to root_path
+    end
 
 	def create
 		@deal = current_user.deals.create(deal_params)
@@ -55,6 +66,6 @@ class DealsController < ApplicationController
 	private
 
 	def deal_params
-		params.require(:deal).permit(:title, :message, :deeplink, :picture)
+		params.require(:deal).permit(:title, :message, :deeplink, :picture, :retailer_id)
 	end
 end

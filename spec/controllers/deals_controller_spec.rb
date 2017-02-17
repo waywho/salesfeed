@@ -116,6 +116,10 @@ RSpec.describe DealsController, type: :controller do
 			get :index
 			expect(response).to have_http_status(:success)
 		end
+		it "should successfully download the csv" do
+			get :index, format: 'csv'
+			expect(response).to have_http_status(:success)
+		end
 	end
 
 	describe "deal#new action" do

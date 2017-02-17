@@ -2,6 +2,7 @@
 
 <%= simple_form_for @deal do |f| %>
 	<%= f.input :title %>
+	<%= f.input :retailer, as: :collection %>
 	<%= f.input :picture %>
 	<%= f.input :message %>
 	<%= f.input :deeplink %>

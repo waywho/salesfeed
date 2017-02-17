@@ -5,7 +5,12 @@ Rails.application.routes.draw do
 
   resources :deals do
     resources :comments, only: :create
+    collection do
+      post :import
+    end
   end
+
+  resources :retailers
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

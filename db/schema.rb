@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170210193231) do
+ActiveRecord::Schema.define(version: 20170215143326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,10 +32,11 @@ ActiveRecord::Schema.define(version: 20170210193231) do
     t.text     "message"
     t.string   "deeplink"
     t.string   "slug"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "user_id"
     t.string   "picture"
+    t.integer  "retailer_id"
   end
 
   add_index "deals", ["user_id"], name: "index_deals_on_user_id", using: :btree
@@ -52,6 +53,26 @@ ActiveRecord::Schema.define(version: 20170210193231) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "retailers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "host_url"
+    t.string   "part_url"
+    t.text     "brief_description"
+    t.text     "html_meta_description"
+    t.text     "description"
+    t.text     "internal_notes"
+    t.text     "admin_notes"
+    t.text     "support_notes"
+    t.text     "search_keywords"
+    t.string   "facebook_url"
+    t.string   "instagram_url"
+    t.string   "favicon"
+    t.string   "logo"
+    t.string   "cover"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
