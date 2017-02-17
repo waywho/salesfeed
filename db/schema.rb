@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170215143326) do
+ActiveRecord::Schema.define(version: 20170217141930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,11 +32,12 @@ ActiveRecord::Schema.define(version: 20170215143326) do
     t.text     "message"
     t.string   "deeplink"
     t.string   "slug"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.integer  "user_id"
     t.string   "picture"
     t.integer  "retailer_id"
+    t.string   "tracking_link"
   end
 
   add_index "deals", ["user_id"], name: "index_deals_on_user_id", using: :btree
@@ -72,6 +73,7 @@ ActiveRecord::Schema.define(version: 20170215143326) do
     t.string   "cover"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+    t.string   "slug"
   end
 
   create_table "users", force: :cascade do |t|
