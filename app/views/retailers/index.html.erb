@@ -1,3 +1,27 @@
-<% @retailers.each do |retailer| %>
-<%= retailer.name %>
-<% end %>
+
+<div>
+	<% if current_user %>
+		Export Retailers to: <%= link_to "CSV", retailers_path(format: 'csv') %> | <%= link_to "Excel", retailers_path(format: 'xlsx') %>
+
+				
+		<%= form_tag import_retailers_path, multipart: true do %>
+			<%= file_field_tag :file, accept: 'text/csv' %>
+			<%= submit_tag "Import Retailers" %>
+		<% end %>
+	<% end %>
+<div>
+<br />
+<br />
+<div id="main">
+	<% @retailers.each do |retailer| %>
+		<div class="retailer-row">
+			<div class='retailer-logo'><%= image_tag retailer.logo, class: 'logo-image' %></div>
+			<div class='retailer-body'>
+				<h2><%= retailer.name %></h2>
+				<p><%= retailer.strap_line %></p>
+				<p><%= link_to image_tag '/faceboo.png', retailer.facebook_url if retailer.facebook_url.present? %>
+				<%= link_to image_tag '/instagram.png', retailer.instagram_url if retailer.instagram_url.present? %></p>
+			</div>
+		</div>
+	<% end %>
+</div>

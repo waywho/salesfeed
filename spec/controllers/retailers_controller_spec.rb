@@ -6,6 +6,11 @@ RSpec.describe RetailersController, type: :controller do
 			get :index
 			expect(response).to have_http_status(:success)
 		end
+
+		it "should successfully download csv" do
+			get :index, format: 'csv'
+			expect(response).to have_http_status(:success)
+		end
 	end
 
 	describe "retailer#show" do
@@ -15,6 +20,92 @@ RSpec.describe RetailersController, type: :controller do
 			expect(response).to have_http_status(:success)
 		end
 	end
+
+	describe "retailer#destroy" do
+		it "shouldn't let unauthenticated user destroy a retailer" do
+			retailer = FactoryGirl.create(:retailer)
+			delete :destroy, id: retailer.id
+			expect(response).to redirect_to new_user_session_path
+		end
+		it "should allow the user to destroy a retailer" do
+			user = FactoryGirl.create(:user)
+			retailer = FactoryGirl.create(:retailer)
+			sign_in user
+
+			delete :destroy, id: retailer.id
+			expect(response).to redirect_to root_path
+			retailer = Retailer.find_by_id(retailer.id)
+			expect(retailer).to eq nil
+		end
+		it "should return a 404 message if we cannot find the retailer with the id that is specified" do
+			user = FactoryGirl.create(:user)
+			sign_in user
+
+			delete :destroy, id: "WOWZER"
+			expect(response).to have_http_status(:not_found)
+		end
+	end
+
+	describe "retailer#edit" do
+		it "shouldn't let unauthenticated user edit the retailer" do
+			retailer = FactoryGirl.create(:retailer)
+			get :edit, id: retailer.id
+			expect(response).to redirect_to new_user_session_path
+		end
+		it "should successfully show the edit form if the retailer is found" do
+			user = FactoryGirl.create(:user)
+			retailer = FactoryGirl.create(:retailer)
+			sign_in user
+
+			get :edit, id: retailer.id
+			expect(response).to have_http_status(:success)
+		end
+		it "should return a 404 message if we cannot find the retailer with the id that specified" do
+			user = FactoryGirl.create(:user)
+			sign_in user
+
+			get :edit, id: "GRWON"
+			expect(response).to have_http_status(:not_found)
+		end
+	end
+
+	describe "retailer#update" do
+		it "shouldn't allow unauthenticatd user update the retailer" do
+			retailer = FactoryGirl.create(:retailer)
+			patch :update, id: retailer.id, retailer: { description: "changed"}
+			expect(response).to redirect_to new_user_session_path
+		end
+		it "should allow user to successfully update the retailer" do
+			retailer = FactoryGirl.create(:retailer)
+			user = FactoryGirl.create(:user)
+			sign_in user
+
+			patch :update, id: retailer.id, retailer: { description: "changed"}
+			retailer.reload
+			expect(response).to redirect_to edit_retailer_path(retailer)
+			expect(retailer.description).to eq "changed"
+		end
+		it "should return a 404 message if we cannot find the retailer with the specified id" do
+			retailer = FactoryGirl.create(:retailer)
+			user = FactoryGirl.create(:user)
+			sign_in user
+
+			patch :update, id: "BRILL", retailer: { description: "changed"}
+			expect(response).to have_http_status(:not_found)
+		end
+
+		it "should render the edit form with an http status of unprocessable_entity" do
+			retailer = FactoryGirl.create(:retailer, brief_description: "Great styles")
+			user = FactoryGirl.create(:user)
+			sign_in user
+
+			patch :update, id: retailer.id, retailer: { brief_description: ""}
+			retailer.reload
+			expect(response).to have_http_status(:unprocessable_entity)
+			expect(retailer.brief_description).to eq "Great styles"
+		end
+	end
+
 	describe "retailer#new" do
 		it "should require users to be logged in" do
 			get :new

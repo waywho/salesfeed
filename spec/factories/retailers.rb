@@ -12,8 +12,5 @@ FactoryGirl.define do
 	search_keywords "tedbaker, fashion"
  	facebook_url "https://www.facebook.com/TedBaker/"
   	instagram_url "https://www.instagram.com/ted_baker/"
-  	favicon
-  	logo
-  	cover
   end
 end

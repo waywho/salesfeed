@@ -30,6 +30,7 @@ RSpec.describe DealsController, type: :controller do
 		end
 	end
 
+
 	describe "deal#update action" do
 		it "shouldn't let users who didn't create the deal update it" do
 			deal = FactoryGirl.create(:deal)
@@ -78,7 +79,7 @@ RSpec.describe DealsController, type: :controller do
 			expect(response).to have_http_status(:forbidden)
 		end
 
-		it "shouldn't let unauthenticated users edit a gram" do
+		it "shouldn't let unauthenticated users edit a deal" do
 			deal = FactoryGirl.create(:deal)
 			get :edit, id: deal.id
 			expect(response).to redirect_to new_user_session_path

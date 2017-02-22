@@ -1,3 +1,39 @@
 // Place all the styles related to the retailers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$custom-neat-grid: (
+	column: 12,
+	gutter: 20px,
+	media: 800px,
+);
+
+#main {
+	@include grid-container;
+}
+
+.retailer-row {
+	@include grid-column(12);
+	@include grid-media($custom-neat-grid){
+		@include grid-column(8)
+	}
+	border-bottom: 1px solid black;
+	margin-bottom: 10px;
+	background-color: white;
+	padding-top: 15px;
+}
+
+.retailer-logo {
+	@include grid-column(3);
+	min-height: 75px;
+	margin-left: 0px;
+}
+
+.retailer-body {
+	@include grid-column(9);
+	min-height: 75px;
+}
+
+.logo-image {
+	margin: auto;
+}

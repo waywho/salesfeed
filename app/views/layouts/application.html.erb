@@ -11,12 +11,12 @@
 	<% if current_user %>
 		You're signed in as <%= current_user.email %>
 		<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-		Export to: <%= link_to "CSV", deals_path(format: 'csv') %> | <%= link_to "Excel", deals_path(format: 'xlsx') %>
+		Export Deals to: <%= link_to "CSV", deals_path(format: 'csv') %> | <%= link_to "Excel", deals_path(format: 'xlsx') %>
 
 				
 		<%= form_tag import_deals_path, multipart: true do %>
 			<%= file_field_tag :file, accept: 'text/csv' %>
-			<%= submit_tag "Import" %>
+			<%= submit_tag "Import Deals" %>
 		<% end %> 
 	<% else %>
 		<%= link_to "Sign in", new_user_session_path %>
