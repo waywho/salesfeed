@@ -5,7 +5,7 @@ class Deal < ActiveRecord::Base
 	validates :picture, presence: true
 
 	belongs_to :user
-	belongs_to :deal
+	belongs_to :retailer
 	
 	mount_uploader :picture, PictureUploader
 

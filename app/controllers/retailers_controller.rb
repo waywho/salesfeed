@@ -2,7 +2,12 @@ class RetailersController < ApplicationController
 	before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy]
 
 	def index
-		@retailers = Retailer.all
+		if params[:category].present?
+			@retailers = Retailer.joins(:categories).where("categories.name = ?", params[:category])
+			@retailer_type = params[:category]
+		else
+			@retailers = Retailer.all
+		end
 		respond_to do |format|
         	format.html
         	format.csv { send_data @retailers.to_csv, filename: "retailers-#{Date.today}.csv"}

@@ -1,1 +1,20 @@
-<h1><%= @retailer.name %></h1>
+<h1>Edit <%= @retailer.name %></h1>
+
+<%= simple_form_for @retailer do |f| %>
+	<%= f.input :host_url %>
+    <%= f.input :part_url %>
+    <%= f.input :brief_description %>
+    <%= f.input :html_meta_description %>
+    <%= f.input :description %>
+    <%= f.input :internal_notes %>
+    <%= f.input :admin_notes %>
+    <%= f.input :support_notes %>
+    <%= f.input :search_keywords %>
+    <%= f.input :facebook_url %>
+    <%= f.input :instagram_url %>
+    <%= f.input :favicon %>
+    <%= f.input :logo %>
+    <%= f.input :cover %>
+    <%= f.input :created_at %>
+    <%= f.submit 'Update' %>
+<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170222145826) do
+ActiveRecord::Schema.define(version: 20170224215228) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,14 +24,12 @@ ActiveRecord::Schema.define(version: 20170222145826) do
   end
 
   create_table "categories_retailers", force: :cascade do |t|
-    t.integer  "categories_id"
-    t.integer  "retailers_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.integer "category_id"
+    t.integer "retailer_id"
   end
 
-  add_index "categories_retailers", ["categories_id"], name: "index_categories_retailers_on_categories_id", using: :btree
-  add_index "categories_retailers", ["retailers_id"], name: "index_categories_retailers_on_retailers_id", using: :btree
+  add_index "categories_retailers", ["category_id"], name: "index_categories_retailers_on_category_id", using: :btree
+  add_index "categories_retailers", ["retailer_id"], name: "index_categories_retailers_on_retailer_id", using: :btree
 
   create_table "comments", force: :cascade do |t|
     t.text     "message"

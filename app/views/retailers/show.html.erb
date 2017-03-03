@@ -16,4 +16,10 @@
     <%= @retailer.logo %>
     <%= @retailer.cover %>
     <%= @retailer.created_at %>
+<% end %>
+
+<div class="cards">
+    <% @retailer.deals.each do |deal| %>
+        <%= render :partial => '/deals/deal_card', :locals => {:deal => @deal} %>
     <% end %>
+</div>

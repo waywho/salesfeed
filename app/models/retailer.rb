@@ -1,6 +1,6 @@
 class Retailer < ActiveRecord::Base
 	has_many :deals
-	has_many :categories
+	has_and_belongs_to_many :categories
 
 	validates :name, presence: true
 	validates :host_url, presence: true
@@ -32,6 +32,7 @@ class Retailer < ActiveRecord::Base
 			item.attributes = row.to_hash.slice(*self.column_names)
 			next if item.name.nil? || item.host_url.nil? || item.brief_description.nil?
 			item.save!
+			item.update_attributes(category_ids: row["category_ids"]) if row["category_ids"].present?
 		end
 	end
 end

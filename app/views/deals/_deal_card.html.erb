@@ -1,0 +1,19 @@
+<div class="card">
+	<%= link_to deal.deeplink.html_safe, :target => "_blank" do %>
+		<div class="card-image">
+			<div class='deal-logo'>
+				<%= image_tag deal.retailer.logo if deal.retailer.logo.present? %>
+			</div>
+			<%= image_tag deal.picture_url %>
+			<div class="card-header">
+				<span class="highlight"><%= deal.title %></span>
+			</div>
+		</div>
+		<div class="card-copy">
+			<%= deal.message %><br />
+			<% deal.comments.each do |comment| %>
+				<%= comment %><br />
+			<% end %>
+		</div>
+	<% end %>
+</div>

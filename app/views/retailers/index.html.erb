@@ -13,9 +13,10 @@
 <br />
 <br />
 <div id="main">
+	<h1><%= @retailer_type.present? ? @retailer_type : "All Shops" %></h1>
 	<% @retailers.each do |retailer| %>
 		<div class="retailer-row">
-			<div class='retailer-logo'><%= image_tag retailer.logo, class: 'logo-image' %></div>
+			<div class='retailer-logo'><%= image_tag retailer.logo %></div>
 			<div class='retailer-body'>
 				<h2><%= retailer.name %></h2>
 				<p><%= retailer.strap_line %></p>

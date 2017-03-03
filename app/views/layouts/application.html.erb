@@ -7,21 +7,38 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="container">
-	<% if current_user %>
-		You're signed in as <%= current_user.email %>
-		<%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-		Export Deals to: <%= link_to "CSV", deals_path(format: 'csv') %> | <%= link_to "Excel", deals_path(format: 'xlsx') %>
 
-				
-		<%= form_tag import_deals_path, multipart: true do %>
-			<%= file_field_tag :file, accept: 'text/csv' %>
-			<%= submit_tag "Import Deals" %>
-		<% end %> 
-	<% else %>
-		<%= link_to "Sign in", new_user_session_path %>
-		<%= link_to "Sign up", new_user_registration_path %>
-	<% end %>
+<header class="centered-navigation grad" role="banner">
+  <div class="centered-navigation-wrapper">
+
+  	<%= link_to image_tag("Fash-logomark.png", alt: "logo image"), root_path, class: "mobile-logo" %>
+    </a>
+    <a href="javascript:void(0)" id="js-centered-navigation-mobile-menu" class="centered-navigation-mobile-menu">MENU</a>
+    <nav role="navigation">
+      <ul id="js-centered-navigation-menu" class="centered-navigation-menu show">
+        <li id="js-centered-more" class="nav-link more"><a href="javascript:void(0)">Browse Shops</a>
+          <ul id="shop-categories" class="submenu">
+          	<% @retailer_categories.each do |category| %>
+            <li><%= link_to category.name, retailers_path(category: category) %></li>
+            <% end %>
+          </ul>
+        </li>
+        <li class="nav-link logo">
+            <%= link_to image_tag("Fash-white-transp.png", alt: "logo image"), root_path, class: "logo" %>
+        </li>
+		<% if current_user %>
+        	<li class="nav-link"><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+			<li class="nav-link"><%= link_to "Sign in", new_user_session_path %></li>
+			<li class="nav-link"><%= link_to "Sign up", new_user_registration_path %></li>
+		<% end %>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+
 
 	<% if notice.present? %>
 		<p class="notice"><%= notice %></p>
@@ -31,6 +48,19 @@
 	<% end %>
 
 	<%= yield %>
+
 </div>
+<footer class="site-footer">
+	<% if current_user %>
+			You're signed in as <%= current_user.email %>
+
+			Export Deals to: <%= link_to "CSV", deals_path(format: 'csv') %> | <%= link_to "Excel", deals_path(format: 'xlsx') %>
+					
+			<%= form_tag import_deals_path, multipart: true do %>
+				<%= file_field_tag :file, accept: 'text/csv' %>
+				<%= submit_tag "Import Deals" %>
+			<% end %> 
+		<% end %>
+</footer>
 </body>
 </html>

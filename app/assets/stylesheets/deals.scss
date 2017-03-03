@@ -1,3 +1,122 @@
 // Place all the styles related to the deals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  min-height: 100%;
+  align-items: center;
+    &:after {
+  	content: "";
+  	flex-basis: 15em;
+  	flex-grow: 1;
+  }
+}
+
+.card {
+  $base-border-color: gainsboro !default;
+  $base-border-radius: 3px !default;
+  $base-background-color: white !default;
+  $base-spacing: 1.5em !default;
+  $action-color: #477DCA !default;
+  $dark-gray: #333 !default;
+  $base-font-color: $dark-gray !default;
+  $card-border-color: $base-border-color;
+  $card-border: 1px solid $card-border-color;
+  $card-background: lighten($card-border-color, 10%);
+  $card-header-background: $card-background;
+  $card-margin: 1em;
+  $card-image-hover-opacity: 0.7;
+  $card-image-hover-color: #F69D9A;
+
+  background-color: $card-background;
+  border: $card-border;
+  border-radius: $base-border-radius;
+  box-shadow: 0 2px 4px darken($base-background-color, 10%);
+  cursor: pointer;
+  flex-basis: 15em;
+  flex-grow: 1;
+  margin: 0 $card-margin $base-spacing $card-margin;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+/*  width: calc(100% * (1/4) - $card-margin - 1px);*/
+
+  .card-image {
+    background-color: $card-image-hover-color;
+/*    height: 250px;*/
+    max-height: 450px;
+    overflow: hidden;
+
+	.deal-logo {
+		position: absolute;
+	    left: 0px;
+	    top: 0px;
+	    z-index: 1;
+	    width: 75px;
+	    height: 75px;
+
+	}
+
+    img {
+      @include border-top-radius($base-border-radius);
+      opacity: 1;
+      transition: all 0.2s ease-in-out;
+      width: 100%;
+      z-index: -1;
+    }
+  }
+
+  .card-header {
+  	position: absolute;
+  	left: 0px;
+  	top: 55%;
+    background-color: transparent;
+/*    border-bottom: $card-border;*/
+    border-radius: $base-border-radius $base-border-radius 0 0;
+    font-weight: bold;
+    line-height: 1.5em;
+    padding: ($base-spacing / 3) ($base-spacing / 2);
+    transition: all 0.2s ease-in-out;
+    max-width: 90%
+  }
+
+/*  @media screen and (min-width: 560px) {
+	.card-header {
+		top: 45%;
+		}
+	}*/
+
+  .card-copy {
+    font-size: 0.9em;
+    line-height: 1.5em;
+    padding: ($base-spacing / 2) ($base-spacing / 2);
+
+    p {
+      margin: 0 0 ($base-spacing / 2);
+    }
+  }
+
+  &:focus,
+  &:hover {
+    cursor: pointer;
+
+    img {
+      opacity: $card-image-hover-opacity;
+    }
+  }
+
+  &:active {
+    background-color: $card-background;
+
+    .card-header {
+      background-color: $card-background;
+    }
+  }
+}
+
+.highlight {
+	font-size: 22px;
+	background-color: #133D8D;
+	color: white;
+}
