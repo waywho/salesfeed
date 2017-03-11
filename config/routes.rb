@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :comments, only: :create
     collection do
       post :import
+      get :edit_multiple
+      put :update_multiple
     end
   end
 

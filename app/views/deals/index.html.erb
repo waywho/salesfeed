@@ -1,6 +1,69 @@
 <h1>Fashion Deals</h1>
+<p>Here you can find the latest deals and discounts on clothing, shoes and accessories</p>
+
 <div class="cards">
 	<% @deals.each do |deal| %>
 		<%= render :partial => '/deals/deal_card', :locals => {:deal => deal} %>
 	<% end %>
 </div>
+
+<% if current_user %>
+<div class="modal">
+  <label for="modal-1">
+    <div class="modal-trigger">Click for Modal</div>
+  </label>
+  <input class="modal-state" id="modal-1" type="checkbox" />
+  <div class="modal-fade-screen">
+    <div class="modal-inner">
+      <div class="modal-close" for="modal-1"></div>
+      <h1>Edit Deals</h1>
+      <p class="modal-intro">Select multiple deals to edit.</p>
+      <p class="modal-content">
+		<%= form_tag edit_multiple_deals_path, method: :get do %>
+			<table>
+				<tr>
+					<th></th>
+					<th>Title</th>
+				</tr>
+
+				<% @deals.each do |deal| %>
+					<%= simple_fields_for "deals[]" do |f| %>
+					<tr>
+						<td><%= check_box_tag 'deal[deal_ids][]', deal.id, checked = false, {id: dom_id(deal)} %>
+						<td><%= deal.title %></td>
+					</tr>
+					<% end %>
+				<% end %>
+			</table>
+			<%= submit_tag "Edit Multiple" %>
+		<% end %>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+<div>
+	<%= form_tag import_deals_path, multipart: true do %>
+		<%= file_field_tag :file, accept: 'text/csv' %>
+		<%= submit_tag "Import Deals" %>
+	<% end %>
+</div>
+
+<% end %>
+
+<script>
+	$(document).ready(function() {
+		$(".more-click").click(function() {
+			var link = $(this);
+			$(".message").toggle("fast", function() {
+				if ($(this).is(':visible')) {
+					link.text('Show Less');
+				} else {
+					link.text('Show More');
+				}
+			});
+		})
+	})
+
+</script>

@@ -9,11 +9,10 @@
 				<span class="highlight"><%= deal.title %></span>
 			</div>
 		</div>
-		<div class="card-copy">
-			<%= deal.message %><br />
-			<% deal.comments.each do |comment| %>
-				<%= comment %><br />
-			<% end %>
-		</div>
+		<div class="card-copy blue">Get this Deal Now</div>
 	<% end %>
+	<div class="card-copy">
+		<div class="message"><%= deal.message.html_safe %>			<br /><br /></div>
+		<div class="more-click">Show More</div>
+	</div>
 </div>

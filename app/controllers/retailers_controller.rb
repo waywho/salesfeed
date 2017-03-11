@@ -16,7 +16,10 @@ class RetailersController < ApplicationController
 	end
 
 	def show
-		@retailer = Retailer.friendly.find_by_id(params[:id])
+		@retailer = Retailer.friendly.find(params[:id])
+		return render_not_found if @retailer.blank?
+	rescue ActiveRecord::RecordNotFound
+		return render_not_found
 	end
 
 	def new
@@ -41,12 +44,14 @@ class RetailersController < ApplicationController
 	end
 
 	def edit
-		@retailer = Retailer.friendly.find_by_id(params[:id])
+		@retailer = Retailer.friendly.find(params[:id])
 		return render_not_found if @retailer.blank?
+	rescue ActiveRecord::RecordNotFound
+		return render_not_found
 	end
 
 	def update
-		@retailer = Retailer.friendly.find_by_id(params[:id])
+		@retailer = Retailer.friendly.find(params[:id])
 		return render_not_found if @retailer.blank?
 		@retailer.update_attributes(retailer_params)
 
@@ -55,14 +60,18 @@ class RetailersController < ApplicationController
 		else
 			return render_not_found(:unprocessable_entity)
 		end
+	rescue ActiveRecord::RecordNotFound
+		return render_not_found
 	end
 
 	def destroy
-		@retailer = Retailer.friendly.find_by_id(params[:id])
+		@retailer = Retailer.friendly.find(params[:id])
 
 		return render_not_found if @retailer.blank?
 		@retailer.destroy
 		redirect_to root_path
+	rescue ActiveRecord::RecordNotFound
+		return render_not_found
 	end
 
 	private

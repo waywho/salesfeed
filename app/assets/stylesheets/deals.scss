@@ -2,10 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .cards {
-  display: flex;
+  display: block;
   flex-wrap: wrap;
   justify-content: space-between;
   min-height: 100%;
+  flex-direction: column;
   align-items: center;
     &:after {
   	content: "";
@@ -26,7 +27,7 @@
   $card-border: 1px solid $card-border-color;
   $card-background: lighten($card-border-color, 10%);
   $card-header-background: $card-background;
-  $card-margin: 1em;
+  $card-margin: 0px;
   $card-image-hover-opacity: 0.7;
   $card-image-hover-color: #F69D9A;
 
@@ -119,4 +120,8 @@
 	font-size: 22px;
 	background-color: #133D8D;
 	color: white;
+}
+
+table.multiple-edit td {
+  vertical-align: top;
 }
