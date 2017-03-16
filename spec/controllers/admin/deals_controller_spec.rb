@@ -1,7 +1,78 @@
 require 'rails_helper'
 
-RSpec.describe DealsController, type: :controller do
-		
+RSpec.describe Admin::DealsController, type: :controller do
+	describe "deals#update_multiple action" do
+		it "shouldn't let users who didn't create the deal update it" do
+			deal_list = FactoryGirl.create_list(:deal, 5, message: "Great Deal")
+			user = FactoryGirl.create(:user)
+			sign_in user
+
+			new_deal_list = {}
+			deal_list.each do |d|
+				new_deal_list[d.id] = {}
+				new_deal_list[d.id]["message"] = "Changed Deal"
+			end
+			patch :update_multiple, deals: new_deal_list
+			expect(response).to have_http_status(:forbidden)
+		end
+		it "shouldn't let unauthenticated users update a deal" do
+			deal_list = FactoryGirl.create_list(:deal, 5, message: "Great Deal")
+			
+			new_deal_list = {}
+			deal_list.each do |d|
+				new_deal_list[d.id] = {}
+				new_deal_list[d.id]["message"] = "Changed Deal"
+			end
+
+			patch :update_multiple, deals: new_deal_list
+			expect(response).to redirect_to new_user_session_path
+		end
+		it "should allow users to successfully update multiple deals" do
+			deal_list = FactoryGirl.create_list(:deal, 5, message: "Great Deal")
+			sign_in deal_list.first.user
+			new_deal_list = {}
+			deal_list.each do |d|
+				new_deal_list[d.id] = {}
+				new_deal_list[d.id]["message"] = "Changed Deal"
+			end
+
+			patch :update_multiple, deals: new_deal_list
+			expect(response).to redirect_to root_path
+			deal_list.each do |deal|
+				deal.reload
+				expect(deal.message).to eq "Changed Deal"
+			end
+		end
+	end
+
+	describe "deals#edit_multiple action" do
+		it "shouldn't let users who didn't create the deals update them" do
+			deal_list = FactoryGirl.create_list(:deal, 5)
+			user = FactoryGirl.create(:user)
+			sign_in user
+			get :edit_multiple, deal: {deal_ids: deal_list.map(&:id)}
+			expect(response).to have_http_status(:forbidden)			
+		end
+
+		it "shouldn't let unauthenticated users edit multiple deals" do
+			deal_list = FactoryGirl.create_list(:deal, 5)
+			get :edit_multiple, deal: {deal_ids: deal_list.map(&:id)}
+			expect(response).to redirect_to new_user_session_path
+		end
+		it "should successfully show the multiple edit form if the deals are found" do
+			deal_list = FactoryGirl.create_list(:deal, 5)
+			sign_in deal_list.first.user
+			get :edit_multiple, deal: {deal_ids: deal_list.map(&:id)}
+			expect(response).to have_http_status(:success)
+		end
+
+		it "should return a 404 message if we cannot find any deals in the list of ids specified" do
+			deal_list = FactoryGirl.create_list(:deal, 5)
+			sign_in deal_list.first.user
+			get :edit_multiple, deal: {deal_ids: ["GREAT", "TOUCH", "GOODTIMES", "ORWHAT", "IMBORD"]}
+			expect(response).to have_http_status(:not_found)
+		end
+	end
 	describe "deal#destroy action" do
 		it "shouldn't let users who didn't create the deal destroy it" do
 			deal = FactoryGirl.create(:deal)
@@ -170,5 +241,4 @@ RSpec.describe DealsController, type: :controller do
 			expect(deal_count).to eq Deal.count
 		end
 	end
-
 end

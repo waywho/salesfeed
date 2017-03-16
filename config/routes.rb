@@ -5,16 +5,21 @@ Rails.application.routes.draw do
 
   resources :deals do
     resources :comments, only: :create
-    collection do
-      post :import
-      get :edit_multiple
-      put :update_multiple
-    end
   end
 
   resources :retailers do
     collection do
       post :import
+    end
+  end
+
+  namespace :admin do
+    resources :deals do
+      collection do
+        post :import
+        get :edit_multiple
+        put :update_multiple
+      end
     end
   end
 
