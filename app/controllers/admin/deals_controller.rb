@@ -26,4 +26,10 @@ class Admin::DealsController < ApplicationController
 			render "edit_multiple"
 		end
 	end
+
+  private
+
+  def deal_params
+    params.require(:deal).permit(:title, :message, :deeplink, :picture, :retailer_id, {deal_ids: []})
+  end
 end

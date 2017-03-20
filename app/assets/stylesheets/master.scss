@@ -21,7 +21,6 @@ html {
 
 body {
 	background-color: #F0F0F0;
-	font-size: 16px;
   height: 100%;
 }
 
@@ -39,7 +38,6 @@ img {
 
 .pink {
   background: #F69D9A;
-  text-align: center;
   font-weight: bold;
 }
 
@@ -76,7 +74,7 @@ td {
   height: 300px;
 
   @include grid-media($large-neat-grid) {
-    height: 155px;
+    height: 185px;
     width: 100%;
   }
 }
@@ -148,7 +146,7 @@ td {
   $centered-navigation-item-padding: 1em;
   $centered-navigation-submenu-padding: 1em;
   $centered-navigation-submenu-width: 12em;
-  $centered-navigation-item-nudge: 2.2em;
+  $centered-navigation-item-nudge: 0;
   $horizontal-bar-mode: $large-screen;
 
 /*  background-color: $centered-navigation-background;*/
@@ -204,14 +202,13 @@ td {
 /*// Nav menu*/
 
   .centered-navigation-wrapper {
-    @include grid-container;
-    @include clearfix;
     position: relative;
     z-index: 999;
     color: white;
   }
 
   ul.centered-navigation-menu {
+    @include grid-container;
     clear: both;
     display: none;
     margin: 0 auto;
@@ -229,7 +226,7 @@ td {
 
     @media(min-width: $horizontal-bar-mode) {
       display: block;
-      text-align: center;
+      /*text-align: center;*/
     }
   }
 
@@ -243,13 +240,13 @@ td {
   }
 
   ul li.nav-link {
+    @include grid-column(2);
     background: $centered-navigation-background;
     display: block;
     line-height: $centered-navigation-height;
     overflow: hidden;
     padding-right: $centered-navigation-submenu-padding;
-    text-align: right;
-    width: 100%;
+    text-align: center;
     z-index: 9999;
 
     a {
@@ -277,9 +274,21 @@ td {
 
   li.logo.nav-link {
     display: none;
-
     @media(min-width: $horizontal-bar-mode) {
+      @include grid-column(2);
       display: inline;
+    }
+  }
+
+  li.signin.nav-link {
+    @media(min-width: $horizontal-bar-mode) {
+      @include grid-shift(4);
+    }
+  }
+
+  li.join.nav-link {
+    @media(min-width: $horizontal-bar-mode) {
+      @include grid-shift(1);
     }
   }
 
@@ -427,12 +436,12 @@ td {
   @include grid-column(12);
 
   @include grid-media($medium-neat-grid) {
-    @include grid-shift(2);
-    @include grid-column(8);
+    @include grid-shift(1);
+    @include grid-column(6);
   }
   @include grid-media($large-neat-grid) {
-    @include grid-shift(3);
-    @include grid-column(5);
+    @include grid-shift(2);
+    @include grid-column(6);
   }
 }
 

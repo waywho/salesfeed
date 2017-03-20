@@ -2,7 +2,7 @@ class DealsController < ApplicationController
 	before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy, :edit_multiple, :update_multiple]
 
 	def index
-		@deals = Deal.all
+		@deals = Deal.order(:created_at).page params[:page]
 		respond_to do |format|
         	format.html
         	format.csv { send_data @deals.to_csv, filename: "deals-#{Date.today}.csv"}

@@ -1,11 +1,13 @@
 <h1>Fashion Deals</h1>
-<p>Here you can find the latest deals and discounts on clothing, shoes and accessories</p>
+<p>Browse the latest deals and discounts on clothing, shoes and accessories.</p>
 
 <div class="cards">
 	<% @deals.each do |deal| %>
 		<%= render :partial => '/deals/deal_card', :locals => {:deal => deal} %>
 	<% end %>
 </div>
+
+<%= paginate @deals, window: 2 %>
 
 <% if current_user %>
 <div class="modal">
@@ -19,7 +21,7 @@
       <h1>Edit Deals</h1>
       <p class="modal-intro">Select multiple deals to edit.</p>
       <p class="modal-content">
-		<%= form_tag edit_multiple_deals_path, method: :get do %>
+		<%= form_tag edit_multiple_admin_deals_path, method: :get do %>
 			<table>
 				<tr>
 					<th></th>
@@ -44,7 +46,7 @@
 </div>
 
 <div>
-	<%= form_tag import_deals_path, multipart: true do %>
+	<%= form_tag import_admin_deals_path, multipart: true do %>
 		<%= file_field_tag :file, accept: 'text/csv' %>
 		<%= submit_tag "Import Deals" %>
 	<% end %>

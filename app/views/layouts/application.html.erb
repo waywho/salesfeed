@@ -15,19 +15,33 @@
 
   	<%= link_to image_tag("Fash-logomark.png", alt: "logo image"), root_path, class: "mobile-logo" %>
     <a href="javascript:void(0)" id="js-centered-navigation-mobile-menu" class="centered-navigation-mobile-menu">MENU</a>
+
     <nav role="navigation">
       <ul id="js-centered-navigation-menu" class="centered-navigation-menu show">
-
         <li class="nav-link logo">
-            <%= link_to image_tag("Fash-white-transp.png", alt: "logo image"), root_path, class: "logo" %> UK
+            <%= link_to image_tag("Fash-white-transp.png", alt: "logo image"), root_path, class: "logo" %>
         </li>
-        <li id="js-centered-more" class="nav-link more"><a href="javascript:void(0)">MENU</a>
+        <li id="js-centered-more" class="nav-link more"><a href="javascript:void(0)">Deals</a>
+          <ul id="deal-categories" class="submenu">
+            <% @retailer_categories.each do |category| %>
+            <li><%= link_to category.name, retailers_path(category: category) %></li>
+            <% end %>
+          </ul>
+        </li>
+        <li id="js-centered-more" class="nav-link more"><a href="javascript:void(0)">Shops</a>
           <ul id="shop-categories" class="submenu">
             <% @retailer_categories.each do |category| %>
             <li><%= link_to category.name, retailers_path(category: category) %></li>
             <% end %>
           </ul>
         </li>
+        <% if current_user %>
+        <li class="nav-link"><%= current_user.email %></li>
+        <li class="nav-link"><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li class="nav-link signin"><%= link_to "Sign in", new_user_session_path %></li>
+          <li class="nav-link join"><%= link_to "Join", new_user_registration_path %></li>
+        <% end %>
       </ul>
     </nav>
   </div>
@@ -35,14 +49,17 @@
 
 <div class="container">
 
-
-	<% if notice.present? %>
-		<p class="notice"><%= notice %></p>
-	<% end %>
-	<% if alert.present? %>
-		<p class="alert"><%= alert %></p>
-	<% end %>
   <div class = "feed">
+  <% if notice.present? %>
+    <p class="notice"><%= notice %></p>
+    <br />
+    <br />
+  <% end %>
+  <% if alert.present? %>
+    <p class="alert"><%= alert %></p>
+    <br />
+    <br />
+  <% end %>
 	 <%= yield %>
   </div>
 </div>
@@ -57,14 +74,7 @@
       <li><a href="javascript:void(0)">Contact</a></li>
       <li><a href="javascript:void(0)">Terms & Conditions</a></li>
       <li><a href="javascript:void(0)">Privacy Policy</a></li>
-      <% if current_user %>
-      <li><%= current_user.email %></li>
-      <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
-      <li>Export Deals to: <%= link_to "CSV", deals_path(format: 'csv') %> | <%= link_to "Excel", deals_path(format: 'xlsx') %></li>
-      <% else %>
-        <li><%= link_to "Sign in", new_user_session_path %></li>
-        <li><%= link_to "Sign up", new_user_registration_path %></li>
-      <% end %>
+      <li >Export Deals to: <%= link_to "CSV", deals_path(format: 'csv') %> | <%= link_to "Excel", deals_path(format: 'xlsx') %></li>
     </ul>
 </footer>
 
