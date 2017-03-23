@@ -1,3 +1,26 @@
 // Place all the styles related to the admin/deals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.image-td {
+  width: 25%;
+}
+.message-box {
+  height: 140px;
+}
+
+.table-image {
+  max-height: 180px;
+}
+
+.inline-form label {
+  width: 25%;
+}
+
+.inline-form input, .inline-form select {
+  width: 75%;
+}
+
+.inline-form label, .inline-form input, .inline-form select {
+  display: inline-block;
+}

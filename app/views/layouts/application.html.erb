@@ -48,8 +48,9 @@
 </header>
 
 <div class="container">
-
+  <% if current_page?(deals_path) %>
   <div class = "feed">
+  <% end %>
   <% if notice.present? %>
     <p class="notice"><%= notice %></p>
     <br />
@@ -61,7 +62,9 @@
     <br />
   <% end %>
 	 <%= yield %>
+  <% if current_page?(deals_path) %>
   </div>
+  <% end %>
 </div>
 
 <footer class="footer" role="contentinfo">
