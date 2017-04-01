@@ -11,17 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170224215228) do
+ActiveRecord::Schema.define(version: 20170401194722) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
-    t.string   "gender"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "categories_genders", force: :cascade do |t|
+    t.integer "category_id"
+    t.integer "gender_id"
+  end
+
+  add_index "categories_genders", ["category_id"], name: "index_categories_genders_on_category_id", using: :btree
+  add_index "categories_genders", ["gender_id"], name: "index_categories_genders_on_gender_id", using: :btree
 
   create_table "categories_retailers", force: :cascade do |t|
     t.integer "category_id"
@@ -70,6 +77,12 @@ ActiveRecord::Schema.define(version: 20170224215228) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
+  create_table "genders", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "retailers", force: :cascade do |t|
     t.string   "name"
     t.string   "host_url"
@@ -93,22 +106,42 @@ ActiveRecord::Schema.define(version: 20170224215228) do
     t.string   "strap_line"
   end
 
+  create_table "subcategories", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "subcategories", ["category_id"], name: "index_subcategories_on_category_id", using: :btree
+  add_index "subcategories", ["name"], name: "index_subcategories_on_name", using: :btree
+
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.boolean  "admin",                  default: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.datetime "birthdate"
+    t.string   "gender"
+    t.string   "username"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["last_name"], name: "index_users_on_last_name", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", using: :btree
 
+  add_foreign_key "categories_genders", "categories"
+  add_foreign_key "categories_genders", "genders"
 end

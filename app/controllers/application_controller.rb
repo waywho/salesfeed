@@ -11,4 +11,5 @@ class ApplicationController < ActionController::Base
 	def get_retailer_categories
 		@retailer_categories = Category.order(:id)
 	end
+
 end

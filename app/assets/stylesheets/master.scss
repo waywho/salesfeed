@@ -16,29 +16,36 @@ html {
 }
 
 body {
-	background-color: #F0F0F0;
+/*	background-color: #F0F0F0;*/
   height: 100%;
+  margin: 0px;
 }
 
-img {
-	display: block;
-}
 
 .grad {
   background: #F69D9A; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(left top, #133D8D , #F69D9A 55%); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(right bottom, #133D8D , #F69D9A 55%); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(right bottom, #133D8D , #F69D9A 55%); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to right bottom, #133D8D , #F69D9A 55%); /* Standard syntax */
+  background: -webkit-linear-gradient(left top, #F69D9A 30%, #052F6D 100%); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right bottom, #F69D9A 30%, #052F6d 100%); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right bottom, #F69D9A 30%, #052F6d 100%); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right bottom, #F69D9A 30%, #052F6d 100%); /* Standard syntax */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .pink {
   background: #F69D9A;
-  font-weight: bold;
 }
 
 .blue {
-  background:#133D8D;
+  background:#052F6D;
+}
+
+.yellow {
+  background: #F7D08A;
+}
+
+img {
+  display: block;
 }
 
 a {
@@ -80,7 +87,7 @@ td {
   float: left;
   width: 100%;
   text-align: center;
-  background-color: desaturate(darken($action-color, 20%), 30%);
+  background-color: darken(#052F6D, 6%);
   color: white;
 
   .footer-logo {
@@ -135,7 +142,7 @@ td {
   $base-font-color: $dark-gray !default;
   $centered-navigation-padding: 1em;
   $centered-navigation-logo-height: 2em;
-  $centered-navigation-background: #F69D9A;
+  $centered-navigation-background: #FFFFFF;
   $centered-navigation-color: white; /*transparentize($base-font-color, 0.3)*/
   $centered-navigation-color-hover: $base-font-color;
   $centered-navigation-height: 60px;
@@ -145,8 +152,8 @@ td {
   $centered-navigation-item-nudge: 0;
   $horizontal-bar-mode: $large-screen;
 
-/*  background-color: $centered-navigation-background;*/
-/*  border-bottom: 1px solid darken($centered-navigation-background, 6%);*/
+  background-color: rgba(255, 255, 255, 0.2);
+  border-bottom: 2px solid darken($centered-navigation-background, 6%);
   position: fixed;
   top: 0px;
   left: 0px;
@@ -429,15 +436,17 @@ td {
 }
 
 .feed {
-  @include grid-column(12);
+  margin: auto 0px auto 0px;
+  width: 100%;
+  min-width: 320px;
 
   @include grid-media($medium-neat-grid) {
-    @include grid-shift(1);
+    @include grid-shift(3);
     @include grid-column(6);
   }
   @include grid-media($large-neat-grid) {
-    @include grid-shift(2);
-    @include grid-column(6);
+    @include grid-shift(4);
+    @include grid-column(4);
   }
 }
 

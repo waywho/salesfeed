@@ -1,5 +1,10 @@
 class Admin::DealsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :authenticate_admin
 
+  def index
+    @deals = Deal.all
+  end
 
 	def import
       Deal.import(params[:file])
@@ -16,7 +21,7 @@ class Admin::DealsController < ApplicationController
 	end
 
 	def update_multiple
-		@deals = Deal.update(params[:deals].keys, params[:deals].values)
+		@deals = Deal.friendly.update(params[:deals].keys, params[:deals].values)
 		return render_not_found(:forbidden) if @deals.first.user != current_user
 		
 		@deals.reject! { |deal| deal.errors.empty? }
@@ -31,5 +36,12 @@ class Admin::DealsController < ApplicationController
 
   def deal_params
     params.require(:deal).permit(:title, :message, :deeplink, :picture, :retailer_id, {deal_ids: []})
+  end
+
+  def authenticate_admin
+    unless current_user && current_user.try(:admin?)
+      return render_not_found(:forbidden)
+      redirect_to root_path
+    end
   end
 end

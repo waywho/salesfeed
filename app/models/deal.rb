@@ -6,13 +6,10 @@ class Deal < ActiveRecord::Base
 
 	belongs_to :user
 	belongs_to :retailer
-	
-	mount_uploader :picture, PictureUploader
 
 	has_many :comments
 
 	acts_as_xlsx
-
 
 	def self.to_csv
 		CSV.generate do |csv|
