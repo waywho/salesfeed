@@ -16,15 +16,15 @@
 	<h1><%= @retailer_type.present? ? @retailer_type : "All Shops" %></h1>
 	<% @retailers.each do |retailer| %>
 		<div class="retailer-row">
-			<div class='retailer-logo'><%= image_tag retailer.logo %></div>
+			<div class='retailer-logo'><%= image_tag retailer.logo_url %></div>
 			<div class='retailer-body'>
 				<h2><%= retailer.name %></h2>
 				<p><%= retailer.strap_line %></p>
 				<% if retailer.facebook_url.present? %>
-					<p><%= link_to image_tag('/faceboo.png'), retailer.facebook_url %>
+					<p><%= link_to image_tag('facebook.png'), retailer.facebook_url %>
 				<% end %>
 				<% if retailer.instagram_url.present? %>
-					<%= link_to image_tag('/instagram.png'), retailer.instagram_url %></p>
+					<%= link_to image_tag('instagram.png'), retailer.instagram_url %></p>
 				<% end %>
 			</div>
 		</div>
