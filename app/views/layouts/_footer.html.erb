@@ -6,7 +6,7 @@
     <p>Looking for Fashion? We've got the steals. Browser the latest fashion deals and discounts</p>
   <li><%= link_to "Contact", contact_path %></li>
   <li><%= link_to "Privacy Policy", privacy_policy_path %></li>
-  <% if current_user.admin? %>
+  <% if current_user.try(:admin?) %>
   <li ><%= link_to 'Admin', admin_deals_path %></li>
   <% end %>
 </ul>
