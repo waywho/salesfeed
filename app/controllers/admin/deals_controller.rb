@@ -35,7 +35,7 @@ class Admin::DealsController < ApplicationController
   private
 
   def deal_params
-    params.require(:deal).permit(:title, :message, :deeplink, :picture, :retailer_id, {deal_ids: []})
+    params.require(:deal).permit(:title, :message, :deeplink, :picture, :retailer_id, {deal_ids: []}, :gender_id)
   end
 
   def authenticate_admin

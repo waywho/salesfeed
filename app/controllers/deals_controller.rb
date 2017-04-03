@@ -2,7 +2,12 @@ class DealsController < ApplicationController
 	before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy, :edit_multiple, :update_multiple]
 
 	def index
-		@deals = Deal.order(:created_at).page params[:page]
+		if params[:gender].present?
+			@deals = Gender.find_by_name(params[:gender]).deals.order(:created_at).page params[:page]
+		
+		else
+			@deals = Deal.order(:created_at).page params[:page]
+		end
 		respond_to do |format|
         	format.html
         	format.csv { send_data @deals.to_csv, filename: "deals-#{Date.today}.csv"}
@@ -71,6 +76,7 @@ class DealsController < ApplicationController
 	private
 
 	def deal_params
-		params.require(:deal).permit(:title, :message, :deeplink, :picture, :retailer_id, {deal_ids: []})
+		params.require(:deal).permit(:title, :message, :deeplink, :picture, :retailer_id, {deal_ids: []}, 
+			:category_id, :gender_id)
 	end
 end

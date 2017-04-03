@@ -13,6 +13,7 @@
 					<%= f.input :title, wrapper_html: {class: 'inline-form'}  %>
 					<%= f.input :deeplink, wrapper_html: {class: 'inline-form'} %>
 					<%= f.input :retailer_id, label: "Retailers", collection: Retailer.all, wrapper_html: {class: 'inline-form'} %>
+					<%= f.input :gender_id, label: "Gender", collection: Gender.all, wrapper_html: {class: 'inline-form'} %>
 					<%= f.input :picture, wrapper_html: {class: 'inline-form'} %>
 				</td>
 				<td><%= f.input :message, input_html: {class: 'message-box'} %></td>

@@ -4,7 +4,7 @@
 			<div class='deal-logo'>
 				<%= image_tag deal.retailer.logo if deal.retailer.logo.present? %>
 			</div>
-			<%= image_tag deal.picture %>
+			<%= image_tag deal.picture.present? ? deal.picture : 'deal_image_holder.png', :class => 'deal_image' %>
 			<div class="card-header">
 				<span class="highlight"><%= deal.title %></span>
 			</div>

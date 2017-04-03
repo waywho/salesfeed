@@ -22,7 +22,10 @@
 					link.text('Show More');
 				}
 			});
-		})
-	})
+		});
+    $('.deal_image').error(function() {
+      $(this).attr('src', '/assets/deal_image_holder.png');
+    });
+	});
 
 </script>

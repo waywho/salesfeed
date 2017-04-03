@@ -41,32 +41,9 @@ $(window).on("load resize",function(e) {
   menuToggle.on("click", function(e) {
     e.preventDefault();
     $("#js-centered-navigation-menu").slideToggle(function(){
-      $("#shop-categories").hide("slow")
       if($("#js-centered-navigation-menu").is(":hidden")) {
         $("#js-centered-navigation-menu").removeAttr("style");
       }
     });
-  });
-
-  var moreMenuToggle = $("#js-centered-more").unbind();
-
-  moreMenuToggle.click(function() {
-    $("#shop-categories").slideToggle("slow")
-  });
-
-   $("#modal-1").on("change", function() {
-    if ($(this).is(":checked")) {
-      $("body").addClass("modal-open");
-    } else {
-      $("body").removeClass("modal-open");
-    }
-  });
-
-  $(".modal-fade-screen, .modal-close").on("click", function() {
-    $(".modal-state:checked").prop("checked", false).change();
-  });
-
-  $(".modal-inner").on("click", function(e) {
-    e.stopPropagation();
   });
 }); 

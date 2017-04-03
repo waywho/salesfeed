@@ -6,49 +6,14 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body class="grad">
+<body class=<%= 'grad' if !controller.class.parents.include?(Admin) %>>
 
-<header class="centered-navigation" role="banner">
-  
-
-  <div class="centered-navigation-wrapper">
-
-  	<%= link_to image_tag("Fash-logomark.png", alt: "logo image"), root_path, class: "mobile-logo" %>
-    <a href="javascript:void(0)" id="js-centered-navigation-mobile-menu" class="centered-navigation-mobile-menu">MENU</a>
-
-    <nav role="navigation">
-      <ul id="js-centered-navigation-menu" class="centered-navigation-menu show">
-        <li class="nav-link logo">
-            <%= link_to image_tag("Fash-white-transp.png", alt: "logo image"), root_path, class: "logo" %>
-        </li>
-        <li id="js-centered-more" class="nav-link more"><a href="javascript:void(0)">Deals</a>
-          <ul id="deal-categories" class="submenu">
-            <% @retailer_categories.each do |category| %>
-            <li><%= link_to category.name, retailers_path(category: category) %></li>
-            <% end %>
-          </ul>
-        </li>
-        <li id="js-centered-more" class="nav-link more"><a href="javascript:void(0)">Shops</a>
-          <ul id="shop-categories" class="submenu">
-            <% @retailer_categories.each do |category| %>
-            <li><%= link_to category.name, retailers_path(category: category) %></li>
-            <% end %>
-          </ul>
-        </li>
-        <% if current_user %>
-        <li class="nav-link"><%= current_user.first_name %></li>
-        <li class="nav-link"><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
-        <% else %>
-          <li class="nav-link signin"><%= link_to "Sign in", new_user_session_path %></li>
-          <li class="nav-link join"><%= link_to "Join", new_user_registration_path %></li>
-        <% end %>
-      </ul>
-    </nav>
-  </div>
+<header class="centered-navigation <%= controller.class.parents.include?(Admin) ? 'yellow' : 'white-transparent' %>" role="banner">
+  <%= render 'layouts/header' %>
 </header>
 
 <div class="container">
-  <% if current_page?(controller: 'deals') %>
+  <% if controller_name == 'deals' && !controller.class.parents.include?(Admin) %>
   <div class = "feed">
   <% end %>
   <% if notice.present? %>
@@ -62,25 +27,13 @@
     <br />
   <% end %>
 	 <%= yield %>
-  <% if current_page?(controller: 'deals') %>
+  <% if controller_name == 'deals' && !controller.class.parents.include?(Admin) %>
   </div>
   <% end %>
 </div>
 
 <footer class="footer" role="contentinfo">
-  <div class="footer-logo">
-    <%= link_to image_tag("Fash-logomark.png", alt: "logo image"), root_path, class: "mobile-logo" %>
-  </div>
-    <ul>
-      <li><a href="javascript:void(0)">About</a></li>
-        <p>Looking for Fashion? We've got the steals. Browser the latest fashion deals and discounts</p>
-      <li><a href="javascript:void(0)">Contact</a></li>
-      <li><a href="javascript:void(0)">Terms & Conditions</a></li>
-      <li><a href="javascript:void(0)">Privacy Policy</a></li>
-      <% if current_user.admin? %>
-      <li ><%= link_to 'Admin', admin_deals_path %></li>
-      <% end %>
-    </ul>
+  <%= render 'layouts/footer' %>
 </footer>
 
 </body>

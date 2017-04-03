@@ -21,13 +21,14 @@ body {
   margin: 0px;
 }
 
+/*pink #F69D9A,rgba(246, 157, 154, 0.8) , blue #052F6D rgba(5, 47, 109, 0.8) 100%) */
 
 .grad {
-  background: #F69D9A; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(left top, #F69D9A 30%, #052F6D 100%); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(right bottom, #F69D9A 30%, #052F6d 100%); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(right bottom, #F69D9A 30%, #052F6d 100%); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to right bottom, #F69D9A 30%, #052F6d 100%); /* Standard syntax */
+  background: rgba(246, 157, 154, 0.6); /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left top, rgba(246, 157, 154, 0.6) 30%, rgba(5, 47, 109, 0.8) 100%); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right bottom, rgba(246, 157, 154, 0.6) 30%, rgba(5, 47, 109, 0.8) 100%); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right bottom, rgba(246, 157, 154, 0.6) 30%, rgba(5, 47, 109, 0.8) 100%); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right bottom, rgba(246, 157, 154, 0.6) 30%, rgba(5, 47, 109, 0.8) 100%); /* Standard syntax */
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
@@ -37,11 +38,15 @@ body {
 }
 
 .blue {
-  background:#052F6D;
+  background: #052F6D;
 }
 
 .yellow {
-  background: #F7D08A;
+  background-color: #F7D08A;
+}
+
+.white-transparent {
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 img {
@@ -64,6 +69,8 @@ td {
 
   @include grid-media($large-neat-grid) {
     margin-bottom: -155px;
+    margin-left: 25px;
+    margin-right: 25px;
   }
 }
 
@@ -142,7 +149,7 @@ td {
   $base-font-color: $dark-gray !default;
   $centered-navigation-padding: 1em;
   $centered-navigation-logo-height: 2em;
-  $centered-navigation-background: #FFFFFF;
+  $centered-navigation-background: rgba(255, 255, 255, 0.3);
   $centered-navigation-color: white; /*transparentize($base-font-color, 0.3)*/
   $centered-navigation-color-hover: $base-font-color;
   $centered-navigation-height: 60px;
@@ -152,7 +159,6 @@ td {
   $centered-navigation-item-nudge: 0;
   $horizontal-bar-mode: $large-screen;
 
-  background-color: rgba(255, 255, 255, 0.2);
   border-bottom: 2px solid darken($centered-navigation-background, 6%);
   position: fixed;
   top: 0px;
@@ -205,13 +211,12 @@ td {
 /*// Nav menu*/
 
   .centered-navigation-wrapper {
+    @include grid-container;
     position: relative;
     z-index: 999;
-    color: white;
   }
 
   ul.centered-navigation-menu {
-    @include grid-container;
     clear: both;
     display: none;
     margin: 0 auto;
@@ -244,7 +249,7 @@ td {
 
   ul li.nav-link {
     @include grid-column(2);
-    background: $centered-navigation-background;
+    /*background: $centered-navigation-background;*/
     display: block;
     line-height: $centered-navigation-height;
     overflow: hidden;
@@ -265,7 +270,6 @@ td {
     }
 
     @media(min-width: $horizontal-bar-mode) {
-      background: transparent;
       display: inline;
       line-height: $centered-navigation-height;
 
@@ -353,7 +357,7 @@ td {
       }*/
     }
 
- /*   &:hover > .submenu,*/
+    &:hover > .submenu,
     &:focus > .submenu {
       display: block;
     }
@@ -380,7 +384,7 @@ td {
 
     @media(min-width: $horizontal-bar-mode) {
       left: -$centered-navigation-submenu-padding;
-      position: absolute;
+      /*position: absolute;*/
       top: $centered-navigation-height/1.55;
     }
 
@@ -418,14 +422,14 @@ td {
       }
 
       a {
-        background-color: darken($centered-navigation-background, 3%);
+        /*background-color: $centered-navigation-background;*/
         display: inline-block;
         text-align: right;
         text-decoration: none;
         width: 100%;
 
         @media(min-width: $horizontal-bar-mode) {
-          background-color: $centered-navigation-background;
+          /*background-color: $centered-navigation-background;*/
           padding-left: $centered-navigation-submenu-padding;
           text-align: left;
           width: $centered-navigation-submenu-width;

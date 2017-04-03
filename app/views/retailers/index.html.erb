@@ -1,6 +1,5 @@
-
-<div>
-	<% if current_user %>
+	<% if current_user.try(:admin?) %>
+	<div>
 		Export Retailers to: <%= link_to "CSV", retailers_path(format: 'csv') %> | <%= link_to "Excel", retailers_path(format: 'xlsx') %>
 
 				
@@ -8,8 +7,9 @@
 			<%= file_field_tag :file, accept: 'text/csv' %>
 			<%= submit_tag "Import Retailers" %>
 		<% end %>
-	<% end %>
-<div>
+	</div>
+<% end %>
+
 <br />
 <br />
 <div id="main">

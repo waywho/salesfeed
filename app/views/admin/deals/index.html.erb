@@ -1,10 +1,8 @@
 <h1>Tools</h1>
 
-Export Deals to: <%= link_to "CSV", deals_path(format: 'csv') %> | <%= link_to "Excel", deals_path(format: 'xlsx') %><
+Export Deals to: <%= link_to "CSV", deals_path(format: 'csv') %> | <%= link_to "Excel", deals_path(format: 'xlsx') %>
 
 <br />
-
-
 
 <div class="modal">
   <label for="modal-1">
@@ -47,3 +45,23 @@ Export Deals to: <%= link_to "CSV", deals_path(format: 'csv') %> | <%= link_to "
     <%= submit_tag "Import Deals" %>
   <% end %>
 </div>
+
+<script>
+$(document).ready(function() {
+  $("#modal-1").on("change", function() {
+    if ($(this).is(":checked")) {
+      $("body").addClass("modal-open");
+    } else {
+      $("body").removeClass("modal-open");
+    }
+  });
+
+  $(".modal-fade-screen, .modal-close").on("click", function() {
+    $(".modal-state:checked").prop("checked", false).change();
+  });
+
+  $(".modal-inner").on("click", function(e) {
+    e.stopPropagation();
+  });
+})
+</script>

@@ -1,0 +1,34 @@
+<div class="centered-navigation-wrapper">
+
+  <%= link_to image_tag("Fash-logomark.png", alt: "logo image"), root_path, class: "mobile-logo" %>
+  <a href="javascript:void(0)" id="js-centered-navigation-mobile-menu" class="centered-navigation-mobile-menu">MENU</a>
+
+  <nav role="navigation">
+    <ul id="js-centered-navigation-menu" class="centered-navigation-menu show">
+      <li class="nav-link logo">
+          <%= link_to image_tag("Fash-white-transp.png", alt: "logo image"), root_path, class: "logo" %>
+      </li>
+
+      <% @genders.each do |gender| %>
+        <li id="js-centered-more" class="nav-link"><%= link_to gender.name.capitalize, deals_path(gender: gender.name) %> 
+        </li>
+      <% end %>
+
+      <li id="js-centered-more" class="nav-link more"><a href="javascript:void(0)">Shops</a>
+        <ul class="submenu">
+          <% @retailer_categories.each do |category| %>
+          <li><%= link_to category.name, retailers_path(category: category.name) %></li>
+          <% end %>
+        </ul>
+      </li>
+      <% if current_user %>
+      <li class="nav-link"><%= current_user.first_name %></li>
+      <li class="nav-link"><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li class="nav-link signin"><%= link_to "Sign in", new_user_session_path %></li>
+        <li class="nav-link join"><%= link_to "Join", new_user_registration_path %></li>
+      <% end %>
+    </ul>
+  </nav>
+
+</div>
