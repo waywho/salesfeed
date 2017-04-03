@@ -9,7 +9,7 @@ class Admin::DealsController < ApplicationController
     respond_to do |format|
           format.html
           format.csv { send_data @deals.to_csv, filename: "deals-#{Date.today}.csv"}
-          format.csv { send_data @subcategories, filename: "subcategories-#{Date.today}.csv"}
+          format.csv { send_data @subcategories.to_csv, filename: "subcategories-#{Date.today}.csv"}
           format.xlsx
     end
   end
