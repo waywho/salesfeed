@@ -1,22 +1,21 @@
-<h1><%= @retailer.name %></h1>
+<div class = "retailer-banner">
+<%= image_tag @retailer.logo %>
+<br />
+<h1><%= link_to @retailer.name, @retailer.host_url %></h1>
 
-<%= @retailer.name %>
-<%= @retailer.host_url %>
-    <%= @retailer.part_url %>
-    <%= @retailer.brief_description %>
-    <%= @retailer.html_meta_description %>
-    <%= @retailer.description %>
-    <%= @retailer.internal_notes %>
-    <%= @retailer.admin_notes %>
-    <%= @retailer.support_notes %>
-    <%= @retailer.search_keywords %>
-    <%= @retailer.facebook_url %>
-    <%= @retailer.instagram_url %>
-    <%= @retailer.favicon %>
-    <%= @retailer.logo %>
-    <%= @retailer.cover %>
-    <%= @retailer.created_at %>
-<% end %>
+<%= link_to image_tag('facebook.png', class: 'social-icon'), @retailer.facebook_url %>
+<%= link_to image_tag('instagram.png', class: 'social-icon'), @retailer.instagram_url %>
+</div>
+<div>
+<%= @retailer.brief_description %>
+</div>
+<div>
+<%= @retailer.html_meta_description %>
+</div>
+<div>
+<%= @retailer.description %>
+</div>
+
 
 <div class="cards">
     <% @retailer.deals.each do |deal| %>
