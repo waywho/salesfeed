@@ -4,9 +4,8 @@
 <ul>
   <li><a href="javascript:void(0)">About</a></li>
     <p>Looking for Fashion? We've got the steals. Browser the latest fashion deals and discounts</p>
-  <li><a href="javascript:void(0)">Contact</a></li>
-  <li><a href="javascript:void(0)">Terms & Conditions</a></li>
-  <li><a href="javascript:void(0)">Privacy Policy</a></li>
+  <li><%= link_to "Contact", contact_path %></li>
+  <li><%= link_to "Privacy Policy", privacy_policy_path %></li>
   <% if current_user.admin? %>
   <li ><%= link_to 'Admin', admin_deals_path %></li>
   <% end %>

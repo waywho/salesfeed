@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   devise_for :users
   root "deals#index"
 
+  get :privacy_policy, to: "static_pages#privacy_policy"
+  get :contact, to: "static_pages#contact"
+  post :messages, to: 'static_pages#messages'
   resources :deals do
     resources :comments, only: :create
   end

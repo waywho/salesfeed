@@ -4,6 +4,7 @@ class Admin::DealsController < ApplicationController
 
   def index
     @deals = Deal.all
+    @messages = Message.all
   end
 
 	def import

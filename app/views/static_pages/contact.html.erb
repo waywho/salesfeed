@@ -1,0 +1,15 @@
+<div class="feed">
+<h1>Contact Us</h1>
+
+<p>Want to get in touch? Send us a message using the form below. We love to hear from you</p>
+
+<h2>Send a Message</h2>
+
+<%= simple_form_for @message do |f| %>
+  <%= f.input :name, placeholder: "enter your name" %>
+  <%= f.input :email, placeholder: "your email address" %>
+  <%= f.input :subject, placeholder: "what is this about?" %>
+  <%= f.input :message, placeholder: "enter your message here" %>
+  <%= f.submit "Submit" %>
+<% end %>
+</div>
