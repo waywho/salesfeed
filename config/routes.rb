@@ -7,6 +7,12 @@ Rails.application.routes.draw do
     resources :comments, only: :create
   end
 
+  namespace :deals do
+    get :men
+    get :women
+    get :beauty_grooming
+  end
+
   resources :retailers do
     collection do
       post :import

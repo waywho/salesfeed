@@ -3,8 +3,16 @@ class DealsController < ApplicationController
 
 	def index
 		if params[:gender].present?
-			@deals = Gender.find_by_name(params[:gender]).deals.order(:created_at).page params[:page]
-		
+			@gender = Gender.find_by_name(params[:gender])
+			@deals = []
+			@gender.categories.each do |cat|
+				cat.subcategories.each do |sub|
+					sub.deals.order(:created_at).each do |deal|
+						@deals << deal
+					end
+				end
+			end
+
 		else
 			@deals = Deal.order(:created_at).page params[:page]
 		end
@@ -77,6 +85,6 @@ class DealsController < ApplicationController
 
 	def deal_params
 		params.require(:deal).permit(:title, :message, :deeplink, :picture, :retailer_id, {deal_ids: []}, 
-			:category_id, :gender_id)
+			:category_id, :gender_id, :subcategory_id)
 	end
 end

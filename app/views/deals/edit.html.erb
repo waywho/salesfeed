@@ -6,6 +6,5 @@
 	<%= f.input :message %>
 	<%= f.input :deeplink %>
 	<%= f.input :retailer_id, collection: Retailer.all %>
-  <%= f.input :gender_id, label: "Gender", collection: Gender.all %>
 	<%= f.submit "Post" %>
 <% end %>

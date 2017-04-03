@@ -1,5 +1,10 @@
-<h1>Fashion Deals</h1>
+<% if @gender.present? %>
+<h1>Fashion Deals: <%= @gender.name.capitalize %></h1>
+	<p><%= @gender.description %></p>
+<% else %>
+<h1>Fashion Deals:</h1>
 <p>Browse the latest deals and discounts on clothing, shoes and accessories.</p>
+<% end %>
 
 <div class="cards">
 	<% @deals.each do |deal| %>
@@ -7,7 +12,7 @@
 	<% end %>
 </div>
 
-<%= paginate @deals, window: 2 %>
+
 
 
 

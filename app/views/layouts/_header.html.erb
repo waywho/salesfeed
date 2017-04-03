@@ -10,7 +10,7 @@
       </li>
 
       <% @genders.each do |gender| %>
-        <li id="js-centered-more" class="nav-link"><%= link_to gender.name.capitalize, deals_path(gender: gender.name) %> 
+        <li id="js-centered-more" class="nav-link more"><%= link_to gender.name.capitalize, deals_path(gender: gender.name) %> 
         </li>
       <% end %>
 
@@ -21,13 +21,7 @@
           <% end %>
         </ul>
       </li>
-      <% if current_user %>
-      <li class="nav-link"><%= current_user.first_name %></li>
-      <li class="nav-link"><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
-      <% else %>
-        <li class="nav-link signin"><%= link_to "Sign in", new_user_session_path %></li>
-        <li class="nav-link join"><%= link_to "Join", new_user_registration_path %></li>
-      <% end %>
+
     </ul>
   </nav>
 
