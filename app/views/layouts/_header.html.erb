@@ -14,7 +14,7 @@
         </li>
       <% end %>
 
-      <li id="js-centered-more" class="nav-link more"><a href="javascript:void(0)">Shops</a>
+      <li id="js-centered-more" class="nav-link more"><%= link_to 'Shops', retailers_path %></a>
         <ul class="submenu">
           <% @retailer_categories.each do |category| %>
           <li><%= link_to category.name, retailers_path(category: category.name) %></li>
