@@ -20,8 +20,12 @@
 			<div class='retailer-body'>
 				<h2><%= retailer.name %></h2>
 				<p><%= retailer.strap_line %></p>
-				<p><%= link_to image_tag '/faceboo.png', retailer.facebook_url if retailer.facebook_url.present? %>
-				<%= link_to image_tag '/instagram.png', retailer.instagram_url if retailer.instagram_url.present? %></p>
+				<% if retailer.facebook_url.present? %>
+					<p><%= link_to image_tag('/faceboo.png'), retailer.facebook_url %>
+				<% end %>
+				<% if retailer.instagram_url.present? %>
+					<%= link_to image_tag('/instagram.png'), retailer.instagram_url %></p>
+				<% end %>
 			</div>
 		</div>
 	<% end %>
