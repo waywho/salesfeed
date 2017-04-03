@@ -21,10 +21,10 @@
 				<h2><%= retailer.name %></h2>
 				<p><%= retailer.strap_line %></p>
 				<% if retailer.facebook_url.present? %>
-					<p><%= link_to image_tag('facebook.png'), retailer.facebook_url %>
+					<%= link_to image_tag('facebook.png'), retailer.facebook_url, class: "social-icon" %>
 				<% end %>
 				<% if retailer.instagram_url.present? %>
-					<%= link_to image_tag('instagram.png'), retailer.instagram_url %></p>
+					<%= link_to image_tag('instagram.png'), retailer.instagram_url, class: "social-icon" %>
 				<% end %>
 			</div>
 		</div>
