@@ -64,6 +64,16 @@ Export Deals to: <%= link_to "CSV", admin_deals_path(format: 'csv') %> | <%= lin
   <% end %>
 </table>
 
+<table>
+  <%= @subcategories.each do |sub| %>
+  <tr>
+    <td><%= sub.id %></td>
+    <td><%= sub.name %></td>
+    <td><%= sub.category_id %></td>
+  </tr>
+  <% end %>
+</table>
+
 <script>
 $(document).ready(function() {
   $("#modal-1").on("change", function() {
