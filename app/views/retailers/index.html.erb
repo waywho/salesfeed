@@ -16,17 +16,17 @@
 	<h1><%= @retailer_type.present? ? @retailer_type : "All Shops" %></h1>
 	<% @retailers.each do |retailer| %>
 		<div class="retailer-row">
-			<div class='retailer-logo'><%= link_to image_tag(retailer.logo_url), retailer_path(retailer) %></div>
+			<div class='retailer-logo'><%= link_to image_tag(retailer.logo_url), retailer_path(retailer), 'data-gtm-event' => 'retailerIndexLogoClicked', 'data-gtm-variable' => "#{retailer.name}" %></div>
 			<div class='retailer-body'>
 				<h2><%= retailer.name %></h2>
 				<p><%= retailer.strap_line %></p>
 				<% if retailer.facebook_url.present? %>
-					<%= link_to image_tag('facebook.png',  class: "social-icon"), retailer.facebook_url %>
+					<%= link_to image_tag('facebook.png',  class: "social-icon"), retailer.facebook_url, 'data-gtm-event' => 'retailerIndexFBClicked', 'data-gtm-variable' => "#{retailer.name}" %>
 				<% end %>
 				<% if retailer.instagram_url.present? %>
-					<%= link_to image_tag('instagram.png', class: "social-icon"), retailer.instagram_url %>
+					<%= link_to image_tag('instagram.png', class: "social-icon"), retailer.instagram_url, 'data-gtm-event' => 'retailerIndexInstaClicked', 'data-gtm-variable' => "#{retailer.name}" %>
 				<% end %>
-				<%= link_to "View Retailer", retailer_path(retailer), class: "btn blue" %>
+				<%= link_to "View Retailer", retailer_path(retailer), class: "btn blue", 'data-gtm-event' => 'retailerIndexViewClicked', 'data-gtm-variable' => "#{retailer.name}" %>
 			</div>
 		</div>
 	<% end %>
