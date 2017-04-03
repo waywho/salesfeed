@@ -5,6 +5,13 @@ class Admin::DealsController < ApplicationController
   def index
     @deals = Deal.all
     @messages = Message.all
+    @subcategories = Subcategory.all
+    respond_to do |format|
+          format.html
+          format.csv { send_data @deals.to_csv, filename: "deals-#{Date.today}.csv"}
+          format.csv { send_data @subcategories, filename: "subcategories-#{Date.today}.csv"}
+          format.xlsx
+    end
   end
 
 	def import
@@ -36,7 +43,8 @@ class Admin::DealsController < ApplicationController
   private
 
   def deal_params
-    params.require(:deal).permit(:title, :message, :deeplink, :picture, :retailer_id, {deal_ids: []}, :gender_id)
+    params.require(:deal).permit(:title, :message, :deeplink, :picture, :retailer_id, {deal_ids: []}, 
+      :category_id, :gender_id, :subcategory_id, :starts, :ends, :code, :terms)
   end
 
   def authenticate_admin

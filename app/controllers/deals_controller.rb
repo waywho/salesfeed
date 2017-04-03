@@ -16,11 +16,6 @@ class DealsController < ApplicationController
 		else
 			@deals = Deal.order(:created_at).page params[:page]
 		end
-		respond_to do |format|
-        	format.html
-        	format.csv { send_data @deals.to_csv, filename: "deals-#{Date.today}.csv"}
-        	format.xlsx
-      	end
 	end
 
 	def show
@@ -85,6 +80,6 @@ class DealsController < ApplicationController
 
 	def deal_params
 		params.require(:deal).permit(:title, :message, :deeplink, :picture, :retailer_id, {deal_ids: []}, 
-			:category_id, :gender_id, :subcategory_id)
+			:category_id, :gender_id, :subcategory_id, :starts, :ends, :code, :terms)
 	end
 end
