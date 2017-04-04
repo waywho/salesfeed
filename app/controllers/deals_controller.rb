@@ -14,7 +14,7 @@ class DealsController < ApplicationController
 			end
 
 		else
-			@deals = Deal.order(:created_at).page params[:page]
+			@deals = Deal.order(:created_at)
 		end
 	end
 
