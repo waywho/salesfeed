@@ -13,5 +13,13 @@ class ApplicationController < ActionController::Base
 		@retailer_categories = Category.order(:id)
 	end
 
+  private
+  
+  def authenticate_admin
+    unless current_user && current_user.try(:admin?)
+      return render_not_found(:forbidden)
+      redirect_to root_path
+    end
+  end
 
 end

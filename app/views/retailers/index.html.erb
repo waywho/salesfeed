@@ -1,17 +1,3 @@
-	<% if current_user.try(:admin?) %>
-	<div>
-		Export Retailers to: <%= link_to "CSV", retailers_path(format: 'csv') %> | <%= link_to "Excel", retailers_path(format: 'xlsx') %>
-
-				
-		<%= form_tag import_retailers_path, multipart: true do %>
-			<%= file_field_tag :file, accept: 'text/csv' %>
-			<%= submit_tag "Import Retailers" %>
-		<% end %>
-	</div>
-<% end %>
-
-<br />
-<br />
 <div id="main">
 	<h1><%= @retailer_type.present? ? @retailer_type : "All Shops" %></h1>
 	<% @retailers.each do |retailer| %>

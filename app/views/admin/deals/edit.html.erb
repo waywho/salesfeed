@@ -1,0 +1,10 @@
+<h1>Edit <%= @retailer.name %></h1>
+
+<%= simple_form_for @deal do |f| %>
+  <%= f.input :title %>
+  <%= f.input :picture %>
+  <%= f.input :message %>
+  <%= f.input :deeplink %>
+  <%= f.input :retailer_id, collection: Retailer.all %>
+  <%= f.submit "Post" %>
+<% end %>

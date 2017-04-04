@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     get :beauty_grooming
   end
 
-  resources :retailers do
+  resources :retailers, only: [:index, :show] do
     collection do
       post :import
     end
@@ -28,6 +28,11 @@ Rails.application.routes.draw do
         post :import
         get :edit_multiple
         put :update_multiple
+      end
+    end
+    resources :retailers do
+      collection do
+        post :import
       end
     end
   end

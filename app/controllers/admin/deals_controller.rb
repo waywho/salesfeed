@@ -9,7 +9,6 @@ class Admin::DealsController < ApplicationController
     respond_to do |format|
           format.html
           format.csv { send_data @deals.to_csv, filename: "deals-#{Date.today}.csv"}
-          format.csv { send_data @subcategories.to_csv, filename: "subcategories-#{Date.today}.csv"}
           format.xlsx
     end
   end
@@ -23,14 +22,14 @@ class Admin::DealsController < ApplicationController
 	def edit_multiple
      	@deals = Deal.where(id: deal_params[:deal_ids])
      	return render_not_found if @deals.blank?
-     	return render_not_found(:forbidden) if @deals.first.user != current_user
+     	return render_not_found(:forbidden) if !current_user.admin?
 	rescue ActiveRecord::RecordNotFound
 		return render_not_found
 	end
 
 	def update_multiple
 		@deals = Deal.friendly.update(params[:deals].keys, params[:deals].values)
-		return render_not_found(:forbidden) if @deals.first.user != current_user
+		return render_not_found(:forbidden) if !current_user.admin?
 		
 		@deals.reject! { |deal| deal.errors.empty? }
 		if @deals.empty?
@@ -40,6 +39,58 @@ class Admin::DealsController < ApplicationController
 		end
 	end
 
+  def new
+    @deal = Deal.new
+  end
+
+  def create
+    @deal = current_user.deals.create(deal_params)
+    if @deal.valid?
+      redirect_to root_path
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def edit
+    @deal = Deal.friendly.find(params[:id])
+    return render_not_found if @deal.blank?
+    return render_not_found(:forbidden) if !current_user.admin?
+
+  rescue ActiveRecord::RecordNotFound
+    return render_not_found
+  end
+
+  def update
+    @deal = Deal.friendly.find(params[:id])
+    return render_not_found if @deal.blank?
+    return render_not_found(:forbidden) if !current_user.admin?
+
+    @deal.update_attributes(deal_params)
+    
+    if @deal.valid?
+      redirect_to root_path
+    else
+      render :edit, status: :unprocessable_entity
+    end 
+  rescue ActiveRecord::RecordNotFound
+    return render_not_found
+  end
+
+
+  def destroy
+    @deal = Deal.friendly.find(params[:id])
+    return render_not_found if @deal.blank?
+    return render_not_found(:forbidden) if !current_user.admin?
+    @deal.destroy
+
+    redirect_to root_path
+
+  rescue ActiveRecord::RecordNotFound
+    return render_not_found
+  end
+
+
   private
 
   def deal_params
@@ -47,10 +98,5 @@ class Admin::DealsController < ApplicationController
       :category_id, :gender_id, :subcategory_id, :starts, :ends, :code, :terms)
   end
 
-  def authenticate_admin
-    unless current_user && current_user.try(:admin?)
-      return render_not_found(:forbidden)
-      redirect_to root_path
-    end
-  end
+  
 end

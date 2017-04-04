@@ -31,4 +31,5 @@ CarrierWave.configure do |config|
     :region => ENV['AWS_REGION'] # Required
   }
   config.fog_directory  = ENV["AWS_BUCKET"]                     # required
+  config.storage = :fog
 end

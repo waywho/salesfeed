@@ -1,0 +1,21 @@
+<h1>New Retailer</h1>
+
+<%= simple_form_for [:admin, @retailer] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :host_url %>
+  <%= f.input :tracking_link %> 
+    <%= f.input :part_url %>
+    <%= f.input :brief_description %>
+    <%= f.input :html_meta_description %>
+    <%= f.input :description %>
+    <%= f.input :internal_notes %>
+    <%= f.input :admin_notes %>
+    <%= f.input :support_notes %>
+    <%= f.input :search_keywords %>
+    <%= f.input :facebook_url %>
+    <%= f.input :instagram_url %>
+    <%= f.input :favicon %>
+    <%= f.input :remote_logo_url %>
+    <%= f.input :cover %>
+    <%= f.submit 'Add' %>
+<% end %>

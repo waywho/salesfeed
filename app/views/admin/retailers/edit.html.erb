@@ -1,7 +1,8 @@
 <h1>Edit <%= @retailer.name %></h1>
 
-<%= simple_form_for @retailer do |f| %>
+<%= simple_form_for [:admin, @retailer] do |f| %>
 	<%= f.input :host_url %>
+    <%= f.input :tracking_link %>
     <%= f.input :part_url %>
     <%= f.input :brief_description %>
     <%= f.input :html_meta_description %>
