@@ -1,7 +1,12 @@
 <div class = "retailer-banner">
 <%= image_tag @retailer.logo %>
 <br />
-<h1><%= link_to @retailer.name, @retailer.host_url, 'data-gtm-event' => 'retailerIndexUrlClicked' %></h1>
+<h1><% if @retailer.tracking_link.present? %>
+      <%= link_to @retailer.name, @retailer.tracking_link, target: "_blank", 'data-gtm-event' => 'retailerIndexUrlClicked' %>
+    <% else %>
+      <%= link_to @retailer.name, @retailer.host_url, target: "_blank", 'data-gtm-event' => 'retailerIndexUrlClicked' %>
+    <% end %>
+  </h1>
 
 <%= link_to image_tag('facebook.png', class: 'social-icon'), @retailer.facebook_url, 'data-gtm-event' => 'retailerShowFBClicked', 'data-gtm-variable' => "#{@retailer.name}" %>
 <%= link_to image_tag('instagram.png', class: 'social-icon'), @retailer.instagram_url, 'data-gtm-event' => 'retailerShowInstaClicked', 'data-gtm-variable' => "#{@retailer.name}" %>
@@ -14,6 +19,13 @@
 </div>
 <div>
 <%= @retailer.description %>
+</div>
+<div class="retailer-banner">
+<% if @retailer.tracking_link.present? %>
+      <%= link_to 'Show nop', @retailer.tracking_link, target: "_blank", 'data-gtm-event' => 'retailerIndexUrlClicked', :class => 'btn blue' %>
+    <% else %>
+      <%= link_to 'Shop now', @retailer.host_url, target: "_blank", 'data-gtm-event' => 'retailerIndexUrlClicked', :class => 'btn blue' %>
+<% end %>
 </div>
 <br />
 <br />
