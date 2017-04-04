@@ -46,3 +46,13 @@ $custom-neat-grid: (
 	margin: auto;
 	max-height: 150px;
 }
+
+.retailer-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.retailer-card {
+	margin: 0 5px;
+}
