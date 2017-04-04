@@ -14,7 +14,7 @@ class DealsController < ApplicationController
 			end
 
 		else
-			@deals = Deal.order(:created_at)
+			@deals = Deal.order(created_at: :desc)
 		end
 	end
 
