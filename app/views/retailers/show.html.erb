@@ -1,7 +1,7 @@
 <div class = "retailer-banner">
 <%= image_tag @retailer.logo %>
 <br />
-<h1><%= link_to @retailer.name, @retailer.host_ur, 'data-gtm-event' => 'retailerIndexUrlClicked' %></h1>
+<h1><%= link_to @retailer.name, @retailer.host_url, 'data-gtm-event' => 'retailerIndexUrlClicked' %></h1>
 
 <%= link_to image_tag('facebook.png', class: 'social-icon'), @retailer.facebook_url, 'data-gtm-event' => 'retailerShowFBClicked', 'data-gtm-variable' => "#{@retailer.name}" %>
 <%= link_to image_tag('instagram.png', class: 'social-icon'), @retailer.instagram_url, 'data-gtm-event' => 'retailerShowInstaClicked', 'data-gtm-variable' => "#{@retailer.name}" %>
