@@ -1,7 +1,7 @@
 <div id="main">
 	<h1><%= @retailer_type.present? ? @retailer_type : "All Shops" %></h1>
 	<% @retailers.each do |retailer| %>
-		<div class="retailer-row">
+		<div class="retailer-row white-transparent">
 			<div class='retailer-logo'><%= link_to image_tag(retailer.logo_url), retailer_path(retailer), 'data-gtm-event' => 'retailerIndexLogoClicked', 'data-gtm-variable' => "#{retailer.name}" %></div>
 			<div class='retailer-body'>
 				<h2><%= retailer.name %></h2>
