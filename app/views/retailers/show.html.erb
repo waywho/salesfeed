@@ -19,6 +19,6 @@
 
 <div class="cards">
     <% @retailer.deals.each do |deal| %>
-        <%= render :partial => '/deals/deal_card', :locals => {:deal => @deal} %>
+        <%= render :partial => '/deals/deal_card', :locals => {:deal => deal} %>
     <% end %>
 </div>
