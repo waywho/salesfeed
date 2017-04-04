@@ -1,6 +1,7 @@
 <h1>Edit <%= @retailer.name %></h1>
 
 <%= simple_form_for [:admin, @retailer] do |f| %>
+    <%= f.input :name %>
 	<%= f.input :host_url %>
     <%= f.input :tracking_link %>
     <%= f.input :part_url %>
@@ -15,6 +16,7 @@
     <%= f.input :facebook_url %>
     <%= f.input :instagram_url %>
     <%= f.input :favicon %>
+    <%= image_tag @retailer.logo_url %>
     <%= f.input :logo %>
     <%= f.input :cover %>
     <%= f.submit 'Update' %>

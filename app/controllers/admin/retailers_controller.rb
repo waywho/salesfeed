@@ -50,7 +50,7 @@ class Admin::RetailersController < ApplicationController
     @retailer.update_attributes(retailer_params)
 
     if @retailer.valid?
-      redirect_to edit_retailer_path(@retailer)
+      redirect_to edit_admin_retailer_path(@retailer)
     else
       return render_not_found(:unprocessable_entity)
     end
