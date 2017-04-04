@@ -65,7 +65,7 @@ Export Deals to: <%= link_to "CSV", admin_deals_path(format: 'csv') %> | <%= lin
 </table>
 
 <table>
-  <%= @subcategories.each do |sub| %>
+  <% @subcategories.each do |sub| %>
   <tr>
     <td><%= sub.id %></td>
     <td><%= sub.name %></td>
