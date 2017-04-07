@@ -1,5 +1,6 @@
 class Subcategory < ActiveRecord::Base
-  belongs_to :category
+  has_many :categories
+  has_many :genders, through: :category
   has_many :deals
 
   acts_as_xlsx

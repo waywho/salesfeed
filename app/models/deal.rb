@@ -7,6 +7,7 @@ class Deal < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :retailer
 	belongs_to :subcategory
+	belongs_to :gender
 
 	has_many :comments
 

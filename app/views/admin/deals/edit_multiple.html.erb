@@ -13,7 +13,8 @@
 					<%= f.input :title, wrapper_html: {class: 'inline-form'}  %>
 					<%= f.input :deeplink, wrapper_html: {class: 'inline-form'} %>
 					<%= f.input :retailer_id, label: "Retailers", collection: Retailer.all, wrapper_html: {class: 'inline-form'} %>
-					<%= f.input :subcategory_id, label: "category", collection: Subcategory.all, wrapper_html: {class: 'inline-form'} %>
+					<%= f.input :gender_id, label: 'Type', collection: Gender.all, value_method: :id, wrapper_html: {class: 'inline-form'}, input_html: {class: 'gender-type'} %>
+					<%= f.input :subcategory_id, label: "category", collection: [], wrapper_html: {class: 'inline-form'}, input_html: {class: 'subcategory-options'} %>
 					<%= f.input :picture, wrapper_html: {class: 'inline-form'} %>
 				</td>
 				<td><%= f.input :message, input_html: {class: 'message-box'} %></td>
@@ -24,3 +25,29 @@
 	<%= link_to 'Cancel', deals_path, class: "button" %> 
 	<%= submit_tag "Update" %>
 <% end %>
+
+<script>
+	$(document).ready(function() {
+		$('.gender-type').change(function() {
+			selection = $(this).val();
+			genderInput = $(this)
+			console.log(selection);
+			$.ajax({
+				type: 'GET',
+				url: "<%= subcategory_options_admin_deals_path %>",
+				dataType: "text",
+				data: "gender=" + selection
+			}).done(function(data) {
+				console.log(genderInput.parent().next().children('.subcategory-options').val());
+				$.each(JSON.parse(data), function(index, element) {
+					$.each(element.subcategories, function(index, subelement) {
+						genderInput.parent().next().children('.subcategory-options').append($('<option>', {
+							value: parseInt(subelement.id),
+							text: subelement.name
+						}));						
+					})
+				})
+			})
+		})
+	})
+</script>

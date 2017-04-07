@@ -1,52 +1,60 @@
 <h1>Tools</h1>
 
-Export Deals to: <%= link_to "CSV", admin_deals_path(format: 'csv') %> | <%= link_to "Excel", deals_path(format: 'xlsx') %>
+<table>
+  <tr>
+    <td>Export <%= link_to "CSV", admin_deals_path(format: 'csv') %> | <%= link_to "Excel", deals_path(format: 'xlsx') %></td>
+    <td><%= link_to 'New Deal', new_admin_deal_path, class: 'btn' %></td>
+    <td>
+      <div class="modal">
+        <label for="modal-1">
+          <div class="modal-trigger btn">Edit Multiple Deals</div>
+        </label>
+        <input class="modal-state" id="modal-1" type="checkbox" />
+        <div class="modal-fade-screen">
+          <div class="modal-inner">
+            <div class="modal-close" for="modal-1"></div>
+            <h1>Edit Deals</h1>
+            <p class="modal-intro">Select multiple deals to edit.</p>
+            <p class="modal-content">
+          <%= form_tag edit_multiple_admin_deals_path, method: :get do %>
+            <table>
+              <tr>
+                <th></th>
+                <th>Title</th>
+              </tr>
+
+              <% @deals.each do |deal| %>
+                <%= simple_fields_for "deals[]" do |f| %>
+                <tr>
+                  <td><%= check_box_tag 'deal[deal_ids][]', deal.id, checked = false, {id: dom_id(deal)} %>
+                  <td><%= deal.title %></td>
+                </tr>
+                <% end %>
+              <% end %>
+            </table>
+            <%= submit_tag "Edit Multiple" %>
+          <% end %>
+
+            </p>
+          </div>
+        </div>
+      </div>
+    </td>
+    <td>
+      <div>
+        <%= form_tag import_admin_deals_path, multipart: true do %>
+          <%= file_field_tag :file, accept: 'text/csv' %>
+          <%= submit_tag "Import Deals" %>
+        <% end %>
+      </div>      
+    </td>
+  </tr>
+</table>
+
 
 <br />
 
-<div class="modal">
-  <label for="modal-1">
-    <div class="modal-trigger">Multiple Deals</div>
-  </label>
-  <input class="modal-state" id="modal-1" type="checkbox" />
-  <div class="modal-fade-screen">
-    <div class="modal-inner">
-      <div class="modal-close" for="modal-1"></div>
-      <h1>Edit Deals</h1>
-      <p class="modal-intro">Select multiple deals to edit.</p>
-      <p class="modal-content">
-    <%= form_tag edit_multiple_admin_deals_path, method: :get do %>
-      <table>
-        <tr>
-          <th></th>
-          <th>Title</th>
-        </tr>
-
-        <% @deals.each do |deal| %>
-          <%= simple_fields_for "deals[]" do |f| %>
-          <tr>
-            <td><%= check_box_tag 'deal[deal_ids][]', deal.id, checked = false, {id: dom_id(deal)} %>
-            <td><%= deal.title %></td>
-          </tr>
-          <% end %>
-        <% end %>
-      </table>
-      <%= submit_tag "Edit Multiple" %>
-    <% end %>
-
-      </p>
-    </div>
-  </div>
-</div>
-
-<div>
-  <%= form_tag import_admin_deals_path, multipart: true do %>
-    <%= file_field_tag :file, accept: 'text/csv' %>
-    <%= submit_tag "Import Deals" %>
-  <% end %>
-</div>
-
-
+<h3>Messages</h3>
 <table>
   <tr>
       <th>Name</th>
@@ -64,12 +72,18 @@ Export Deals to: <%= link_to "CSV", admin_deals_path(format: 'csv') %> | <%= lin
   <% end %>
 </table>
 
+<h3>Subcategories</h3>
 <table>
+  <tr>
+    <th>Sub ID</th>
+    <th>Name</th>
+    <th>Category</th>
+  </tr>
   <% @subcategories.each do |sub| %>
   <tr>
     <td><%= sub.id %></td>
     <td><%= sub.name %></td>
-    <td><%= sub.category_id %></td>
+    <td><%= sub.category.name %></td>
   </tr>
   <% end %>
 </table>

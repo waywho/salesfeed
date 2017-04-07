@@ -1,6 +1,6 @@
 class Category < ActiveRecord::Base
 	has_and_belongs_to_many :retailers
-  has_many :subcategories
-  has_and_belongs_to_many :genders
+  belongs_to :gender
+  belongs_to :subcategory
 
 end

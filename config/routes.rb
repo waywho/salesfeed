@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     resources :deals do
       collection do
         post :import
+        get :subcategory_options
         get :edit_multiple
         put :update_multiple
       end
