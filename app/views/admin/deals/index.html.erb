@@ -77,13 +77,11 @@
   <tr>
     <th>Sub ID</th>
     <th>Name</th>
-    <th>Category</th>
   </tr>
   <% @subcategories.each do |sub| %>
   <tr>
     <td><%= sub.id %></td>
     <td><%= sub.name %></td>
-    <td><%= sub.category.name %></td>
   </tr>
   <% end %>
 </table>

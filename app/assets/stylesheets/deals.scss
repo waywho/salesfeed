@@ -41,6 +41,8 @@
   margin: 0 $card-margin $base-spacing $card-margin;
   position: relative;
   transition: all 0.2s ease-in-out;
+  padding-top: 10px;
+  padding-bottom: 10px;
 /*  width: calc(100% * (1/4) - $card-margin - 1px);*/
 
   .card-image {
@@ -48,6 +50,7 @@
 /*    height: 250px;*/
     max-height: 450px;
     overflow: hidden;
+    @include border-top-radius($card-border-radius);
 
 	.deal-logo {
 		position: absolute;
@@ -107,6 +110,7 @@
 
     p {
       margin: 0 0 ($base-spacing / 2);
+      @include border-top-radius($card-border-radius);
     }
   }
 
@@ -116,6 +120,7 @@
 
     img {
       opacity: $card-image-hover-opacity;
+      @include border-top-radius($card-border-radius);
     }
   }
 
@@ -125,6 +130,12 @@
     .card-header {
       background-color: $card-background;
     }
+  }
+
+  .card-inner {
+    margin: 0px 10px;
+    border: 0.1px solid #b3b3b3;
+    border-radius: $card-border-radius;
   }
 }
 

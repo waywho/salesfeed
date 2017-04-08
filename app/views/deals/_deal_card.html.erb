@@ -1,4 +1,5 @@
 <div class="card">
+<div class="card-inner">
 	<%= link_to deal.deeplink.html_safe, 'data-gtm-event' => 'dealClicked', 'data-gtm-variable' => "#{deal.retailer.name}", :target => "_blank" do %>
 		<div class="card-image">
 			<div class='deal-logo'>
@@ -15,4 +16,5 @@
 		<div class="message"><%= deal.message.html_safe %>			<br /><br /></div>
 		<div class="more-click" data-gtm-event='dealShowMoreClicked', data-gtm-variable = "#{deal.retailer}">Show More</div>
 	</div>
+</div>
 </div>
