@@ -54,8 +54,8 @@
 
 	.deal-logo {
 		position: absolute;
-	    left: 10px;
-	    top: 10px;
+	    left: 11px;
+	    top: 11px;
 	    z-index: 1;
 	    width: 75px;
 	    height: 75px;
@@ -63,7 +63,7 @@
 	}
 
   .deal-logo img {
-    border-radius: $card-border-radius $card-border-radius 0 0;
+    border-radius: $card-border-radius 0 0 0;
     opacity: 1;
     transition: all 0.2s ease-in-out;
     width: 100%;
