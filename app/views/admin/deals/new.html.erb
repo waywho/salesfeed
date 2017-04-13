@@ -4,7 +4,8 @@
   <%= f.input :title %>
   <%= f.input :picture %>
   <%= f.input :message %>
-  <%= f.input :gender_id, label: 'Type', collection: Gender.all, value_method: :id %>
+  <%= f.input :gender_id, label: 'Type', collection: Gender.all, value_method: :id, wrapper_html: {class: 'inline-form'}, input_html: {class: 'gender-type'} %>
+          <%= f.input :subcategory_id, label: "category", collection: Subcategory.all, wrapper_html: {class: 'inline-form'}, input_html: {class: 'subcategory-options'} %>
   <%= f.input :deeplink %>
   <%= f.input :retailer_id, collection: Retailer.all %>
   <%= f.submit "Post" %>
