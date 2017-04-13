@@ -24,9 +24,9 @@
 # ")
 # beauty = Gender.create(name: "beauty", description: "You might kill the san-makeup look, but taking care of your skin is a top priority. Pamper yourself with your wide collection of skincare products. And when you’re feeling up for some glam, we have all the essentials to enhance your natural beauty. Feel even better knowing that you can collect points for every dollar you spend.")
 
-# men = Gender.find_by_name("men")
-# women = Gender.find_by_name("women")
-# beauty = Gender.find_by_name("beauty")
+men = Gender.find_by_name("men")
+women = Gender.find_by_name("women")
+beauty = Gender.find_by_name("beauty")
 
 
 Category.destroy_all
