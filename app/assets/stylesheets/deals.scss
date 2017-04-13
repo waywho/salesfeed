@@ -54,13 +54,21 @@
 
 	.deal-logo {
 		position: absolute;
-	    left: 0px;
-	    top: 0px;
+	    left: 10px;
+	    top: 10px;
 	    z-index: 1;
 	    width: 75px;
 	    height: 75px;
 
 	}
+
+  .deal-logo img {
+    border-radius: $card-border-radius $card-border-radius 0 0;
+    opacity: 1;
+    transition: all 0.2s ease-in-out;
+    width: 100%;
+    z-index: -1;
+  }
 
     img {
       @include border-top-radius($card-border-radius);
