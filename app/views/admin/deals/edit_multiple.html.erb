@@ -14,7 +14,7 @@
 					<%= f.input :deeplink, wrapper_html: {class: 'inline-form'} %>
 					<%= f.input :retailer_id, label: "Retailers", collection: Retailer.all, wrapper_html: {class: 'inline-form'} %>
 					<%= f.input :gender_id, label: 'Type', collection: Gender.all, value_method: :id, wrapper_html: {class: 'inline-form'}, input_html: {class: 'gender-type'} %>
-					<%= f.input :subcategory_id, label: "category", collection: [], wrapper_html: {class: 'inline-form'}, input_html: {class: 'subcategory-options'} %>
+					<%= f.input :subcategory_id, label: "category", collection: Subcategory.all, wrapper_html: {class: 'inline-form'}, input_html: {class: 'subcategory-options'} %>
 					<%= f.input :picture, wrapper_html: {class: 'inline-form'} %>
 				</td>
 				<td><%= f.input :message, input_html: {class: 'message-box'} %></td>
@@ -31,6 +31,7 @@
 		$('.gender-type').change(function() {
 			selection = $(this).val();
 			genderInput = $(this)
+			genderInput.parent().next().children('.subcategory-options').empty().append('<option value=""></option>');
 			console.log(selection);
 			$.ajax({
 				type: 'GET',
@@ -40,12 +41,10 @@
 			}).done(function(data) {
 				console.log(genderInput.parent().next().children('.subcategory-options').val());
 				$.each(JSON.parse(data), function(index, element) {
-					$.each(element.subcategories, function(index, subelement) {
 						genderInput.parent().next().children('.subcategory-options').append($('<option>', {
-							value: parseInt(subelement.id),
-							text: subelement.name
+							value: parseInt(element.id),
+							text: element.name
 						}));						
-					})
 				})
 			})
 		})

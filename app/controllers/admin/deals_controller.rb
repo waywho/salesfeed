@@ -14,13 +14,10 @@ class Admin::DealsController < ApplicationController
   end
 
   def subcategory_options
-    categories = Gender.find(params[:gender]).categories
-    @subcategories = Hash.new
-    categories.each do |category|
-      @subcategories["category_#{category.id}"] = { :id => category.id,  :name => category.name, :subcategories => category.subcategories }
-    end
+    @subcategories = Gender.find(params[:gender]).subcategories
+    @categories = Hash.new
 
-     render json: @subcategories
+     render json: @subcategories, :only => [:id, :name]
   end
 
 	def import

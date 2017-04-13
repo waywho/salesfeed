@@ -10,11 +10,9 @@ Rails.application.routes.draw do
     resources :comments, only: :create
   end
 
-  namespace :deals do
-    get :men
-    get :women
-    get :beauty_grooming
-  end
+    get :men, to: "deals#men"
+    get :women, to: "deals#women"
+    get :beauty, to: "deals#beauty"
 
   resources :retailers, only: [:index, :show] do
     collection do

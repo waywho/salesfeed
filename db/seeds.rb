@@ -16,344 +16,678 @@
 # men_groom_category = Category.create(name: "Men's Toiletries & Grooming")
 # sports_category = Category.create(name: 'Sports')
 
+# User.create(email: "weihsi.hu@gmail.com", password: "password", admin: true)
+
 # Gender.destroy_all
 # men = Gender.create(name: "men", description: "Whether you are looking for your everyday staples or hunting for that must-have piece, our stores offer the latest to dress your Clark Kent persona or the Superman in you. And collect points while you’re at it.")
 # women = Gender.create(name: "women", description: "Experience the thrill of shopping. Explore our broad selection of clothing, shoes, handbags, activewear and accessories here. Keep up with the fashion trend, define your style and complete your wardrobe - all while collecting points for your next splurge.
 # ")
 # beauty = Gender.create(name: "beauty", description: "You might kill the san-makeup look, but taking care of your skin is a top priority. Pamper yourself with your wide collection of skincare products. And when you’re feeling up for some glam, we have all the essentials to enhance your natural beauty. Feel even better knowing that you can collect points for every dollar you spend.")
 
-men = Gender.find_by_name("men")
-women = Gender.find_by_name("women")
-beauty = Gender.find_by_name("beauty")
+# men = Gender.find_by_name("men")
+# women = Gender.find_by_name("women")
+# beauty = Gender.find_by_name("beauty")
+
 
 Category.destroy_all
-subcategory = Subcategory.find_by_name("Coats & Jackets")  
-men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+Subcategory.destroy_all
 
-subcategory = Subcategory.find_by_name("Suits")  
-men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Clothing")
+category.subcategories.create(name: "Coats & Jackets")  
 
-subcategory = Subcategory.find_by_name("Blazers")  
-men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Suits")  
 
-subcategory = Subcategory.find_by_name("Waistcoats")  
-men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Blazers")  
 
-subcategory = Subcategory.find_by_name("Sweatshirts & Hoodies")  
-men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Waistcoats")  
 
-subcategory = Subcategory.find_by_name("Jumpers & Cardigans")  
-men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Sweatshirts & Hoodies")  
 
-subcategory = Subcategory.find_by_name("Shirts")  
-men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Jumpers & Cardigans")  
 
-subcategory = Subcategory.find_by_name("T-Shirts")  
-men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Shirts")  
 
-subcategory = Subcategory.find_by_name("Polo Shirts & Rugby Shirts")  
-men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Clothing")  
+category.subcategories.create(name: "T-Shirts")  
 
-subcategory = Subcategory.find_by_name("Jeans")  
-men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Polo Shirts & Rugby Shirts")  
 
-subcategory = Subcategory.find_by_name("Trousers")  
-men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Jeans")  
 
-subcategory = Subcategory.find_by_name("Shorts")  
-men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Trousers")  
 
-subcategory = Subcategory.find_by_name("Sports Clothes")  
-men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Shorts")  
 
-subcategory = Subcategory.find_by_name("Swimwear")  
-men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Sports Clothes")  
 
-subcategory = Subcategory.find_by_name("Sports Swimwear")  
-men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Swimwear")  
 
-subcategory = Subcategory.find_by_name("Pyjamas & Nightwear")  
-men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Sports Swimwear")  
 
-subcategory = Subcategory.find_by_name("Robes & Dressing")  
-men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Pyjamas & Nightwear")  
 
-subcategory = Subcategory.find_by_name("Gowns")  
-men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Robes & Dressing")  
 
-subcategory = Subcategory.find_by_name("Underwear")  
-men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Gowns")  
 
-subcategory = Subcategory.find_by_name("Socks")  
-men.categories.create(name: "Clothing", subcategory_id: subcategory).id   
+category = men.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Underwear")  
 
-subcategory = Subcategory.find_by_name("Boots")  
-men.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Socks")  
 
-subcategory = Subcategory.find_by_name("Trainers & Plimsolls")  
-men.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Shoes")   
+category.subcategories.create(name: "Boots")  
 
-subcategory = Subcategory.find_by_name("Sports Footwear")  
-men.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Shoes")  
+category.subcategories.create(name: "Trainers & Plimsolls")  
 
-subcategory = Subcategory.find_by_name("Walking & Hiking Shoes")  
-men.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Shoes")  
+category.subcategories.create(name: "Sports Footwear")  
 
-subcategory = Subcategory.find_by_name("Slippers")  
-men.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Shoes")  
+category.subcategories.create(name: "Walking & Hiking Shoes")  
 
-subcategory = Subcategory.find_by_name("Sandals")  
-men.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Shoes")  
+category.subcategories.create(name: "Slippers")  
 
-subcategory = Subcategory.find_by_name("Flip Flops")
-men.categories.create(name: "Shoes", subcategory_id: subcategory) .id   
+category = men.categories.create(name: "Shoes")  
+category.subcategories.create(name: "Sandals")  
 
-subcategory = Subcategory.find_by_name("Watches")  
-men.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Shoes")  
+category.subcategories.create(name: "Flip Flops")
 
-subcategory = Subcategory.find_by_name("Jewellery")  
-men.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Accessories")   
+category.subcategories.create(name: "Watches")  
 
-subcategory = Subcategory.find_by_name("Bags")  
-men.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Accessories")  
+category.subcategories.create(name: "Jewellery")  
 
-subcategory = Subcategory.find_by_name("Wallets")  
-men.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Accessories")  
+category.subcategories.create(name: "Bags")  
 
-subcategory = Subcategory.find_by_name("Formal Accessories")  
-men.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Accessories")  
+category.subcategories.create(name: "Wallets")  
 
-subcategory = Subcategory.find_by_name("Belts")  
-men.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Accessories")  
+category.subcategories.create(name: "Formal Accessories")  
 
-subcategory = Subcategory.find_by_name("Hats, Gloves & Scarves")  
-men.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Accessories")  
+category.subcategories.create(name: "Belts")  
 
-subcategory = Subcategory.find_by_name("Sunglasses")  
-men.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Accessories")  
+category.subcategories.create(name: "Hats, Gloves & Scarves")  
 
-subcategory = Subcategory.find_by_name("Umbrellas")  
-men.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Accessories")  
+category.subcategories.create(name: "Sunglasses")  
 
-subcategory = Subcategory.find_by_name("Keyrings")
-men.categories.create(name: "Accessories", subcategory_id: subcategory).id   
+category = men.categories.create(name: "Accessories")  
+category.subcategories.create(name: "Umbrellas")  
 
-subcategory = Subcategory.find_by_name("Dresses")  
-women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = men.categories.create(name: "Accessories")  
+category.subcategories.create(name: "Keyrings")
 
-subcategory = Subcategory.find_by_name("Coats & Jackets")  
-women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Dresses")  
 
-subcategory = Subcategory.find_by_name("Knitwear")  
-women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Coats & Jackets")  
 
-subcategory = Subcategory.find_by_name("Shirts & Tops")  
-women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Knitwear")  
 
-subcategory = Subcategory.find_by_name("Lingerie & Underwear")  
-women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Shirts & Tops")  
 
-subcategory = Subcategory.find_by_name("Trousers & Leggins")  
-women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Lingerie & Underwear")  
 
-subcategory = Subcategory.find_by_name("Jeans")  
-women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Trousers & Leggins")  
 
-subcategory = Subcategory.find_by_name("Skirts")  
-women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Jeans")  
 
-subcategory = Subcategory.find_by_name("Jumpsuits & Paysuits")  
-women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Skirts")  
 
-subcategory = Subcategory.find_by_name("Shorts")  
-women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Jumpsuits & Paysuits")  
 
-subcategory = Subcategory.find_by_name("Nightwear")  
-women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Shorts")  
 
-subcategory = Subcategory.find_by_name("Swimwear & Beachwear")  
-women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Nightwear")  
 
-subcategory = Subcategory.find_by_name("Tights")  
-women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Swimwear & Beachwear")  
 
-subcategory = Subcategory.find_by_name("Socks")  
-women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Tights")  
 
-subcategory = Subcategory.find_by_name("Cashmere")  
-women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Socks")  
 
-subcategory = Subcategory.find_by_name("Sports Clothes")  
-women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Cashmere")  
 
-subcategory = Subcategory.find_by_name("Sports Swimsuits")  
-women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Sports Clothes")  
 
-subcategory = Subcategory.find_by_name("Workwear")  
-women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Sports Swimsuits")  
 
-subcategory = Subcategory.find_by_name("Maternity Clotes")  
-women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Workwear")  
 
-subcategory = Subcategory.find_by_name("Court Shoes")  
-women.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Clothing")  
+category.subcategories.create(name: "Maternity Clotes")  
 
-subcategory = Subcategory.find_by_name("Boots")  
-women.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Shoes")  
+category.subcategories.create(name: "Court Shoes")  
 
-subcategory = Subcategory.find_by_name("Brogues")  
-women.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Shoes")  
+category.subcategories.create(name: "Boots")  
 
-subcategory = Subcategory.find_by_name("Loafers")  
-women.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Shoes")  
+category.subcategories.create(name: "Brogues")  
 
-subcategory = Subcategory.find_by_name("Pumps")  
-women.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Shoes")  
+category.subcategories.create(name: "Loafers")  
 
-subcategory = Subcategory.find_by_name("Sandals")  
-women.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Shoes")  
+category.subcategories.create(name: "Pumps")  
 
-subcategory = Subcategory.find_by_name("Espadrilles")  
-women.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Shoes")  
+category.subcategories.create(name: "Sandals")  
 
-subcategory = Subcategory.find_by_name("Flip Flops")  
-women.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Shoes")  
+category.subcategories.create(name: "Espadrilles")  
 
-subcategory = Subcategory.find_by_name("Trainers & Plimsolls")  
-women.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Shoes")  
+category.subcategories.create(name: "Flip Flops")  
 
-subcategory = Subcategory.find_by_name("Slippers")  
-women.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Shoes")  
+category.subcategories.create(name: "Trainers & Plimsolls")  
 
-subcategory = Subcategory.find_by_name("Sports Footwear")  
-women.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Shoes")  
+category.subcategories.create(name: "Slippers")  
 
-subcategory = Subcategory.find_by_name("Handbags, Bags & Purses")  
-women.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Shoes")  
+category.subcategories.create(name: "Sports Footwear")  
 
-subcategory = Subcategory.find_by_name("Jewellery")  
-women.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Accessories")  
+category.subcategories.create(name: "Handbags, Bags & Purses")  
 
-subcategory = Subcategory.find_by_name("Watches")  
-women.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Accessories")  
+category.subcategories.create(name: "Jewellery")  
 
-subcategory = Subcategory.find_by_name("Sunglasses")  
-women.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Accessories")  
+category.subcategories.create(name: "Watches")  
 
-subcategory = Subcategory.find_by_name("Occasion Hats & Fascinators")  
-women.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Accessories")  
+category.subcategories.create(name: "Sunglasses")  
 
-subcategory = Subcategory.find_by_name("Scarves")  
-women.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Accessories")  
+category.subcategories.create(name: "Occasion Hats & Fascinators")  
 
-subcategory = Subcategory.find_by_name("Hats")  
-women.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Accessories")  
+category.subcategories.create(name: "Scarves")  
 
-subcategory = Subcategory.find_by_name("Belts")  
-women.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Accessories")  
+category.subcategories.create(name: "Hats")  
 
-subcategory = Subcategory.find_by_name("Umbrellas")  
-women.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Accessories")  
+category.subcategories.create(name: "Belts")  
 
-subcategory = Subcategory.find_by_name("Keyrings")  
-women.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+category = women.categories.create(name: "Accessories")  
+category.subcategories.create(name: "Umbrellas")  
 
-subcategory = Subcategory.find_by_name("Handkerchiefs")
-women.categories.create(name: "Accessories", subcategory_id: subcategory).id   
+category = women.categories.create(name: "Accessories")  
+category.subcategories.create(name: "Keyrings")  
 
+category = women.categories.create(name: "Accessories")  
+category.subcategories.create(name: "Handkerchiefs")
+  
 
-subcategory = Subcategory.find_by_name("Face")  
-beauty.categories.create(name: "Make-Up & Fragrance", subcategory_id: subcategory.id)  
+category = beauty.categories.create(name: "Make-Up & Fragrance") 
+category.subcategories.create(name: "Face")  
 
-subcategory = Subcategory.find_by_name("Lips")  
-beauty.categories.create(name: "Make-Up & Fragrance", subcategory_id: subcategory.id)  
+category = beauty.categories.create(name: "Make-Up & Fragrance")  
+category.subcategories.create(name: "Lips")  
 
-subcategory = Subcategory.find_by_name("Eyes")  
-beauty.categories.create(name: "Make-Up & Fragrance", subcategory_id: subcategory.id)  
+category = beauty.categories.create(name: "Make-Up & Fragrance")  
+category.subcategories.create(name: "Eyes")  
 
-subcategory = Subcategory.find_by_name("Nails")  
-beauty.categories.create(name: "Make-Up & Fragrance", subcategory_id: subcategory.id)  
+category = beauty.categories.create(name: "Make-Up & Fragrance")  
+category.subcategories.create(name: "Nails")  
 
-subcategory = Subcategory.find_by_name("Make-Up Accessories")  
-beauty.categories.create(name: "Make-Up & Fragrance", subcategory_id: subcategory.id)  
+category = beauty.categories.create(name: "Make-Up & Fragrance")  
+category.subcategories.create(name: "Make-Up Accessories")  
 
-subcategory = Subcategory.find_by_name("Perfume")  
-beauty.categories.create(name: "Make-Up & Fragrance", subcategory_id: subcategory.id)  
+category = beauty.categories.create(name: "Make-Up & Fragrance")  
+category.subcategories.create(name: "Perfume")  
 
-subcategory = Subcategory.find_by_name("Aftershave")  
-beauty.categories.create(name: "Make-Up & Fragrance", subcategory_id: subcategory).id   
+category = beauty.categories.create(name: "Make-Up & Fragrance")  
+category.subcategories.create(name: "Aftershave")  
 
-subcategory = Subcategory.find_by_name("Skin Care")  
-beauty.categories.create(name: "Skin & Body Care", subcategory_id: subcategory.id)  
+category = beauty.categories.create(name: "Skin & Body Care")    
+category.subcategories.create(name: "Skin Care")  
 
-subcategory = Subcategory.find_by_name("Treatments, Supplements & Anti-Ageing")  
-beauty.categories.create(name: "Skin & Body Care", subcategory_id: subcategory.id)  
+category = beauty.categories.create(name: "Skin & Body Care")  
+category.subcategories.create(name: "Treatments, Supplements & Anti-Ageing")  
 
-subcategory = Subcategory.find_by_name("Beauty Cleansing Devices")  
-beauty.categories.create(name: "Skin & Body Care", subcategory_id: subcategory.id)  
+category = beauty.categories.create(name: "Skin & Body Care")  
+category.subcategories.create(name: "Beauty Cleansing Devices")  
 
-subcategory = Subcategory.find_by_name("Bath & Shower")  
-beauty.categories.create(name: "Skin & Body Care", subcategory_id: subcategory.id)  
+category = beauty.categories.create(name: "Skin & Body Care")  
+category.subcategories.create(name: "Bath & Shower")  
 
-subcategory = Subcategory.find_by_name("Body Care")  
-beauty.categories.create(name: "Skin & Body Care", subcategory_id: subcategory.id)  
+category = beauty.categories.create(name: "Skin & Body Care")  
+category.subcategories.create(name: "Body Care")  
 
-subcategory = Subcategory.find_by_name("Hand & Foot Care")  
-beauty.categories.create(name: "Skin & Body Care", subcategory_id: subcategory.id)  
+category = beauty.categories.create(name: "Skin & Body Care")  
+category.subcategories.create(name: "Hand & Foot Care")  
 
-subcategory = Subcategory.find_by_name("Tanning & Suncare")  
-beauty.categories.create(name: "Skin & Body Care", subcategory_id: subcategory.id)  
+category = beauty.categories.create(name: "Skin & Body Care")  
+category.subcategories.create(name: "Tanning & Suncare")  
 
-subcategory = Subcategory.find_by_name("Body Firming & Toning")  
-beauty.categories.create(name: "Skin & Body Care", subcategory_id: subcategory.id) 
+category = beauty.categories.create(name: "Skin & Body Care")  
+category.subcategories.create(name: "Body Firming & Toning")  
 
-subcategory = Subcategory.find_by_name("Shampoos & Conditioners")  
-beauty.categories.create(name: "Hair Care & Styling", subcategory_id: subcategory.id)  
+category = beauty.categories.create(name: "Hair Care & Styling")  
+category.subcategories.create(name: "Shampoos & Conditioners")  
 
-subcategory = Subcategory.find_by_name("Hair Oils & Treatments")  
-beauty.categories.create(name: "Hair Care & Styling", subcategory_id: subcategory.id)  
+category = beauty.categories.create(name: "Hair Care & Styling")  
+category.subcategories.create(name: "Hair Oils & Treatments")  
 
-subcategory = Subcategory.find_by_name("Hair Styling & Finishing Products")  
-beauty.categories.create(name: "Hair Care & Styling", subcategory_id: subcategory.id)  
+category = beauty.categories.create(name: "Hair Care & Styling")  
+category.subcategories.create(name: "Hair Styling & Finishing Products")  
 
-subcategory = Subcategory.find_by_name("Hair Accessories")  
-beauty.categories.create(name: "Hair Care & Styling", subcategory_id: subcategory.id)  
+category = beauty.categories.create(name: "Hair Care & Styling")  
+category.subcategories.create(name: "Hair Accessories")  
 
-subcategory = Subcategory.find_by_name("Hair Brushes")  
-beauty.categories.create(name: "Hair Care & Styling", subcategory_id: subcategory.id)  
+category = beauty.categories.create(name: "Hair Care & Styling")  
+category.subcategories.create(name: "Hair Brushes")  
 
-subcategory = Subcategory.find_by_name("Hair Straighteners")  
-beauty.categories.create(name: "Hair Care & Styling", subcategory_id: subcategory.id)  
+category = beauty.categories.create(name: "Hair Care & Styling")  
+category.subcategories.create(name: "Hair Straighteners")  
 
-subcategory = Subcategory.find_by_name("Hair Stylers")  
-beauty.categories.create(name: "Hair Care & Styling", subcategory_id: subcategory.id)  
+category = beauty.categories.create(name: "Hair Care & Styling")  
+category.subcategories.create(name: "Hair Stylers")  
 
-subcategory = Subcategory.find_by_name("Hair Dryers")  
-beauty.categories.create(name: "Hair Care & Styling", subcategory_id: subcategory.id)  
+category = beauty.categories.create(name: "Hair Care & Styling")  
+category.subcategories.create(name: "Hair Dryers")  
 
-subcategory = Subcategory.find_by_name("Hair Curlers")  
-beauty.categories.create(name: "Hair Care & Styling", subcategory_id: subcategory).id   
+category = beauty.categories.create(name: "Hair Care & Styling")  
+category.subcategories.create(name: "Hair Curlers")  
 
-subcategory = Subcategory.find_by_name("Men's Gift Sets")  
-beauty.categories.create(name: "Men's Toiletries & Grooming", subcategory_id: subcategory.id)  
+category = beauty.categories.create(name: "Men's Toiletries & Grooming")  
+category.subcategories.create(name: "Men's Gift Sets")  
 
-subcategory = Subcategory.find_by_name("Men's Skin Care")  
-beauty.categories.create(name: "Men's Toiletries & Grooming", subcategory_id: subcategory.id)  
+category = beauty.categories.create(name: "Men's Toiletries & Grooming")  
+category.subcategories.create(name: "Men's Skin Care")  
 
-subcategory = Subcategory.find_by_name("Men's Bath & Body")  
-beauty.categories.create(name: "Men's Toiletries & Grooming", subcategory_id: subcategory.id)  
+category = beauty.categories.create(name: "Men's Toiletries & Grooming")  
+category.subcategories.create(name: "Men's Bath & Body")  
 
-subcategory = Subcategory.find_by_name("Men's Shaving")  
-beauty.categories.create(name: "Men's Toiletries & Grooming", subcategory_id: subcategory.id)  
+category = beauty.categories.create(name: "Men's Toiletries & Grooming")  
+category.subcategories.create(name: "Men's Shaving")  
 
-subcategory = Subcategory.find_by_name("Men's Hair Care")  
-beauty.categories.create(name: "Men's Toiletries & Grooming", subcategory_id: subcategory.id)  
+category = beauty.categories.create(name: "Men's Toiletries & Grooming")  
+category.subcategories.create(name: "Men's Hair Care")  
 
-subcategory = Subcategory.find_by_name("Men's Grooming Devices")  
-beauty.categories.create(name: "Men's Toiletries & Grooming", subcategory_id: subcategory.id)  
+category = beauty.categories.create(name: "Men's Toiletries & Grooming")  
+category.subcategories.create(name: "Men's Grooming Devices")  
 
-subcategory = Subcategory.find_by_name("Men's Wash Bags")
-beauty.categories.create(name: "Men's Toiletries & Grooming", subcategory_id: subcategory.id) 
+category = beauty.categories.create(name: "Men's Toiletries & Grooming")  
+category.subcategories.create(name: "Men's Wash Bags")
+
+
+# subcategory = Subcategory.find_by_name("Coats & Jackets")  
+# men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Suits")  
+# men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Blazers")  
+# men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Waistcoats")  
+# men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Sweatshirts & Hoodies")  
+# men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Jumpers & Cardigans")  
+# men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Shirts")  
+# men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("T-Shirts")  
+# men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Polo Shirts & Rugby Shirts")  
+# men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Jeans")  
+# men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Trousers")  
+# men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Shorts")  
+# men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Sports Clothes")  
+# men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Swimwear")  
+# men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Sports Swimwear")  
+# men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Pyjamas & Nightwear")  
+# men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Robes & Dressing")  
+# men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Gowns")  
+# men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Underwear")  
+# men.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Socks")  
+# men.categories.create(name: "Clothing", subcategory_id: subcategory.id)   
+
+# subcategory = Subcategory.find_by_name("Boots")  
+# men.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Trainers & Plimsolls")  
+# men.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Sports Footwear")  
+# men.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Walking & Hiking Shoes")  
+# men.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Slippers")  
+# men.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Sandals")  
+# men.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Flip Flops")
+# men.categories.create(name: "Shoes", subcategory_id: subcategory) .id   
+
+# subcategory = Subcategory.find_by_name("Watches")  
+# men.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Jewellery")  
+# men.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Bags")  
+# men.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Wallets")  
+# men.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Formal Accessories")  
+# men.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Belts")  
+# men.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Hats, Gloves & Scarves")  
+# men.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Sunglasses")  
+# men.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Umbrellas")  
+# men.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Keyrings")
+# men.categories.create(name: "Accessories", subcategory_id: subcategory.id)   
+
+# subcategory = Subcategory.find_by_name("Dresses")  
+# women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Coats & Jackets")  
+# women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Knitwear")  
+# women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Shirts & Tops")  
+# women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Lingerie & Underwear")  
+# women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Trousers & Leggins")  
+# women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Jeans")  
+# women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Skirts")  
+# women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Jumpsuits & Paysuits")  
+# women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Shorts")  
+# women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Nightwear")  
+# women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Swimwear & Beachwear")  
+# women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Tights")  
+# women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Socks")  
+# women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Cashmere")  
+# women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Sports Clothes")  
+# women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Sports Swimsuits")  
+# women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Workwear")  
+# women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Maternity Clotes")  
+# women.categories.create(name: "Clothing", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Court Shoes")  
+# women.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Boots")  
+# women.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Brogues")  
+# women.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Loafers")  
+# women.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Pumps")  
+# women.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Sandals")  
+# women.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Espadrilles")  
+# women.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Flip Flops")  
+# women.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Trainers & Plimsolls")  
+# women.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Slippers")  
+# women.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Sports Footwear")  
+# women.categories.create(name: "Shoes", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Handbags, Bags & Purses")  
+# women.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Jewellery")  
+# women.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Watches")  
+# women.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Sunglasses")  
+# women.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Occasion Hats & Fascinators")  
+# women.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Scarves")  
+# women.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Hats")  
+# women.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Belts")  
+# women.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Umbrellas")  
+# women.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Keyrings")  
+# women.categories.create(name: "Accessories", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Handkerchiefs")
+# women.categories.create(name: "Accessories", subcategory_id: subcategory.id)   
+
+
+# subcategory = Subcategory.find_by_name("Face")  
+# beauty.categories.create(name: "Make-Up & Fragrance", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Lips")  
+# beauty.categories.create(name: "Make-Up & Fragrance", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Eyes")  
+# beauty.categories.create(name: "Make-Up & Fragrance", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Nails")  
+# beauty.categories.create(name: "Make-Up & Fragrance", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Make-Up Accessories")  
+# beauty.categories.create(name: "Make-Up & Fragrance", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Perfume")  
+# beauty.categories.create(name: "Make-Up & Fragrance", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Aftershave")  
+# beauty.categories.create(name: "Make-Up & Fragrance", subcategory_id: subcategory.id)   
+
+# subcategory = Subcategory.find_by_name("Skin Care")  
+# beauty.categories.create(name: "Skin & Body Care", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Treatments, Supplements & Anti-Ageing")  
+# beauty.categories.create(name: "Skin & Body Care", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Beauty Cleansing Devices")  
+# beauty.categories.create(name: "Skin & Body Care", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Bath & Shower")  
+# beauty.categories.create(name: "Skin & Body Care", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Body Care")  
+# beauty.categories.create(name: "Skin & Body Care", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Hand & Foot Care")  
+# beauty.categories.create(name: "Skin & Body Care", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Tanning & Suncare")  
+# beauty.categories.create(name: "Skin & Body Care", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Body Firming & Toning")  
+# beauty.categories.create(name: "Skin & Body Care", subcategory_id: subcategory.id) 
+
+# subcategory = Subcategory.find_by_name("Shampoos & Conditioners")  
+# beauty.categories.create(name: "Hair Care & Styling", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Hair Oils & Treatments")  
+# beauty.categories.create(name: "Hair Care & Styling", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Hair Styling & Finishing Products")  
+# beauty.categories.create(name: "Hair Care & Styling", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Hair Accessories")  
+# beauty.categories.create(name: "Hair Care & Styling", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Hair Brushes")  
+# beauty.categories.create(name: "Hair Care & Styling", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Hair Straighteners")  
+# beauty.categories.create(name: "Hair Care & Styling", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Hair Stylers")  
+# beauty.categories.create(name: "Hair Care & Styling", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Hair Dryers")  
+# beauty.categories.create(name: "Hair Care & Styling", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Hair Curlers")  
+# beauty.categories.create(name: "Hair Care & Styling", subcategory_id: subcategory.id)   
+
+# subcategory = Subcategory.find_by_name("Men's Gift Sets")  
+# beauty.categories.create(name: "Men's Toiletries & Grooming", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Men's Skin Care")  
+# beauty.categories.create(name: "Men's Toiletries & Grooming", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Men's Bath & Body")  
+# beauty.categories.create(name: "Men's Toiletries & Grooming", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Men's Shaving")  
+# beauty.categories.create(name: "Men's Toiletries & Grooming", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Men's Hair Care")  
+# beauty.categories.create(name: "Men's Toiletries & Grooming", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Men's Grooming Devices")  
+# beauty.categories.create(name: "Men's Toiletries & Grooming", subcategory_id: subcategory.id)  
+
+# subcategory = Subcategory.find_by_name("Men's Wash Bags")
+# beauty.categories.create(name: "Men's Toiletries & Grooming", subcategory_id: subcategory.id) 
 
 
 # Retailer.find(1).update_attributes(remote_logo_url: "https://scontent.ftxl1-1.fna.fbcdn.net/v/t1.0-1/c34.9.113.113/294541_216852901709707_668021287_n.jpg?oh=5d057d65c2c7eabc928e30c7866d40fd&oe=5928C3C7")

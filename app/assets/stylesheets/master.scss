@@ -29,11 +29,11 @@ body {
 /*pink #F69D9A,rgba(246, 157, 154, 0.8) , blue #052F6D rgba(5, 47, 109, 0.8) 100%) */
 
 .grad {
-  background: rgba(246, 157, 154, 0.6); /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(left top, rgba(246, 157, 154, 0.6) 30%, rgba(5, 47, 109, 0.8) 100%); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(right bottom, rgba(246, 157, 154, 0.6) 30%, rgba(5, 47, 109, 0.8) 100%); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(right bottom, rgba(246, 157, 154, 0.6) 30%, rgba(5, 47, 109, 0.8) 100%); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to right bottom, rgba(246, 157, 154, 0.6) 30%, rgba(5, 47, 109, 0.8) 100%); /* Standard syntax */
+  background: rgba(246, 157, 154, 1); /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(left top, rgba(246, 157, 154, 0.5) 40%, rgba(5, 47, 109, 0.8) 100%); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(right bottom, rgba(246, 157, 154, 0.5) 40%, rgba(5, 47, 109, 0.8) 100%); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(right bottom, rgba(246, 157, 154, 0.5) 40%, rgba(5, 47, 109, 0.8) 100%); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to right bottom, rgba(246, 157, 154, 0.5) 40%, rgba(5, 47, 109, 0.8) 100%); /* Standard syntax */
   background-repeat: no-repeat;
   background-attachment: fixed;
 }

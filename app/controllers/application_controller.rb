@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
 	def get_categories
     @genders = Gender.all
-		@retailer_categories = Category.order(:id)
+		@retailer_categories = Category.pluck(:name).uniq
 	end
 
   private

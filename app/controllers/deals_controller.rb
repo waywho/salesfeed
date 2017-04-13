@@ -25,6 +25,24 @@ class DealsController < ApplicationController
 		return render_not_found
 	end
 
+	def men
+		@gender = Gender.find_by_name("men")
+		@deals = @gender.deals
+		render :index
+	end
+
+	def women
+		@gender = Gender.find_by_name("women")
+		@deals = @gender.deals
+		render :index
+	end
+
+	def beauty
+		@gender = Gender.find_by_name("beauty")
+		@deals = @gender.deals
+		render :index
+	end
+	
 	def new
 		@deal = Deal.new
 	end
