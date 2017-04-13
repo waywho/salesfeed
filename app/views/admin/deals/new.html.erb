@@ -4,7 +4,7 @@
   <%= f.input :title %>
   <%= f.input :picture %>
   <%= f.input :message %>
-  <%= f.input :gender, label: 'Type', collection: Gender.all %>
+  <%= f.input :gender_id, label: 'Type', collection: Gender.all, value_method: :id %>
   <%= f.input :deeplink %>
   <%= f.input :retailer_id, collection: Retailer.all %>
   <%= f.submit "Post" %>
