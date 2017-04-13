@@ -3,7 +3,7 @@ class RetailersController < ApplicationController
 
 	def index
 		if params[:category].present?
-			@retailers = Retailer.joins(:categories).where("categories.name = ?", params[:category])
+			@retailers = Retailer.joins(:categories).where("categories.name = ?", params[:category]).order(:name)
 			@retailer_type = params[:category]
 		else
 			@retailers = Retailer.all
