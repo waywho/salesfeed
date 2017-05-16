@@ -6,12 +6,35 @@
 <p>Browse the latest deals and discounts on clothing, shoes and accessories.</p>
 <% end %>
 
+
+<% if current_user %>
+  <button data-open-modal="new-deal-modal" class="feed-button">Add a new deal</button>
+<% end %>
+
+<div data-modal="new-deal-modal" aria-labelledby="example-modal-title" class="modal-wrapper"
+     role="dialog" aria-hidden="true">
+  <div class="modal-overlay" data-close-modal></div>
+  <div role="document" class="modal">
+    <header role="banner">
+      <h2 id="example-modal-title">Add a new deal</h2>
+      <button data-close-modal class="modal-close-button" aria-label="Close this dialog window">
+        &times;
+      </button>
+    </header>
+    <div>
+      <%= render :partial => '/deals/new_deal' %>
+    </div>
+  </div>
+</div>
+
+<br />
+<br />
+
 <div class="cards">
 	<% @deals.each do |deal| %>
 		<%= render :partial => '/deals/deal_card', :locals => {:deal => deal} %>
 	<% end %>
 </div>
-
 
 
 
@@ -31,6 +54,5 @@
     $('.deal_image').error(function() {
       $(this).attr('src', '/assets/deal_image_holder.png');
     });
-	});
-
+  });
 </script>

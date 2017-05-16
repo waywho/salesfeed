@@ -1,6 +1,4 @@
-<h1>Add new deal</h1>
-
-<%= simple_form_for @deal do |f| %>
+<%= simple_form_for Deal.new do |f| %>
   <%= f.input :title %>
   <%= f.input :picture %>
   <%= f.input :message %>

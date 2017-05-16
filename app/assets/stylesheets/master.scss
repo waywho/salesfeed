@@ -150,18 +150,17 @@ td {
   }
 }
 
-
 /*Navbar*/
 
 .centered-navigation {
   $base-border-radius: 3px !default;
-  $dark-gray: #333 !default;
+  $black: #000000 !default;
   $large-screen: 53.75em !default;
-  $base-font-color: $dark-gray !default;
+  $base-font-color: $black !default;
   $centered-navigation-padding: 1em;
   $centered-navigation-logo-height: 2em;
   $centered-navigation-background: rgba(255, 255, 255, 0.3);
-  $centered-navigation-color: white; /*transparentize($base-font-color, 0.3)*/
+  $centered-navigation-color: $black; /*transparentize($base-font-color, 0.3)*/
   $centered-navigation-color-hover: $base-font-color;
   $centered-navigation-height: 60px;
   $centered-navigation-item-padding: 1em;
@@ -176,7 +175,7 @@ td {
   left: 0px;
   min-height: $centered-navigation-height;
   width: 100%;
-  z-index: 9999;
+  z-index: 9998;
   margin-bottom: 25px;
 
   
@@ -233,6 +232,7 @@ td {
     margin: 0 auto;
     overflow: visible;
     padding: 0;
+    font-weight: bold;
     -webkit-transform-style: preserve-3d; 
 
 /*// stop webkit flicker*/
@@ -465,171 +465,38 @@ td {
   }
 }
 
+.feed-button {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: black;
+}
 
-.modal {
-  $base-border-color: #dcdcdc !default;
-  $base-border-radius: 3px !default;
-  $base-background-color: #fff !default;
-  $base-font-size: 1em !default;
-  $base-line-height: 1.5em !default;
-  $action-color: #477dca !default;
-  $dark-gray: #333 !default;
-  $light-gray: #ddd !default;
-  $medium-screen: (media: 700px);
-  $large-screen: (media: 1000px);
-  $base-font-color: $dark-gray !default;
-  $modal-padding: 3em;
-  $modal-background: $base-background-color;
-  $modal-close-color: $light-gray;
-  $modal-image-height: 135px;
-  $modal-image-width: $modal-image-height;
-  $modal-trigger-image-width: 300px;
 
-  label {
-    cursor: pointer;
-    margin-bottom: 0;
-  }
+.modal-wrapper {
+  @include position(fixed, 0);
+  z-index: 9999;
 
-  label img {
-    border-radius: $modal-trigger-image-width / 2;
-    display: block;
-    max-width: $modal-trigger-image-width;
-  }
-
-  .modal-state {
+  &[aria-hidden="true"] {
     display: none;
   }
-
-  .modal-trigger {
-    padding: 0.8em 1em;
-  }
-
-  .modal-fade-screen { // overlay
-    @include position(fixed, 0);
-    background-color: rgba(#000, 0.85);
-    opacity: 0;
-    padding-top: 0.6em;
-    text-align: left;
-    transition: opacity 0.25s ease;
-    visibility: hidden;
-    z-index: 99999999999;
-
-    @include grid-media($large-screen) {
-      padding-top: 10em;
-    }
-
-    .modal-bg {
-      @include position(absolute, 0);
-      cursor: pointer;
-    }
-  }
-
-  .modal-close {
-    @include position(absolute, ($modal-padding /2) ($modal-padding /2) null null);
-    @include size(1.5em);
-    background: $modal-background;
-    cursor: pointer;
-
-    &::after,
-    &::before {
-      @include position(absolute, 3px 3px 0 50%);
-      @include size(1em);
-      background: $modal-close-color;
-      content: "";
-      display: block;
-      margin: -3px 0 0 -1px;
-      transform: rotate(45deg);
-    }
-
-    &:hover::after,
-    &:hover::before {
-      background: darken($modal-close-color, 10%);
-    }
-
-    &::before {
-      transform: rotate(-45deg);
-    }
-  }
-
-  .modal-inner {
-    background: $modal-background;
-    border-radius: $base-border-radius;
-    margin: auto;
-    margin-top: 0;
-    max-height: 95%;
-    overflow: auto;
-    padding: $modal-padding / 2;
-    position: relative;
-    transition: opacity 0.25s ease;
-    width: 95%;
-
-    @include grid-media($medium-screen) {
-      max-height: 70%;
-      padding: $modal-padding;
-      width: 60%;
-    }
-
-    @include grid-media($large-screen) {
-      width: 50%;
-    }
-
-    h1 {
-      color: $base-font-color;
-      text-align: left;
-      text-transform: capitalize;
-    }
-
-    p {
-      color: $base-font-color;
-      line-height: $base-line-height;
-    }
-
-    .modal-intro {
-      margin-bottom: 1em;
-    }
-
-    .modal-content {
-      color: $base-font-color;
-
-      @include grid-media($medium-screen) {
-        @include grid-column(2);
-      }
-    }
-
-    a.cta {
-      color: $base-background-color;
-      display: inline-block;
-      margin-right: 0.5em;
-      margin-top: 1em;
-
-      &:last-child {
-        padding: 0 2em;
-      }
-    }
-  }
-
-  .modal-state:checked + .modal-fade-screen {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .modal-state:checked + .modal-fade-screen .modal-inner {
-    top: 0.5em;
-  }
 }
 
-.modal-open {
-  overflow: hidden;
+.modal-overlay {
+  @include size(100%);
+  background-color: rgba($dark-gray, 0.75);
 }
 
-.menu-image {
-  height: 25px;
+.modal {
+  @include position(fixed, 50% null null 50%);
+  background-color: $base-background-color;
+  max-width: calc(100% - #{$base-spacing} * 2);
+  max-height: 100%;
+  overflow-y: auto;
+  padding: $base-spacing;
+  transform: translate(-50%, -50%);
+  width: 42em;
 }
 
-.more-click {
-  text-align: center;
+.modal-close-button {
+  @include position(absolute, $small-spacing $small-spacing null null);
 }
 
-.message {
-  display: none;
-}

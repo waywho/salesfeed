@@ -18,6 +18,8 @@
 					<%= f.input :picture, wrapper_html: {class: 'inline-form'} %>
 				</td>
 				<td><%= f.input :message, input_html: {class: 'message-box'} %></td>
+				<td><%= f.input :starts, as: :date, html5: true %></td>
+  			<td><%= f.input :ends, as: :date, html5: true %></td>
 				</tr>
 			<% end %>
 		<% end %>
