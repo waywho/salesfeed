@@ -9,7 +9,6 @@
 
 <% if current_user %>
   <button data-open-modal="new-deal-modal" class="feed-button">Add a new deal</button>
-<% end %>
 
 <div data-modal="new-deal-modal" aria-labelledby="example-modal-title" class="modal-wrapper"
      role="dialog" aria-hidden="true">
@@ -26,6 +25,7 @@
     </div>
   </div>
 </div>
+<% end %>
 
 <br />
 <br />
@@ -37,22 +37,21 @@
 </div>
 
 
-
-
 <script>
-	$(document).ready(function() {
-		$(".more-click").click(function() {
-			var link = $(this);
-			$(".message").toggle("fast", function() {
-				if ($(this).is(':visible')) {
-					link.text('Show Less');
-				} else {
-					link.text('Show More');
-				}
-			});
-		});
+  $(document).ready(function() {
+     $(".more-click").click(function() {
+      var link = $(this);
+      var message = $(this).siblings(".message")
+      $(message).toggle("fast", function() {
+        if ($(this).is(':visible')) {
+          link.text('Show Less');
+        } else {
+          link.text('Show More');
+        }
+      });
+    });
     $('.deal_image').error(function() {
       $(this).attr('src', '/assets/deal_image_holder.png');
     });
-  });
+  })
 </script>

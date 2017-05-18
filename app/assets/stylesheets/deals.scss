@@ -103,6 +103,8 @@
     font-size: 0.9em;
     line-height: 1.5em;
     padding: ($base-spacing / 2) ($base-spacing / 2);
+    background-color: white;
+    border-radius: 0 0 $card-border-radius $card-border-radius;
 
     p {
       margin: 0 0 ($base-spacing / 2);
@@ -144,6 +146,15 @@
     margin: 0px 10px;
     border: 0.1px solid #b3b3b3;
     border-radius: $card-border-radius;
+  }
+
+  .message {
+    display: none;
+  }
+
+  .more-click {
+    text-align: center;
+    font-weight: bold;
   }
 }
 
