@@ -32,6 +32,14 @@
 
 <div class="cards">
 	<% @deals.each do |deal| %>
-		<%= render :partial => '/deals/deal_card', :locals => {:deal => deal} %>
+    <% if deal.ends.present? %>
+      <% if deal.ends > Time.zone.today %>
+  		  <%= render :partial => '/deals/deal_card', :locals => {:deal => deal} %>
+      <% else %>
+        <%= render :partial => '/deals/expired_deal_card', :locals => {:deal => deal} %>
+      <% end %>
+    <% else %>
+      <%= render :partial => '/deals/deal_card', :locals => {:deal => deal} %>
+    <% end %>
 	<% end %>
 </div>

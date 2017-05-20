@@ -59,7 +59,6 @@
 	    z-index: 1;
 	    width: 75px;
 	    height: 75px;
-
 	}
 
   .deal-logo img {
@@ -77,6 +76,56 @@
       width: 100%;
       z-index: -1;
     }
+  }
+
+  .expired-card-image {
+    max-height: 200px;
+    overflow: hidden;
+    @include border-top-radius($card-border-radius);
+    background-color: $card-image-hover-color;
+
+    .deal-logo {
+    position: absolute;
+      left: 11px;
+      top: 11px;
+      z-index: 1;
+      width: 75px;
+      height: 75px;
+    }
+
+    .deal-logo img {
+      border-radius: $card-border-radius 0 0 0;
+      opacity: 0.5;
+      transition: all 0.2s ease-in-out;
+      width: 100%;
+      z-index: -1;
+    }
+
+    img {
+      @include border-top-radius($card-border-radius);
+      opacity: 1;
+      transition: all 0.2s ease-in-out;
+      width: 100%;
+      z-index: -1;
+    }
+    .card-header {
+      position: absolute;
+      left: 0px;
+      top: 20%;
+      background-color: transparent;
+  /*    border-bottom: $card-border;*/
+      border-radius: $card-border-radius $card-border-radius 0 0;
+      font-weight: bold;
+      line-height: 1.5em;
+      padding: ($base-spacing / 3) ($base-spacing / 2);
+      transition: all 0.2s ease-in-out;
+      max-width: 90%
+    }
+  }
+  
+  .expired-card-image img {
+    opacity: 0.5;
+    filter: alpha(opacity=50);
   }
 
   .card-header {
