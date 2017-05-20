@@ -3,12 +3,12 @@
 host "www.fashsteals.com"
 
 sitemap :site do
-  url root_url, last_mod: Time.now, change_freq: "monthly", priority: 1.0
-  url deals_url, last_mod: Time.now, change_freq: "weekly", priority: 2.0
-  url retailers_url, last_mod: Time.now, change_freq: "weekly", priority: 2.0
-  url men_url, last_mod: Time.now, change_freq: "daily", priority: 2.0
-  url women_url, last_mod: Time.now, change_freq: "daily", priority: 2.0
-  url beauty_url, last_mod: Time.now, change_freq: "daily", priority: 2.0
+  url root_url, last_mod: Time.now, change_freq: "weekly", priority: 1.0
+  url deals_url, last_mod: Time.now, change_freq: "weekly", priority: 0.8
+  url retailers_url, last_mod: Time.now, change_freq: "weekly", priority: 0.8
+  url men_url, last_mod: Time.now, change_freq: "daily", priority: 0.6
+  url women_url, last_mod: Time.now, change_freq: "daily", priority: 0.6
+  url beauty_url, last_mod: Time.now, change_freq: "daily", priority: 0.6
 end
 
 # You can have multiple sitemaps like the above – just make sure their names are different.
