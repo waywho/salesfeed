@@ -9,6 +9,7 @@
   <%= f.input :starts, as: :date, html5: true %>
   <%= f.input :ends, as: :date, html5: true %>
   <%= f.input :deeplink %>
+  <%= f.input :slug %>
   <%= f.input :retailer_id, collection: Retailer.all.order(:name) %>
   <%= f.submit "Post" %>
 <% end %>

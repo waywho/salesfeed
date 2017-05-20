@@ -1,20 +1,20 @@
 <div class="card">
-<div class="card-inner">
-	<%= link_to deal.deeplink.html_safe, 'data-gtm-event' => 'dealClicked', 'data-gtm-variable' => "#{deal.retailer.name}", :target => "_blank" do %>
-		<div class="card-image">
-			<div class='deal-logo'>
-				<%= image_tag deal.retailer.logo if deal.retailer.logo.present? %>
+	<div class="card-inner">
+		<%= link_to deal.deeplink.html_safe, 'data-gtm-event' => 'dealClicked', 'data-gtm-variable' => "#{deal.retailer.name}", :target => "_blank" do %>
+			<div class="card-image">
+				<div class='deal-logo'>
+					<%= image_tag deal.retailer.logo if deal.retailer.logo.present? %>
+				</div>
+				<%= image_tag deal.picture.present? ? deal.picture : 'deal_image_holder.png', :class => 'deal_image' %>
+				<div class="card-header">
+					<span class="highlight"><%= deal.title %></span>
+				</div>
 			</div>
-			<%= image_tag deal.picture.present? ? deal.picture : 'deal_image_holder.png', :class => 'deal_image' %>
-			<div class="card-header">
-				<span class="highlight"><%= deal.title %></span>
-			</div>
+			<div class="card-copy-cta pink">Get this Deal Now</div>
+		<% end %>
+		<div class="card-copy">
+			<div class="message"><%= deal.message.html_safe %></div>
+			<div class="more-click" data-gtm-event='dealShowMoreClicked', data-gtm-variable = "#{deal.retailer}">Show More</div>
 		</div>
-		<div class="card-copy-cta pink">Get this Deal Now</div>
-	<% end %>
-	<div class="card-copy">
-		<div class="message"><%= deal.message.html_safe %></div>
-		<div class="more-click" data-gtm-event='dealShowMoreClicked', data-gtm-variable = "#{deal.retailer}">Show More</div>
 	</div>
-</div>
 </div>
