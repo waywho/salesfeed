@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get :privacy_policy, to: "static_pages#privacy_policy"
   get :contact, to: "static_pages#contact"
   post :messages, to: 'static_pages#messages'
+  get "sitemap.xml" => "static_pages#sitemap", format: :xml, as: :sitemap
+  get "robots.txt" => "static_pages#robots", format: :text, as: :robots
+
   resources :deals do
     resources :comments, only: :create
   end

@@ -9,4 +9,5 @@
   <% if current_user.try(:admin?) %>
   <li ><%= link_to 'Admin', admin_deals_path %></li>
   <% end %>
+  <li><%= link_to 'Sitemap', sitemap_url %></li>
 </ul>
