@@ -499,3 +499,7 @@ td {
   @include position(absolute, $small-spacing $small-spacing null null);
 }
 
+.center {
+  text-align: center;
+}
+

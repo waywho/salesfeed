@@ -7,13 +7,16 @@
 				</div>
 				<%= image_tag deal.picture.present? ? deal.picture : 'deal_image_holder.png', :class => 'deal_image' %>
 				<div class="card-header">
-					<span class="highlight"><%= deal.title %></span>
+					<span class="highlight card-title"><%= deal.title %></span>
 				</div>
 			</div>
 			<div class="card-copy-cta pink">Get this Deal Now</div>
 		<% end %>
 		<div class="card-copy">
-			<div class="message"><%= deal.message.html_safe %></div>
+			<div class="message"><%= deal.message.html_safe %>
+			<br />
+				<p class="center">check out <%= link_to "this deal", deal_path(deal), :class => "highlight" %> from <%= link_to deal.retailer.name, retailer_path(deal.retailer), :class => "highlight" %></p>
+			</div>
 			<div class="more-click" data-gtm-event='dealShowMoreClicked', data-gtm-variable = "#{deal.retailer}">Show More</div>
 		</div>
 	</div>
