@@ -16,10 +16,13 @@
 					<%= f.input :gender_id, label: 'Type', collection: Gender.all, value_method: :id, wrapper_html: {class: 'inline-form'}, input_html: {class: 'gender-type'} %>
 					<%= f.input :subcategory_id, label: "category", collection: Subcategory.all, wrapper_html: {class: 'inline-form'}, input_html: {class: 'subcategory-options'} %>
 					<%= f.input :picture, wrapper_html: {class: 'inline-form'} %>
+					<%= f.input :slug, wrapper_html: {class: 'inline-form'} %>
 				</td>
-				<td><%= f.input :message, input_html: {class: 'message-box'} %></td>
-				<td><%= f.input :starts, as: :date, html5: true %></td>
-  			<td><%= f.input :ends, as: :date, html5: true %></td>
+				<td><%= f.input :message, input_html: {class: 'message-box'} %>
+				<%= f.input :starts, as: :date, html5: true, wrapper_html: {class: 'inline-form'} %>
+  			<%= f.input :ends, as: :date, html5: true, wrapper_html: {class: 'inline-form'} %>
+  			</td>
+
 				</tr>
 			<% end %>
 		<% end %>
