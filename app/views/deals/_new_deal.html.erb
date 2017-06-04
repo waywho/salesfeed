@@ -4,8 +4,8 @@
   <%= f.input :message %>
   <%= f.input :gender_id, label: 'Type', collection: Gender.all, value_method: :id, wrapper_html: {class: 'inline-form'}, input_html: {class: 'gender-type'} %>
           <%= f.input :subcategory_id, label: "category", collection: Subcategory.all, wrapper_html: {class: 'inline-form'}, input_html: {class: 'subcategory-options'} %>
-  <%= f.input :starts, as: :date, html5: true %>
-  <%= f.input :ends, as: :date, html5: true %>
+  <%= f.input :starts, as: :datetime, html5: true, input_html: { type: "datetime-local", value: DateTime.now.strftime("%Y-%m-%dT%H:%M:%S") } %>
+  <%= f.input :ends, as: :datetime, html5: true, input_html: { type: "datetime-local"}%>
   <%= f.input :deeplink %>
   <%= f.input :retailer_id, collection: Retailer.all.order(:name) %>
   <%= f.submit "Post" %>

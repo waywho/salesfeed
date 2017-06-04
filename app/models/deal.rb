@@ -13,6 +13,8 @@ class Deal < ActiveRecord::Base
 
 	acts_as_xlsx
 
+	scope :from_now, -> { self.where('starts >= ?', DateTime.now) }
+
 	def self.to_csv
 		CSV.generate do |csv|
 			csv << column_names
@@ -30,5 +32,4 @@ class Deal < ActiveRecord::Base
 			item.save!
 		end
 	end
-
 end
