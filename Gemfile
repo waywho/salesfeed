@@ -36,11 +36,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # gem 'skeleton-rails', :git => 'https://github.com/helios-technologies/skeleton-rails'
 
-gem 'bourbon'
 
-gem 'neat'
-
-gem 'bitters'
+gem 'bulma-rails', "~> 0.4.0"
 
 gem 'simple_form'
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Browse the latest fashion deals and discounts - FashSteals</title>
+  <title>FashSteals - Browse the latest fashion deals and discounts</title>
   <meta property="og:description" content="Looking for Fashion? We've got the steals. Browser the latest fashion deals and discounts" />
   <meta property="og:title" content="FashSteals" />
   <meta property="description" content="Looking for Fashion? We've got the steals. Browser the latest fashion deals and discounts" />
@@ -20,17 +20,18 @@
   <meta name="google-site-verification" content="Hn_edsLIpU3gqsBtBeB4XAsdZg9EXRVE3IkK2FIfZuU" />
   <%= csrf_meta_tags %>
 </head>
-<body class=<%= 'grad' if !controller.class.parents.include?(Admin) %>>
+<body class=<%= '' if !controller.class.parents.include?(Admin) %>>
 <%= google_tag_manager %>
 
-<header class="centered-navigation <%= controller.class.parents.include?(Admin) ? 'yellow' : 'white-transparent' %>" role="banner">
+<header class="<%= 'yellow' if controller.class.parents.include?(Admin) %>" role="banner">
   <%= render 'layouts/header' %>
 </header>
 
-<div class="container">
-  <% if controller_name == 'deals' && !controller.class.parents.include?(Admin) %>
-  <div class = "feed">
-  <% end %>
+<div class="body-container">
+
+  <section class="hero is-pink is-bold">
+    <%= render :partial => 'layouts/hero' %>
+  </section>
   <% if notice.present? %>
     <p class="notice"><%= notice %></p>
     <br />
@@ -42,13 +43,15 @@
     <br />
   <% end %>
 	 <%= yield %>
-  <% if controller_name == 'deals' && !controller.class.parents.include?(Admin) %>
-  </div>
-  <% end %>
+
 </div>
 
-<footer class="footer" role="contentinfo">
-  <%= render 'layouts/footer' %>
+<footer class="footer sticky" role="contentinfo">
+  <div class="container">
+    <div class="content has-text-centered">
+      <%= render 'layouts/footer' %>
+    </div>
+  </div>
 </footer>
 
 </body>

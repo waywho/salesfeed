@@ -52,14 +52,9 @@ GEM
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bitters (1.5.0)
-      bourbon (~> 5.0.0.beta.7)
-      sass (~> 3.4)
-      thor (~> 0.19)
-    bourbon (5.0.0.beta.7)
-      sass (~> 3.4.22)
-      thor (~> 0.19.1)
     builder (3.2.2)
+    bulma-rails (0.4.0)
+      sass (~> 3.2)
     byebug (9.0.6)
     carrierwave (1.0.0)
       activemodel (>= 4.0.0)
@@ -271,9 +266,6 @@ GEM
     mini_portile2 (2.1.0)
     minitest (5.9.1)
     multi_json (1.12.1)
-    neat (2.0.0)
-      sass (~> 3.4)
-      thor (~> 0.19)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
     orm_adapter (0.5.0)
@@ -387,8 +379,7 @@ DEPENDENCIES
   acts_as_xlsx
   axlsx (~> 2.0.1)
   axlsx_rails
-  bitters
-  bourbon
+  bulma-rails (~> 0.4.0)
   byebug
   carrierwave (~> 1.0)
   coffee-rails (~> 4.1.0)
@@ -402,7 +393,6 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
-  neat
   pg (~> 0.15)
   rails (= 4.2.5)
   rails_12factor
