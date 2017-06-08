@@ -24,6 +24,7 @@ html {
 }
 
 body {
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
 	background-color: $fashstea-gray;
   margin: 0px;
 }
@@ -115,6 +116,7 @@ td {
   left: 0;
   right: 0;
   height: 5rem;
+  font-family: 'Delius Unicase', cursive;
 }
 
 #fashsteal-nav a {
@@ -151,6 +153,14 @@ td {
   content: "";
   display: block;
   height: 300px;
+}
+
+.hero {
+  font-family: 'Indie Flower', cursive;
+}
+
+.hero-body .subtitle {
+  font-size: 1.5rem !important;
 }
 
 /*.footer, .container:after {
