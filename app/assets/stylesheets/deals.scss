@@ -4,10 +4,18 @@
 
 $fashsteal-blue: #052F6D;
 
-$fashsteal-pink: #052F6D;
+$fashsteal-pink: #F69D9A;
+
+.card {
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 325px !important;
+  margin: auto;
+}
 
 .card-image {
   overflow: hidden;
+  border: 2px solid gray;
 }
 
 #deal-card-image img {
@@ -30,24 +38,18 @@ $fashsteal-pink: #052F6D;
 
 .cta-button {
   margin: auto;
-  width: auto;
-  max-width: 200px;
+  max-width: 75%;
 }
 
 .expired-card-image img {
   opacity: 0.5;
   filter: alpha(opacity=50);
+  height: auto;
 }
 
-
-.expired-card-image {
-  max-height: 200px;
-  overflow: hidden;
-  background-color: $fashsteal-pink;
-}
-
-.card-expired-cta {
-  height: 50px;
+.card-banner {
+  height: 25px;
+  margin-bottom: 0px !important;
 }
 
 .deal-logo {
@@ -76,9 +78,14 @@ $fashsteal-pink: #052F6D;
   display: none;
 }
 
-.highlight {
+.is-blue-highlight {
 	background-color: #133D8D;
 	color: white;
+  display: inline;
+}
+
+#force-inline {
+  display: inline;
 }
 
 .card-title {

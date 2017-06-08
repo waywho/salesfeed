@@ -1,25 +1,28 @@
 <div class="card">
-    <%= link_to deal.deeplink.html_safe, 'data-gtm-event' => 'expiredDealClicked', 'data-gtm-variable' => "#{deal.retailer.name}", :target => "_blank" do %>
-      <div class="expired-card-image">
+    <a data-gtm-event='expiredDealClicked', data-gtm-variable= "#{deal.retailer.name}"></a>
+      <div class="card-image">
         <div class='deal-logo'>
           <% if deal.retailer.logo.present? %>
             <%= image_tag deal.retailer.logo, alt: "#{deal.retailer.name} logo" %>
           <% end %>
         </div>
-        <figure class="image is-2by1"
+        <figure class="image is-16by9 expired-card-image" id="deal-card-image">
           <%= image_tag deal.picture.present? ? deal.picture : 'deal_image_holder.png', :class => 'deal_image', alt: "#{deal.retailer.name} deal image" %>
         </figure>
         <div class="card-header-title">
-          <span class="highlight card-title"><%= deal.title %></span>
+          <div>
+          <span class="is-blue-highlight card-title"><%= deal.title %></span>
+          </div>
         </div>
       </div>
-      <div class="card-expired-cta is-pink">Deal Expired</div>
-    <% end %>
+      <div class="card-banner is-pink level is-mobile">
+        <span class="level-item">Deal Expired</span>
+      </div>
     <div class="card-content">
       <div class="message"><%= deal.message.html_safe %>
-      <br />
         <p class="center">check out <%= link_to "this deal", deal_path(deal), :class => "highlight" %> from <%= link_to deal.retailer.name, retailer_path(deal.retailer), :class => "highlight" %></p>
       </div>
-      <div class="has-text-centered more-click" data-gtm-event='expiredDealShowMoreClicked', data-gtm-variable = "#{deal.retailer}">Show More</div>
+      <div class="has-text-centered more-click">
+        <a data-gtm-event='expiredDealShowMoreClicked', data-gtm-variable = "#{deal.retailer}">Show More</a></div>
     </div>
 </div>

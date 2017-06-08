@@ -4,20 +4,11 @@ class Admin::DealsController < ApplicationController
 
   def index
     @deals = Deal.all
-    @messages = Message.all
-    @subcategories = Subcategory.all
     respond_to do |format|
         format.html
         format.csv { send_data @deals.to_csv, filename: "deals-#{Date.today}.csv"}
         format.xlsx
     end
-  end
-
-  def subcategory_options
-    @subcategories = Gender.find(params[:gender]).subcategories
-    @categories = Hash.new
-
-     render json: @subcategories, :only => [:id, :name]
   end
 
 	def import

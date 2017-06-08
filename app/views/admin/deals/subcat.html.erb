@@ -1,0 +1,13 @@
+<h3>Subcategories</h3>
+<table>
+  <tr>
+    <th>Sub ID</th>
+    <th>Name</th>
+  </tr>
+  <% @subcategories.each do |sub| %>
+  <tr>
+    <td><%= sub.id %></td>
+    <td><%= sub.name %></td>
+  </tr>
+  <% end %>
+</table>

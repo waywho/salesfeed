@@ -57,7 +57,7 @@ gem 'kaminari'
 
 gem 'figaro'
 
-gem 'fog'
+gem 'fog-aws'
 
 gem 'google-tag-manager-rails'
 

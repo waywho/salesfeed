@@ -1,10 +1,6 @@
-<h1>Add new deal</h1>
+<h1 class="title is-1">Add new deal</h1>
 
-<%= simple_form_for @deal do |f| %>
-	<%= f.input :title %>
-	<%= f.input :picture %>
-	<%= f.input :message %>
-	<%= f.input :deeplink %>
-	<%= f.input :retailer_id, collection: Retailer.all %>
-	<%= f.submit "Post" %>
-<% end %>
+<%= render :partial => '/deals/new_deal' %>
+
+<br />
+<br />

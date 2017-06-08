@@ -1,106 +1,108 @@
-<h1>Tools</h1>
+<h1 class='title is-1'>Admin</h1>
 
-<table>
-  <tr>
-    <td>Export <%= link_to "CSV", admin_deals_path(format: 'csv') %> | <%= link_to "Excel", deals_path(format: 'xlsx') %></td>
-    <td><%= link_to 'New Deal', new_admin_deal_path, class: 'btn' %></td>
-    <td>
-      <button data-open-modal="deals-modal">Edit Multiple Deals</button>
-    </td>
-    <td>
-      <div>
-        <%= form_tag import_admin_deals_path, multipart: true do %>
-          <%= file_field_tag :file, accept: 'text/csv' %>
-          <%= submit_tag "Import Deals" %>
-        <% end %>
-      </div>      
-    </td>
-  </tr>
-</table>
+<div class="columns">
+  <div class="column">
+    <h3 class='title is-3'>Tools</h3>
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>Export <%= link_to "CSV", admin_deals_path(format: 'csv'), class: "button is-small is-success" %> | <%= link_to "Excel", deals_path(format: 'xlsx'), class: "button is-small is-success" %></td>
+        </tr>
+        <tr>
+          <td><%= link_to 'New Deal', new_admin_deal_path, class: 'button is-success' %></td>
+        </tr>
+        <tr>
+          <td>
+             <button id="multi-deal-modal-button" class="button is-success">Edit Multiple Deals</button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div>
+              <%= form_tag import_admin_deals_path, multipart: true do %>
+                <%= file_field_tag :file, accept: 'text/csv' %>
+                <%= submit_tag "Import Deals", class: 'button is-success' %>
+              <% end %>
+            </div>      
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="column">
+    <strong>Messages:</strong> <%= Message.count %><br />
+    <strong>Subcategories:</strong> <%= Subcategory.count %>
+  </div>
+</div>  
+ 
 
+<div class="modal" id="multi-deal-modal" aria-labelledby="modal-title" role="dialog" aria-hidden="true">
+  <div class="modal-background"></div>
+  <div role="document" class="modal-content">
+      <h2 class="title is-2">Edit Multiple Deals</h2>
 
-<div data-modal="deals-modal" aria-labelledby="example-modal-title" class="modal-wrapper"
-     role="dialog" aria-hidden="true">
-  <div class="modal-overlay" data-close-modal></div>
-  <div role="document" class="modal">
-    <header role="banner">
-      <h2 id="example-modal-title">Edit Multiple Deals</h2>
-      <button data-close-modal class="modal-close-button" aria-label="Close this dialog window">&times;</button>
-    </header>
-    <div>
       <p>Select multiple deals to edit</p>
       <%= form_tag edit_multiple_admin_deals_path, method: :get do %>
-        <table>
-          <tr>
-            <th></th>
-            <th>Title</th>
-          </tr>
-
-          <% @deals.each do |deal| %>
-            <%= simple_fields_for "deals[]" do |f| %>
+        <table class='table'>
+          <thead>
             <tr>
-              <td><%= check_box_tag 'deal[deal_ids][]', deal.id, checked = false, {id: dom_id(deal)} %>
-              <td><%= deal.title %></td>
+              <th></th>
+              <th>Title</th>
             </tr>
+          </thead>
+          <tbody>
+            <% @deals.each do |deal| %>
+              <%= simple_fields_for "deals[]" do |f| %>
+              <tr>
+                <td><%= check_box_tag 'deal[deal_ids][]', deal.id, checked = false, {id: dom_id(deal), :class => 'checkbox'} %>
+                <td><%= deal.title %></td>
+              </tr>
+              <% end %>
             <% end %>
-          <% end %>
+            </tbody>
         </table>
-        <%= submit_tag "Edit Multiple" %>
+        <%= submit_tag "Edit Multiple", class: 'button is-success' %>
       <% end %>
-    </div>
+
   </div>
+  <button class="modal-close" aria-label="Close this dialog window"></button>
+</div>
+
+<div class="columns">
+  <table class="table">
+    <thead>
+      <td>Title</td>
+      <td>Shop</td>
+      <td>Days</td>
+      <td>Clicks</td>
+    </thead>
+    <tbody>
+      <% @deals.each do |deal| %>
+        <tr>
+          <td><%= link_to deal.title, edit_admin_deal_path(deal) %></td>
+          <td><%= deal.retailer.name %></td>
+          <td><%= DateTime.now.to_date - deal.created_at.to_date %></td>
+          <td></td>
+        </tr>
+      <% end%>
+    </tbody>
+  </table>
 </div>
 
 <br />
 
-<h3>Messages</h3>
-<table>
-  <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Subject</th>
-      <th>Message</th>
-    </tr>
-  <% @messages.each do |message| %> 
-    <tr>
-      <td><%= message.name %></td>
-      <td><%= message.email %></td>
-      <td><%= message.subject %></td>
-      <td><%= message.message %></td>
-    </tr>
-  <% end %>
-</table>
 
-<h3>Subcategories</h3>
-<table>
-  <tr>
-    <th>Sub ID</th>
-    <th>Name</th>
-  </tr>
-  <% @subcategories.each do |sub| %>
-  <tr>
-    <td><%= sub.id %></td>
-    <td><%= sub.name %></td>
-  </tr>
-  <% end %>
-</table>
 
 <script>
 $(document).ready(function() {
-  $("#modal-1").on("change", function() {
-    if ($(this).is(":checked")) {
-      $("body").addClass("modal-open");
-    } else {
-      $("body").removeClass("modal-open");
-    }
-  });
-
-  $(".modal-fade-screen, .modal-close").on("click", function() {
-    $(".modal-state:checked").prop("checked", false).change();
-  });
-
-  $(".modal-inner").on("click", function(e) {
-    e.stopPropagation();
-  });
+  $('#multi-deal-modal-button').click(function() {
+      $('#multi-deal-modal').addClass('is-active')
+    })
+    $('.modal-close').click(function() {
+      $('#multi-deal-modal').removeClass('is-active')
+    })
+    $('.modal-background').click(function() {
+      $('#multi-deal-modal').removeClass('is-active')
+    })
 })
 </script>

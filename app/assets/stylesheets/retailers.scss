@@ -2,35 +2,23 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$custom-neat-grid: (
-	column: 12,
-	gutter: 20px,
-	media: 800px,
-);
-
-#main {
-
-}
-
 .retailer-row {
-	margin-bottom: 10px;
-	padding-top: 15px;
 	border-radius: 5px;
-
 }
 
-.retailer-logo {
-	min-height: 75px;
+/*.retailer-logo {
+	height: 50px;
 	margin-left: 0px;
 }
 
 .retailer-body {
-	min-height: 75px;
+	height: 75px;
 }
 
 .retailer-logo img {
 	margin: 0 auto 15px;
-}
+	display: block;
+}*/
 
 .retailer-banner {
 	text-align: center;

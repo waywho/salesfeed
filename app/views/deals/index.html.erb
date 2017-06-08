@@ -3,43 +3,49 @@
 	<p><%= @gender.description %></p>
 <% end %>
 
+<section class="hero is-transparent is-bold">
+    <%= render :partial => 'layouts/hero' %>
+</section>
 
 <% if current_user %>
-<br />
-  <button id="new-deal-modal-button" class="button is-danger is-outlined">Add a new deal</button>
+  <section>
+      <div class="container">
+        <button id="new-deal-modal-button" class="button is-danger is-outlined">Add a new deal</button>
 
-<div class="modal" id="new-deal-modal" aria-labelledby="modal-title" role="dialog" aria-hidden="true">
-  <div class="modal-background"></div>
-  <div role="document" class="modal-content">
-      <h2 class="title is-2">Add a new deal</h2>
-      <%= render :partial => '/deals/new_deal' %>
-  </div>
-  <button class="modal-close" aria-label="Close this dialog window"></button>
-</div>
+      <div class="modal" id="new-deal-modal" aria-labelledby="modal-title" role="dialog" aria-hidden="true">
+        <div class="modal-background"></div>
+        <div role="document" class="modal-content">
+            <h2 class="title is-2">Add a new deal</h2>
+            <%= render :partial => '/deals/new_deal' %>
+        </div>
+        <button class="modal-close" aria-label="Close this dialog window"></button>
+      </div>
+    </div>
+  </section>
+  <br />
 <% end %>
 
-<br />
-<br />
-
-<div class="columns">
-  <div class="column is-8">
-
-    <% @deals.from_now.each do |deal| %>
-      <div class="column is-8 <%= cycle('','is-offset-4') %>">
-        <% if deal.ends.present? %>
-          <% if deal.ends > Time.zone.today %>
-      		  <%= render :partial => '/deals/deal_card', :locals => {:deal => deal} %>
-          <% else %>
-            <%= render :partial => '/deals/expired_deal_card', :locals => {:deal => deal} %>
-          <% end %>
-        <% else %>
-          <%= render :partial => '/deals/deal_card', :locals => {:deal => deal} %>
-        <% end %>
+<section>
+  <div class="container">
+    <div class="columns">
+      <div class="column is-half is-offset-one-quarter">
+          <% @deals.each do |deal| %>
+            <div class="column is-10 <%= cycle('','is-offset-4') %>">
+              <% if deal.ends.present? %>
+                <% if deal.ends > Time.zone.today %>
+            		  <%= render :partial => '/deals/deal_card', :locals => {:deal => deal} %>
+                <% else %>
+                  <%= render :partial => '/deals/expired_deal_card', :locals => {:deal => deal} %>
+                <% end %>
+              <% else %>
+                <%= render :partial => '/deals/deal_card', :locals => {:deal => deal} %>
+              <% end %>
+            </div>
+            <% end %>
       </div>
-      <% end %>
+    </div>
   </div>
-  <div class="column"></div>
-</div>
+</section>
 
 <script>
   $(document).ready(function() {

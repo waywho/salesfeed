@@ -40,7 +40,8 @@ SimpleForm.setup do |config|
     b.optional :readonly
 
     ## Inputs
-    b.use :label_input
+    b.use :label, class: :label
+    b.use :input, class: 'input', wrap_with: { tag: :p, class: :control }
     b.use :hint,  wrap_with: { tag: :span, class: :hint }
     b.use :error, wrap_with: { tag: :span, class: :error }
 
@@ -54,6 +55,68 @@ SimpleForm.setup do |config|
   # The default wrapper to be used by the FormBuilder.
   config.default_wrapper = :default
 
+  config.wrappers :select, class: :field do |b|
+    b.use :html5
+    b.use :placeholder
+    b.optional :maxlength
+    b.optional :pattern
+    b.optional :min_max
+    b.optional :readonly
+    b.use :label, class: :label
+    b.wrapper tag: :p, class: :control do |ba|
+      ba.use :input, wrap_with: { tag: :span, class: :select }
+    end
+  end
+
+  config.wrappers :horizontal_select, class: 'field is-horizontal' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.optional :maxlength
+    b.optional :pattern
+    b.optional :min_max
+    b.optional :readonly
+    b.wrapper tag: :div, class: 'field-label is-medium' do |ba|
+      ba.use :label, class: :label
+    end
+    b.wrapper tag: :div, class: 'field-body' do |ba|
+      ba.wrapper tag: :div, class: 'field' do |baa|
+        baa.wrapper tag: 'p', class: 'control' do |baaa|
+          baaa.use :input, class: 'is-medium', wrap_with: { tag: :div, class: :select}
+        end
+      end
+    end
+  end
+
+  config.wrappers :horizontal_input, class: 'field is-horizontal' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.optional :maxlength
+    b.optional :pattern
+    b.optional :min_max
+    b.optional :readonly
+    b.wrapper tag: :div, class: 'field-label is-medium' do |ba|
+      ba.use :label, class: :label
+    end
+
+    b.wrapper tag: :div, class: 'field-body' do |ba|
+      ba.wrapper tag: :div, class: 'field' do |baa|
+        baa.use :input, class: :input, wrap_with: { tag: 'p', class: 'control'}
+      end
+    end
+  end
+
+  config.wrappers :boolean, class: :field do |b|
+    b.use :html5
+    b.use :placeholder
+    b.optional :maxlength
+    b.optional :pattern
+    b.optional :min_max
+    b.optional :readonly
+    b.wrapper tag: :p, class: :control do |ba|
+      ba.use :label, class: 'radio'
+      ba.use :input, class: 'radio'
+    end
+  end
   # Define the way to render check boxes / radio buttons with labels.
   # Defaults to :nested for bootstrap config.
   #   inline: input + label
@@ -100,14 +163,14 @@ SimpleForm.setup do |config|
   # config.label_text = lambda { |label, required, explicit_label| "#{required} #{label}" }
 
   # You can define the class to use on all labels. Default is nil.
-  # config.label_class = nil
+  config.label_class = 'label'
 
   # You can define the default class to be used on forms. Can be overriden
   # with `html: { :class }`. Defaulting to none.
   # config.default_form_class = nil
 
   # You can define which elements should obtain additional classes
-  # config.generate_additional_classes_for = [:wrapper, :label, :input]
+  config.generate_additional_classes_for = [:input]
 
   # Whether attributes are required by default (or not). Default is true.
   # config.required_by_default = true
@@ -151,7 +214,9 @@ SimpleForm.setup do |config|
   # config.cache_discovery = !Rails.env.development?
 
   # Default class for inputs
-  config.input_class = "input is-medium"
+  config.input_class = "is-medium"
+
+  config.button_class = "button"
 
   # Define the default class of the input wrapper of the boolean input.
   config.boolean_label_class = 'checkbox'

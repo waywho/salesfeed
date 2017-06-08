@@ -1,7 +1,7 @@
 Rails.application.configure do
 
   GoogleTagManager.gtm_id = "GTM-N4H9NCD"
-  require 'carrierwave/orm/activerecord'
+
   config.action_mailer.default_url_options = { host: 'localhost', port: 3030 }
   # Settings specified here will take precedence over those in config/application.rb.
 
