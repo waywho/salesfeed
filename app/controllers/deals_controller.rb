@@ -94,10 +94,17 @@ class DealsController < ApplicationController
 		return render_not_found
 	end
 
+	def subcategory_options
+	    @subcategories = Gender.find(params[:gender]).subcategories
+	    @categories = Hash.new
+
+	     render json: @subcategories, :only => [:id, :name]
+  	end
+
 	private
 
 	def deal_params
 		params.require(:deal).permit(:title, :message, :deeplink, :picture, :retailer_id, {deal_ids: []}, 
-			:category_id, :gender_id, :subcategory_id, :starts, :ends, :code, :terms)
+			:category_id, :gender_id, :subcategory_id, :starts, :ends, :code, :terms, :gender)
 	end
 end

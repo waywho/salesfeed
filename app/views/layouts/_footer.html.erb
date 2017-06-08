@@ -1,13 +1,11 @@
 <div class="footer-logo">
     <%= link_to image_tag("Fash-logomark.png", alt: "logo image"), root_path, class: "mobile-logo" %>
 </div>
-<ul>
-  <li><a href="javascript:void(0)">About</a></li>
+  <a href="javascript:void(0)">About</a>
     <p>Looking for Fashion? We've got the steals. Browser the latest fashion deals and discounts</p>
-  <li><%= link_to "Contact", contact_path %></li>
-  <li><%= link_to "Privacy Policy", privacy_policy_path %></li>
+  <%= link_to "Contact", contact_path %>
+  <%= link_to "Privacy Policy", privacy_policy_path %>
   <% if current_user.try(:admin?) %>
-  <li ><%= link_to 'Admin', admin_deals_path %></li>
+  <%= link_to 'Admin', admin_deals_path %>
   <% end %>
-  <li><%= link_to 'Sitemap', sitemap_url %></li>
-</ul>
+  <%= link_to 'Sitemap', sitemap_url %>

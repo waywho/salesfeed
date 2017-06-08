@@ -8,11 +8,6 @@ class RetailersController < ApplicationController
 		else
 			@retailers = Retailer.all
 		end
-		respond_to do |format|
-        	format.html
-        	format.csv { send_data @retailers.to_csv, filename: "retailers-#{Date.today}.csv"}
-        	format.xlsx
-    end
 	end
 
 	def show

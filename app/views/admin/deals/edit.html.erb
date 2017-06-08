@@ -1,15 +1,17 @@
 <h1>Edit Deal</h1>
 
 <%= simple_form_for @deal do |f| %>
-  <%= f.input :title %>
-  <%= f.input :picture %>
-  <%= f.input :message %>
-  <%= f.input :gender_id, label: 'Type', collection: Gender.all, value_method: :id, wrapper_html: {class: 'inline-form'}, input_html: {class: 'gender-type'} %>
-          <%= f.input :subcategory_id, label: "category", collection: Subcategory.all, wrapper_html: {class: 'inline-form'}, input_html: {class: 'subcategory-options'} %>
-  <%= f.input :starts, as: :date, html5: true %>
-  <%= f.input :ends, as: :date, html5: true %>
-  <%= f.input :deeplink %>
-  <%= f.input :slug %>
-  <%= f.input :retailer_id, collection: Retailer.all.order(:name) %>
-  <%= f.submit "Post" %>
+  <%= f.input :title, wrapper: :horizontal_input %>
+  <%= f.input :picture, wrapper: :horizontal_input %>
+  <%= f.input :message, input_html: {class: 'textarea'}, wrapper: :horizontal_input  %>
+
+  <%= f.input :gender_id, label: 'Type', collection: Gender.all, value_method: :id, wrapper: :horizontal_select, input_html: {class: 'gender-type', 'data-url' => subcategory_options_url } %>
+
+  <%= f.input :subcategory_id, label: "category", collection: @deal.gender.subcategories, wrapper: :horizontal_select, input_html: {class: 'subcategory-options'} %>
+  <%= f.input :starts, as: :datetime, html5: true, wrapper: :horizontal_input, input_html: { type: "datetime-local", value: DateTime.now.strftime("%Y-%m-%dT%H:%M:%S") } %>
+  <%= f.input :ends, as: :datetime, html5: true, wrapper: :horizontal_input, input_html: { type: "datetime-local"}%>
+  <%= f.input :deeplink, wrapper: :horizontal_input %>
+  <%= f.input :retailer_id, collection: Retailer.all.order(:name), wrapper: :horizontal_select %>
+  <br class='is-clearfix'/>
+  <%= f.submit "Add", class: "horizontal-button button is-medium is-primary is-pulled-right" %>
 <% end %>

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post :messages, to: 'static_pages#messages'
   get "sitemap.xml" => "static_pages#sitemap", format: :xml, as: :sitemap
   get "robots.txt" => "static_pages#robots", format: :text, as: :robots
+  get :subcategory_options, to: "deals#subcategory_options"
 
   resources :deals do
     resources :comments, only: :create
@@ -27,7 +28,6 @@ Rails.application.routes.draw do
     resources :deals do
       collection do
         post :import
-        get :subcategory_options
         get :edit_multiple
         put :update_multiple
       end

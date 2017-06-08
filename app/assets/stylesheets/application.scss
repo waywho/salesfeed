@@ -10,12 +10,22 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require_tree .
+ *= require_self
  */
 
-@import "bourbon";
-@import "neat";
-@import "base/base";
-@import "master";
-@import "deals";
-@import "retailers";
-@import "admin/deals";
+ $primary: white;
+ $text: black;
+ $link: black;
+
+@import url('https://fonts.googleapis.com/css?family=Carter+One|Delius+Unicase:700|Indie+Flower');
+@import url('https://fonts.googleapis.com/css?family=Lato:400,400i,700,900');
+
+ $family-primary: 'Lato', 'Helvetica Neue', Helvetica, sans-serif;
+ $inscription-font: 'Indie Flower', cursive;
+ $card-header-font: 'Carter One', cursive;
+ $nav-font: 'Delius Unicase', cursive;
+
+
+ @import "bulma";
+ 
