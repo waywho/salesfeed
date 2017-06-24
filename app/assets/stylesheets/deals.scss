@@ -7,13 +7,16 @@ $fashsteal-blue: #052F6D;
 $fashsteal-pink: #F69D9A;
 
 .card {
-  padding: 15px;
   border-radius: 5px;
   max-width: 325px !important;
   margin: auto;
 }
 
 .card-image {
+  padding: 15px;
+}
+
+.card-image-inner {
   overflow: hidden;
   border: 2px solid gray;
 }
@@ -23,23 +26,34 @@ $fashsteal-pink: #F69D9A;
 }
 
 .card-header-title {
-  position: absolute;
-  top: 30%;
   font-family: 'Carter One', cursive;
+  font-size: 19px;
+}
+
+.card-header-expired-title {
+  font-family: 'Carter One', cursive;
+  font-size: 16px;
 }
 
 .cta-layer {
   position: absolute;
-  top: 50%;
+  top: 0;
+  left: 0;
   z-index: 2;
-  height: 50%;
+  padding: 15px;
+  height: 100%;
   width: 100%;
   display: inline-block;
+}
+
+.cta-layer-inner {
+  margin-top: 15%;
 }
 
 .cta-button {
   margin: auto;
   max-width: 75%;
+  font-weight: bold;
 }
 
 .expired-card-image img {
@@ -51,13 +65,16 @@ $fashsteal-pink: #F69D9A;
 .card-banner {
   height: 25px;
   margin-bottom: 0px !important;
+  color: white;
+}
+
+.card-content {
+  padding: 15px !important;
 }
 
 .deal-logo {
-  position: absolute;
   left: 11px;
   top: 11px;
-  z-index: 1;
   width: 75px;
   height: 75px;
 }
@@ -87,10 +104,6 @@ $fashsteal-pink: #F69D9A;
 
 #force-inline {
   display: inline;
-}
-
-.card-title {
-  font-size: 22px;
 }
 
 table.multiple-edit td {

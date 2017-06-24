@@ -117,6 +117,19 @@ SimpleForm.setup do |config|
       ba.use :input, class: 'radio'
     end
   end
+
+  config.wrappers :checkbox, class: :field do |b|
+    b.use :html5
+    b.use :placeholder
+    b.optional :maxlength
+    b.optional :pattern
+    b.optional :min_max
+    b.optional :readonly
+    b.wrapper tag: :p, class: :control do |ba|
+      ba.use :label, class: 'checkbox'
+      ba.use :input, class: 'checkbox'
+    end
+  end
   # Define the way to render check boxes / radio buttons with labels.
   # Defaults to :nested for bootstrap config.
   #   inline: input + label
@@ -219,7 +232,7 @@ SimpleForm.setup do |config|
   config.button_class = "button"
 
   # Define the default class of the input wrapper of the boolean input.
-  config.boolean_label_class = 'checkbox'
+  # config.boolean_label_class = 'checkbox'
 
   # Defines if the default input wrapper class should be included in radio
   # collection wrappers.

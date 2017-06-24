@@ -2,33 +2,37 @@
 	<header class="card-header"></header>
 	<%= link_to deal.deeplink.html_safe, 'data-gtm-event' => 'dealClicked', 'data-gtm-variable' => "#{deal.retailer.name}", :target => "_blank" do %>
 		<div class="card-image">
-			<div class='deal-logo'>
-				<% if deal.retailer.logo.present? %>
-					<%= image_tag deal.retailer.logo, alt: "#{deal.retailer.name} logo" %>
-				<% end %>
+			<div class="card-image-inner">
+				<figure class="image is-square" id="deal-card-image">
+				<%= image_tag deal.picture.present? ? deal.picture : 'deal_image_holder.png', :class => 'deal_image', alt: "#{deal.retailer.name} deal image" %>
+				</figure>
 			</div>
-			<figure class="image is-square" id="deal-card-image">
-			<%= image_tag deal.picture.present? ? deal.picture : 'deal_image_holder.png', :class => 'deal_image', alt: "#{deal.retailer.name} deal image" %>
-			</figure>
-			<div class="card-header-title">
-				<div>
-				<span class="is-blue-highlight card-title"><%= deal.title %></span>
+				<div class="cta-layer">
+					<div class='deal-logo'>
+						<% if deal.retailer.logo.present? %>
+							<%= image_tag deal.retailer.logo, alt: "#{deal.retailer.name} logo" %>
+						<% end %>
+					</div>
+					<div class='cta-layer-inner'>
+						<div class="card-header-title">
+							<div>
+								<span class="is-blue-highlight"><%= deal.title %></span>
+							</div>
+						</div>
+						<div class="level is-mobile">
+							<button class="button cta-button is-pink-button level-item">
+								Get this Deal Now
+							</button>
+						</div>
+					</div>
 				</div>
-			</div>
-			<div class="level cta-layer is-mobile">
-				<button class="button cta-button is-outlined is-pink-outline level-item">
-					Get this Deal Now
-				</button>
-			</div>
 		</div>
 	<% end %>
 	<div class="card-content">
-		<div class="message"><%= deal.message.html_safe %>
+		<div class="open-message"><%= deal.message.html_safe %>
+		<br />
 		<br />
 			<p class="center">check out <%= link_to "this deal", deal_path(deal), :class => "is-blue-highlight" %> from <%= link_to deal.retailer.name, retailer_path(deal.retailer), :class => "highlight" %></p>
-		</div>
-		<div class="has-text-centered more-click">
-			<a data-gtm-event='dealShowMoreClicked', data-gtm-variable = "#{deal.retailer}">Show More</a>
 		</div>
 	</div>
 </div>
