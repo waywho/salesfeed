@@ -63,14 +63,14 @@ body {
   background-color: #CBE896 !important;
 }
 
-.is-pink-outline:hover {
+.is-pink-button:hover {
   box-shadow: 0 0 0.5em rgb(246, 157, 154);
   color: #052F6D;
 }
 
-.is-pink-outline {
-  color: #F69D9A !important;
-  background-color: transparent !important;
+.is-pink-button {
+  color: white !important;
+  background-color: #F69D9A !important;
   border-color: #F69D9A !important;
   border-width: 4px !important;
 }
@@ -116,7 +116,7 @@ td {
   left: 0;
   right: 0;
   height: 5rem;
-  font-family: 'Delius Unicase', cursive;
+  font-family: 'Lato', cursive;
 }
 
 #fashsteal-nav a {

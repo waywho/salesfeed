@@ -19,10 +19,10 @@
 # User.create(email: "weihsi.hu@gmail.com", password: "password", admin: true)
 
 # Gender.destroy_all
-# men = Gender.create(name: "men", description: "Whether you are looking for your everyday staples or hunting for that must-have piece, our stores offer the latest to dress your Clark Kent persona or the Superman in you. And collect points while you’re at it.")
-# women = Gender.create(name: "women", description: "Experience the thrill of shopping. Explore our broad selection of clothing, shoes, handbags, activewear and accessories here. Keep up with the fashion trend, define your style and complete your wardrobe - all while collecting points for your next splurge.
-# ")
-# beauty = Gender.create(name: "beauty", description: "You might kill the san-makeup look, but taking care of your skin is a top priority. Pamper yourself with your wide collection of skincare products. And when you’re feeling up for some glam, we have all the essentials to enhance your natural beauty. Feel even better knowing that you can collect points for every dollar you spend.")
+men = Gender.create(name: "men", description: "Whether you are looking for your everyday staples or hunting for that must-have piece, our stores offer the latest to dress your Clark Kent persona or the Superman in you. And collect points while you’re at it.")
+women = Gender.create(name: "women", description: "Experience the thrill of shopping. Explore our broad selection of clothing, shoes, handbags, activewear and accessories here. Keep up with the fashion trend, define your style and complete your wardrobe - all while collecting points for your next splurge.
+")
+beauty = Gender.create(name: "beauty", description: "You might kill the san-makeup look, but taking care of your skin is a top priority. Pamper yourself with your wide collection of skincare products. And when you’re feeling up for some glam, we have all the essentials to enhance your natural beauty. Feel even better knowing that you can collect points for every dollar you spend.")
 
 men = Gender.find_by_name("men")
 women = Gender.find_by_name("women")
@@ -168,7 +168,7 @@ category = women.categories.create(name: "Clothing")
 category.subcategories.create(name: "Skirts")  
 
 category = women.categories.create(name: "Clothing")  
-category.subcategories.create(name: "Jumpsuits & Paysuits")  
+category.subcategories.create(name: "Jumpsuits & Playsuits")  
 
 category = women.categories.create(name: "Clothing")  
 category.subcategories.create(name: "Shorts")  
