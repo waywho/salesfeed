@@ -1,0 +1,20 @@
+<h1>hello</h1>
+<div class='card'>
+	<div class="card-content">
+		<%= simple_form_for :posting, url: get_article_path, method: 'get', remote: true do |f| %>
+		<%= f.input :url, as: :text, label: false, input_html: {:id => 'crawler-box'} %>
+		<%= f.submit 'Post' , :class => "button is-success" %>
+		<% end %>
+	</div>
+</div>
+
+<br />
+
+<div id="new"></div>
+
+<br />
+
+<% @articles.each do |article| %>
+	<%= render partial: "articles/article_card", locals: { article: article } %>
+	<br />
+<% end %>

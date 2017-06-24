@@ -3,7 +3,7 @@
 	<%= link_to deal.deeplink.html_safe, 'data-gtm-event' => 'dealClicked', 'data-gtm-variable' => "#{deal.retailer.name}", :target => "_blank" do %>
 		<div class="card-image">
 			<div class="card-image-inner">
-				<figure class="image is-square" id="deal-card-image">
+				<figure id="deal-card-image">
 				<%= image_tag deal.picture.present? ? deal.picture : 'deal_image_holder.png', :class => 'deal_image', alt: "#{deal.retailer.name} deal image" %>
 				</figure>
 			</div>

@@ -8,8 +8,44 @@
   <%= f.input :subcategory_id, label: "category", collection: Subcategory.all, wrapper: :horizontal_select, input_html: {class: 'subcategory-options'} %>
   <%= f.input :starts, as: :datetime, html5: true, wrapper: :horizontal_input, input_html: { type: "datetime-local", value: DateTime.now.strftime("%Y-%m-%dT%H:%M:%S") } %>
   <%= f.input :ends, as: :datetime, html5: true, wrapper: :horizontal_input, input_html: { type: "datetime-local"}%>
-  <%= f.input :deeplink, wrapper: :horizontal_input %>
+  <%= f.input :deeplink, wrapper: :horizontal_input, input_html: { id: "deeplink", 'data-url' => get_article_path } %>
   <%= f.input :retailer_id, collection: Retailer.all.order(:name), wrapper: :horizontal_select %>
   <br class='is-clearfix'/>
-  <%= f.submit "Add", class: "horizontal-button button is-medium is-primary is-pulled-right" %>
+  <%= f.submit "Add", class: "button is-medium is-success" %>
 <% end %>
+
+
+<script>
+  $(document).ready(function() {
+    $("#deeplink").on("paste", function(){
+      setTimeout(function() {
+        link = $("#deeplink").val();
+        postUrl = $("#deeplink").attr('data-url');
+        console.log(link);
+        console.log(postUrl);
+    //     $("#thumbs").html("<p>loading</p>");
+    //     var postData = {
+    //       'url' : $("#link").val()
+    //       };
+        $.ajax({
+             type: "GET",
+             url: postUrl,
+             data: {posting: {url: link} }, //assign the var here 
+             success: function(msg){
+              console.log(msg);
+             }
+            // $("#thumbs").html( "Data Saved: " + msg );
+            //     $(".thumb").click(function(){
+            //     (this).attr('id');
+
+
+            });
+
+    //          }
+
+    //     });
+      }, 500);
+    });
+
+  })
+</script>

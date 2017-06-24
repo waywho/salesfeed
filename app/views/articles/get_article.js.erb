@@ -1,0 +1,1 @@
+$("#new").html("<%= escape_javascript (render partial: 'articles/article_card', locals: { article: @article, article_time: @article_time, url: @url } ) %>")
