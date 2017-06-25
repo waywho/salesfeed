@@ -2,7 +2,7 @@ class Admin::PublishersController < ApplicationController
   	before_action :authenticate_admin
 	
 	def index
-		@publishers = Publisher.order(:name)
+		@publishers = Publisher.all
 	end
 
 	def show
