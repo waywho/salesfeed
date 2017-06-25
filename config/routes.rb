@@ -42,6 +42,8 @@ Rails.application.routes.draw do
         post :import
       end
     end
+    resources :publishers do
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

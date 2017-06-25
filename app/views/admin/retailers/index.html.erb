@@ -1,27 +1,29 @@
-<% if current_user.try(:admin?) %>
-  <div>
-    Export Retailers to: <%= link_to "CSV", admin_retailers_path(format: 'csv') %> | <%= link_to "Excel", admin_retailers_path(format: 'xlsx') %>
+<div class="container">
+  <% if current_user.try(:admin?) %>
+    <div>
+      Export Retailers to: <%= link_to "CSV", admin_retailers_path(format: 'csv') %> | <%= link_to "Excel", admin_retailers_path(format: 'xlsx') %>
 
-        
-    <%= form_tag import_admin_retailers_path, multipart: true do %>
-      <%= file_field_tag :file, accept: 'text/csv' %>
-      <%= submit_tag "Import Retailers" %>
-    <% end %>
-  </div>
-<% end %>
-
-<br />
-<%= link_to 'Add new retailer', new_admin_retailer_path, class: 'btn' %>
-<br />
-
-
-<table>
-  <tr>
-    <th>Retailer name</th>
-  </tr>
-  <% @retailers.each do |retailer| %>
-  <tr>
-    <td><%= link_to retailer.name, edit_admin_retailer_path(retailer) %></td>
-  </tr>
+          
+      <%= form_tag import_admin_retailers_path, multipart: true do %>
+        <%= file_field_tag :file, accept: 'text/csv' %>
+        <%= submit_tag "Import Retailers" %>
+      <% end %>
+    </div>
   <% end %>
-</table>
+
+  <br />
+  <%= link_to 'Add new retailer', new_admin_retailer_path, class: 'btn' %>
+  <br />
+
+
+  <table>
+    <tr>
+      <th>Retailer name</th>
+    </tr>
+    <% @retailers.each do |retailer| %>
+    <tr>
+      <td><%= link_to retailer.name, edit_admin_retailer_path(retailer) %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>

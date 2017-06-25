@@ -1,0 +1,8 @@
+<%= simple_fields_for :publisher do |f| %>
+	<%= f.input :name %>
+	<%= f.input :host_url %>
+	<%= f.input :title_find %>
+	<%= f.input :description_find %>
+	<%= f.input :image_find %>
+	<%= f.submit 'Add', :class => 'button button-success' %>
+<% end %>

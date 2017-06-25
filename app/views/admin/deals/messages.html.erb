@@ -1,17 +1,19 @@
-<h3 class='title is-3'>Messages</h3>
-<table class="table">
-  <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Subject</th>
-      <th>Message</th>
-    </tr>
-  <% @messages.each do |message| %> 
+<div class="container">
+  <h3 class='title is-3'>Messages</h3>
+  <table class="table">
     <tr>
-      <td><%= message.name %></td>
-      <td><%= message.email %></td>
-      <td><%= message.subject %></td>
-      <td><%= message.message %></td>
-    </tr>
-  <% end %>
-</table>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Subject</th>
+        <th>Message</th>
+      </tr>
+    <% @messages.each do |message| %> 
+      <tr>
+        <td><%= message.name %></td>
+        <td><%= message.email %></td>
+        <td><%= message.subject %></td>
+        <td><%= message.message %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

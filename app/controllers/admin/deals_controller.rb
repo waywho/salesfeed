@@ -14,7 +14,7 @@ class Admin::DealsController < ApplicationController
 	def import
       Deal.import(params[:file])
       flash[:notice] = 'File has been imported'
-      redirect_to root_path
+      redirect_to admin_deals_path
     end
     
 	def edit_multiple
@@ -31,7 +31,7 @@ class Admin::DealsController < ApplicationController
 		
 		@deals.reject! { |deal| deal.errors.empty? }
 		if @deals.empty?
-			redirect_to root_path
+			redirect_to admin_deals_path
 		else
 			render "edit_multiple"
 		end
@@ -44,7 +44,7 @@ class Admin::DealsController < ApplicationController
   def create
     @deal = current_user.deals.create(deal_params)
     if @deal.valid?
-      redirect_to root_path
+      redirect_to admin_deals_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -67,7 +67,7 @@ class Admin::DealsController < ApplicationController
     @deal.update_attributes(deal_params)
     
     if @deal.valid?
-      redirect_to root_path
+      redirect_to admin_deals_path
     else
       render :edit, status: :unprocessable_entity
     end 
@@ -82,7 +82,7 @@ class Admin::DealsController < ApplicationController
     return render_not_found(:forbidden) if !current_user.admin?
     @deal.destroy
 
-    redirect_to root_path
+    redirect_to admin_deals_path
 
   rescue ActiveRecord::RecordNotFound
     return render_not_found

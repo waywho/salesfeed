@@ -1,26 +1,29 @@
 <div class="card">
- <%= simple_form_for :article, url: articles_path, method: 'post' do |content| %>
-  <%= content.input :url, as: :hidden ,input_html: { value: @url } %>
   <div class="post-image">
     <figure id="p-image">
       <%= image_tag article.image_url %>
-      <%= content.input :image_url, as: :hidden %>
     </figure>
   </div>
   <div>
     <p class="card-header-title title is-5"><%= article.title %>
-    <%= content.input :title, as: :hidden %>
     </p>
-    <p class="subtitle is-6 publisher"><i><%= article.publisher %></i>
-    <%= content.input :publisher, as: :hidden %>
+    <p class="subtitle is-6 publisher"><i><%= article.publisher_name %></i>
     </p>
   </div>
   <div class="card-content article-content">
         <div class="content">
       <%= article.description %>
-      <%= content.input :description, as: :hidden %>
     </div>
   </div>
+</div>
+<br />
+<%= simple_form_for :article, url: articles_path, method: 'post' do |content| %>
+  <%= content.input :url, as: :hidden , input_html: { value: @url } %>
+  <%= content.input :title, as: :hidden %>
+  <%= content.input :image_url, as: :hidden %>
+  <%= content.input :publisher, as: :hidden, input_html: { value: article.publisher_name }  %>
+    <%= content.input :description, as: :hidden %>
   <%= content.submit 'Post' , :class => "button is-success" %>
 <% end %>
-</div>
+
+

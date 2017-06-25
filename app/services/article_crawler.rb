@@ -1,28 +1,45 @@
 class ArticleCrawler
-	attr_accessor :doc, :url
+	attr_accessor :doc, :url, :publisher
 
 	def initialize(url)
 		@url = url
 		@doc = Nokogiri::HTML(open(url))
+		@publisher = self.publisher
 	end
 
 	def title
-		self.doc.at_css("meta[property='og:title']")['content']
+		if @publisher.nil?
+			self.doc.at_css("meta[property='og:title']")['content']
+		else
+			self.doc.at_css("#{@publisher.title_find}")['content']
+		end
 	end
 
 	def description
-		self.doc.at_css("meta[property='og:description']")['content']
+		if @publisher.nil?
+			self.doc.at_css("meta[property='og:description']")['content']
+		else
+			self.doc.at_css("#{@publisher.description_find}")['content']
+		end
 	end
 
 	def image_url
-		self.doc.at_css("meta[property='og:image']")['content']
+		if @publisher.nil?
+			self.doc.at_css("meta[property='og:image']")['content']
+		else
+			self.doc.at_css("#{@publisher.image_find}")['content']
+		end
 	end
 
 	def publisher
-		if self.doc.at_css("meta[property='og:site_name']").nil?
-			self.doc.at_css("meta[name='cre']")['content']
-		else
+		@publisher = Publisher.find_by_host_url(self.get_host)
+	end
+
+	def publisher_name
+		if @publisher.nil?
 			self.doc.at_css("meta[property='og:site_name']")['content']
+		else
+			@publisher.name
 		end
 	end
 	
