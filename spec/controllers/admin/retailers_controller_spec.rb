@@ -1,6 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe Admin::RetailersController, type: :controller do
+  describe "retailer#index" do
+      it "should successfully show the page" do
+        user = FactoryGirl.create(:admin)
+        sign_in user
+        get :index
+        expect(response).to have_http_status(:success)
+      end
+      
+      it "should successfully download csv" do
+        user = FactoryGirl.create(:admin)
+        sign_in user
+        get :index, format: 'csv'
+      expect(response).to have_http_status(:success)
+    end
+  end
+
   describe "retailer#destroy" do
     it "shouldn't let unauthenticated user destroy a retailer" do
       retailer = FactoryGirl.create(:retailer)
@@ -62,7 +78,7 @@ RSpec.describe Admin::RetailersController, type: :controller do
 
       patch :update, id: retailer.id, retailer: { description: "changed"}
       retailer.reload
-      expect(response).to redirect_to edit_retailer_path(retailer)
+      expect(response).to redirect_to edit_admin_retailer_path(retailer)
       expect(retailer.description).to eq "changed"
     end
     it "should return a 404 message if we cannot find the retailer with the specified id" do

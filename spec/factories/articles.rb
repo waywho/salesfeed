@@ -1,11 +1,11 @@
 FactoryGirl.define do
   factory :article do
-    title "MyString"
-    url "MyString"
+    title "What to Wear to an Interview: 9 Looks to Score Your Dream Job"
+    url "http://www.whowhatwear.co.uk/what-to-wear-to-an-interview"
     description "MyText"
     image_url "MyString"
     publisher "MyString"
     user nil
-    gender_id nil
+    gender nil
   end
 end

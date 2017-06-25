@@ -1,4 +1,4 @@
 class Article < ActiveRecord::Base
   belongs_to :user
-  belongs_to :gender_id
+  belongs_to :gender
 end

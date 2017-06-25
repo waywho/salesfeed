@@ -13,7 +13,7 @@ class ArticleCrawler
 		@doc.at_css("meta[property='og:description']")['content']
 	end
 
-	def image
+	def image_url
 		@doc.at_css("meta[property='og:image']")['content']
 	end
 
