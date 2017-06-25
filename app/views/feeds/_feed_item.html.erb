@@ -1,0 +1,18 @@
+<% feed_items.each do |item| %>
+<div class="column is-10 <%= cycle('','is-offset-4') %> feed-item">
+  <% case item.class.name %>
+  <% when 'Deal' %>
+    <% if item.ends.present? %>
+      <% if item.ends > Time.zone.today %>
+        <%= render :partial => '/deals/deal_card', :locals => {:deal => item} %>
+        <% else %>
+        <%= render :partial => '/deals/expired_deal_card', :locals => {:deal => item} %>
+      <% end %>
+    <% else %>
+      <%= render :partial => '/deals/deal_card', :locals => {:deal => item} %>
+    <% end %>
+  <% when 'Article' %>
+    <%= render :partial => '/articles/article_card', :locals => {:article => item} %>
+  <% end %>
+</div>
+<% end %>

@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  root "deals#index"
+  root "feeds#index"
+
 
   get :privacy_policy, to: "static_pages#privacy_policy"
   get :contact, to: "static_pages#contact"
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
   get "robots.txt" => "static_pages#robots", format: :text, as: :robots
   get :subcategory_options, to: "deals#subcategory_options"
 
+  resources :feeds, only: [:index]
   resources :deals do
     resources :comments, only: :create
   end

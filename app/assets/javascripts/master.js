@@ -14,6 +14,16 @@ $(document).ready(function() {
       $(this).attr('src', '/assets/deal_image_holder.png');
     });
 
+     $('#new-deal-modal-button').click(function() {
+      $('#new-deal-modal').addClass('is-active')
+    })
+    $('.modal-close').click(function() {
+      $('#new-deal-modal').removeClass('is-active')
+    })
+    $('.modal-background').click(function() {
+      $('#new-deal-modal').removeClass('is-active')
+    })
+
     $('.gender-type').change(function() {
       selection = $(this).val();
       genderInput = $(this);

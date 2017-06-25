@@ -1,0 +1,8 @@
+
+$("#feed-column-pages").append("<%= escape_javascript(render partial: 'feeds/feed_item', locals: {feed_items: @feed_items}) %>");
+
+<% if @feed_items.last_page? %>
+	$('.pagination').html("That's all, folks!");
+<% else %>
+	$('.pagination').html("<%= j link_to_next_page(@feed_items, 'Next Page', :remote => true) %>");
+<% end %>

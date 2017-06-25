@@ -1,6 +1,6 @@
 <div class="card">
 	<header class="card-header"></header>
-	<%= link_to deal.deeplink.html_safe, 'data-gtm-event' => 'dealClicked', 'data-gtm-variable' => "#{deal.retailer.name}", :target => "_blank" do %>
+	<%= link_to deal.deeplink, 'data-gtm-event' => 'dealClicked', 'data-gtm-variable' => "#{deal.retailer.name}", :target => "_blank" do %>
 		<div class="card-image">
 			<div class="card-image-inner">
 				<figure id="deal-card-image">
