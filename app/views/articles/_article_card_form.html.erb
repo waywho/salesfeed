@@ -16,7 +16,7 @@
     </div>
   </div>
 </div>
-<br />
+
 <%= simple_form_for :article, url: articles_path, method: 'post' do |content| %>
   <%= content.input :url, as: :hidden , input_html: { value: @url } %>
   <%= content.input :title, as: :hidden %>
