@@ -7,6 +7,6 @@ $ ->
   $('#feed-column').infinitePages
     # debug: true
     loading: ->
-      $(this).text('Loading next page...')
+      $(".pagination").text('Loading next page...')
     error: ->
-      $(this).button('There was an error, please try again')
+      $(".pagination").button('There was an error, please try again')
