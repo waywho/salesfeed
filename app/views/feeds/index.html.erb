@@ -1,16 +1,20 @@
-<% if @gender.present? %>
-<h1><%= @gender.name.capitalize %></h1>
-	<p><%= @gender.description %></p>
-<% end %>
+<br />
+
 
 <section class="hero is-transparent is-bold">
     <%= render :partial => 'layouts/hero' %>
 </section>
-
 <% if current_user %>
   <section>
       <div class="container">
+      <div class="card">
+        <div class = "card-content">
         <button id="new-deal-modal-button" class="button is-danger is-outlined">Add a new deal</button>
+        </div>
+      </div>
+      <div class='card'>
+       <%= render :partial => '/articles/new_article_form' %>
+      </div>
 
       <div class="modal" id="new-deal-modal" aria-labelledby="modal-title" role="dialog" aria-hidden="true">
         <div class="modal-background"></div>
@@ -27,28 +31,21 @@
 
 <section>
   <div class="container">
-    <div class="columns">
+    <div class="columns" id="feed-column">
+      <div class="column is-half is-offset-one-quarter" id="feed-column-pages">
+          <%= render partial: 'feeds/feed_item', locals: { feed_items: @feed_items } %>
+      </div>
+    
+      <br />
+      <br />
       <div class="column is-half is-offset-one-quarter">
-          <% @deals.each do |deal| %>
-            <div class="column is-10 <%= cycle('','is-offset-4') %>">
-              <% if deal.ends.present? %>
-                <% if deal.ends > Time.zone.today %>
-            		  <%= render :partial => '/deals/deal_card', :locals => {:deal => deal} %>
-                <% else %>
-                  <%= render :partial => '/deals/expired_deal_card', :locals => {:deal => deal} %>
-                <% end %>
-              <% else %>
-                <%= render :partial => '/deals/deal_card', :locals => {:deal => deal} %>
-              <% end %>
-            </div>
-            <% end %>
+        <p class="pagination">
+          <%= link_to_next_page(@feed_items, 'Next Page', remote: true) %>
+        </p>
       </div>
     </div>
+    <br />
   </div>
-</section>
 
-<script>
-  $(document).ready(function() {
-   
-  });
-</script>
+
+</section>

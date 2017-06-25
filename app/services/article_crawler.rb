@@ -18,7 +18,11 @@ class ArticleCrawler
 	end
 
 	def publisher
-		@doc.at_css("meta[property='og:site_name']")['content']
+		if @doc.at_css("meta[property='og:site_name']").nil?
+			@doc.at_css("meta[name='cre']")['content']
+		else
+			@doc.at_css("meta[property='og:site_name']")['content']
+		end
 	end
 	
 end
