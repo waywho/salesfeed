@@ -1,0 +1,28 @@
+// Place all the styles related to the articles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$fashsteal-blue: #052F6D;
+
+$fashsteal-pink: #F69D9A;
+
+.post-image {
+	display: block;
+    position: relative;
+}
+
+#p-image img {
+	height: auto !important;
+}
+
+.publisher {
+	color: $fashsteal-blue !important;
+	text-align: center;
+}
+
+.article-content {
+	border-top: 1px solid #dbdbdb;
+}
+
+.article-header-title {
+	font-weight: bold;
+}

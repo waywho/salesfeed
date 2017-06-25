@@ -1,0 +1,20 @@
+<div class="card">
+  <%= link_to article.url, 'data-gtm-event' => 'articleClicked', 'data-gtm-variable' => "#{article.title}", :target => "_blank" do %>
+  <div class="post-image">
+    <figure id="p-image">
+      <%= image_tag article.image_url %>
+    </figure>
+  </div>
+  <div>
+    <p class="card-header-title title is-5"><%= article.title %></p>
+    <p class="subtitle is-6 publisher"><i><%= article.publisher %></i></p>
+  </div>
+  <div class="card-content article-content">
+        <div class="content">
+      <%= article.description %>
+      <br>
+      <small><%= article.created_at.strftime("%d-%m-%Y %H:%M") %></small>
+    </div>
+  </div>
+  <% end %>
+</div>

@@ -1,0 +1,20 @@
+<h1>Articles</h1>
+<div class='card'>
+	<div class="card-content">
+		<%= simple_form_for Article.new, url: get_article_path, method: 'get', remote: true do |f| %>
+		<%= f.input :url, as: :text, label: 'Share an article by link', input_html: {:id => 'crawler-box'} %>
+		<%= f.submit 'Get' , :class => "button is-success" %>
+		<% end %>
+
+		<div id="new"></div>
+	</div>
+</div>
+
+
+
+<br />
+
+<% @articles.each do |article| %>
+	<%= render partial: "articles/article_card", locals: { article: article } %>
+	<br />
+<% end %>

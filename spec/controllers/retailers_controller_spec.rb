@@ -6,11 +6,6 @@ RSpec.describe RetailersController, type: :controller do
 			get :index
 			expect(response).to have_http_status(:success)
 		end
-
-		it "should successfully download csv" do
-			get :index, format: 'csv'
-			expect(response).to have_http_status(:success)
-		end
 	end
 
 	describe "retailer#show" do

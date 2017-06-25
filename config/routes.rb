@@ -24,6 +24,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :articles, only: [:index, :create]
+  get :get_article, to: "articles#get_article"
+
   namespace :admin do
     resources :deals do
       collection do
